@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>icon</key>
+		<string>daxingshangchang</string>
+		<key>title</key>
+		<string>大型商场</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>fuzhuangdian</string>
+		<key>title</key>
+		<string>服装店</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>xiedian</string>
+		<key>title</key>
+		<string>鞋店</string>
+	</dict>
+</array>
+</plist>

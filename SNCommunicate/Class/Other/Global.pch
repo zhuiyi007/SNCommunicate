@@ -17,8 +17,11 @@
 #import <Foundation/Foundation.h>
 #import "UIImage+Tool.h"
 #import "UIView+Frame.h"
+#import "Define.h"
+#import "SNMainTableView.h"
+#import "SNHttpTool.h"
+#import "MJExtension.h"
+#import "UIImageView+WebCache.h"
+#import "MBProgressHUD+MJ.h"
 
-#define SNScreenBounds [UIScreen mainScreen].bounds.size
-#define SNKeyWindow    [UIApplication sharedApplication].keyWindow
-#define SNColor(r, g, b) [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:1.0]
 #endif

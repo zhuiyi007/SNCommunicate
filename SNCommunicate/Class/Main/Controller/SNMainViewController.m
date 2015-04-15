@@ -12,7 +12,7 @@
 #import "SNAccountViewController.h"
 #import "SNTabBar.h"
 
-@interface SNMainViewController ()<SNMainNavigationControllerDelegate, SNTabBar>
+@interface SNMainViewController ()<SNMainNavigationControllerDelegate, SNTabBar, SNCommunicateMainViewControllerDelegate>
 @property (nonatomic, weak) SNTabBar *customTabBar;
 
 @end
@@ -33,6 +33,7 @@
 - (void)addChildSubViews
 {
     SNCommunicateMainViewController *main = [[SNCommunicateMainViewController alloc] init];
+    main.delegate = self;
     [self setupChildViewControll:main title:@"肃宁通" normalImage:[UIImage imageNamed:@"ktv"] selectImage:[UIImage imageNamed:@"ktv"]];
     
     SNAccountViewController *account = [[SNAccountViewController alloc] init];
@@ -70,17 +71,17 @@
     self.selectedIndex = index;
 }
 
-//#pragma mark - 发现界面隐藏tabbar的代理方法
-//- (void)discoverViewControllerHiddenTabBar:(ZSDiscoverViewController *)discoverViewController
-//{
-//    CGRect frame = self.customTabBar.frame;
-//    frame.origin.x = -320;
-//    [UIView animateWithDuration:0.25 animations:^{
-//        self.customTabBar.frame = frame;
-//    } completion:^(BOOL finished) {
-//        self.customTabBar.hidden = YES;
-//    }];
-//}
+#pragma mark - 隐藏tabbar的代理方法
+- (void)communicateMainViewControllerHiddenTabBar:(SNCommunicateMainViewController *)communicateMainViewController
+{
+    CGRect frame = self.customTabBar.frame;
+    frame.origin.x = -320;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.customTabBar.frame = frame;
+    } completion:^(BOOL finished) {
+        self.customTabBar.hidden = YES;
+    }];
+}
 
 //#pragma mark - 我的彩票界面隐藏tabbar的代理方法
 //- (void)mineViewControllerHiddenTabBar:(ZSMineViewController *)discoverViewController

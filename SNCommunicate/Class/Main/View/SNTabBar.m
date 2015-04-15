@@ -50,7 +50,6 @@
 
 - (void)layoutSubviews
 {
-    [super layoutSubviews];
     NSInteger count = self.subviews.count;
     for (int i = 0; i < count; i ++) {
         UIButton *btn = self.subviews[i];

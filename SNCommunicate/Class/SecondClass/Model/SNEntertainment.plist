@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>icon</key>
+		<string>ktv</string>
+		<key>title</key>
+		<string>KTV</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>zuliao</string>
+		<key>title</key>
+		<string>足疗按摩</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>wangba</string>
+		<key>title</key>
+		<string>网吧</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>geting</string>
+		<key>title</key>
+		<string>歌厅</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>dianwan</string>
+		<key>title</key>
+		<string>电玩</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>jianshen</string>
+		<key>title</key>
+		<string>健身</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>gongyuan</string>
+		<key>title</key>
+		<string>公园</string>
+	</dict>
+</array>
+</plist>

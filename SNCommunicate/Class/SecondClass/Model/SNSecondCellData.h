@@ -1,5 +1,5 @@
 //
-//  SNMainCellData.h
+//  SNSecondCellData.h
 //  SNCommunicate
 //
 //  Created by ZhuiYi on 15/4/13.
@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SNMainCellData : NSObject
+@interface SNSecondCellData : NSObject
 
 @property (nonatomic, strong) NSString *icon;
 @property (nonatomic, strong) NSString *title;
 
-+ (SNMainCellData *)dataWithDict:(NSDictionary *)dict;
++ (SNSecondCellData *)dataWithDict:(NSDictionary *)dict;
 
 @end

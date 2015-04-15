@@ -1,18 +1,18 @@
 //
-//  SNMainCellData.m
+//  SNSecondCellData.m
 //  SNCommunicate
 //
 //  Created by ZhuiYi on 15/4/13.
 //  Copyright (c) 2015年 ZhuiYi. All rights reserved.
 //
 
-#import "SNMainCellData.h"
+#import "SNSecondCellData.h"
 
-@implementation SNMainCellData
+@implementation SNSecondCellData
 
-+ (SNMainCellData *)dataWithDict:(NSDictionary *)dict
++ (SNSecondCellData *)dataWithDict:(NSDictionary *)dict
 {
-    SNMainCellData *data = [[SNMainCellData alloc] init];
+    SNSecondCellData *data = [[SNSecondCellData alloc] init];
     data.icon = dict[@"icon"];
     data.title = dict[@"title"];
     return data;

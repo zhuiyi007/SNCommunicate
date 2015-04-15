@@ -13,7 +13,7 @@
 - (void)tabBar:(SNTabBar *)tabBar didselectedIndex:(NSInteger)index;
 @end
 
-@interface SNTabBar : UIView
+@interface SNTabBar : UITabBar
 
 + (instancetype)tabBar;
 

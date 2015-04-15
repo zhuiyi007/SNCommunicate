@@ -7,11 +7,7 @@
 //
 
 #import "SNCommunicateMainViewController.h"
-#import "SNEntertainmentViewController.h"
-#import "SNCateAndBedViewController.h"
-#import "SNHealthAndBeautyViewController.h"
-#import "SNDiscoverViewController.h"
-#import "SNMarketViewController.h"
+#import "SNSecondClassViewController.h"
 
 #import "SNMainCell.h"
 #import "SNMainCellData.h"
@@ -62,13 +58,13 @@ const NSInteger ImageCount = 4;
                               forMode:NSRunLoopCommonModes];
     
     // TableView
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero
+    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:CGRectZero
                                                           style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
     CGFloat height = [self countHeightWithTableView:tableView];
-    if (height < SNScreenBounds.height - CGRectGetMaxY(self.scrollView.frame) - 49) {
-        height = SNScreenBounds.height - CGRectGetMaxY(self.scrollView.frame) - 49;
+    if (height < SNScreenBounds.height - CGRectGetMaxY(self.scrollView.frame)) {
+        height = SNScreenBounds.height - CGRectGetMaxY(self.scrollView.frame);
     }
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [tableView setFrame:CGRectMake(0, CGRectGetMaxY(self.scrollView.frame), SNScreenBounds.width, height)];
@@ -118,7 +114,7 @@ const NSInteger ImageCount = 4;
     if (!_dataArray) {
         SNMainCellData *data1 = [[SNMainCellData alloc] init];
         data1.icon = @"xiuxianyule";
-        data1.title = @"休闲娱乐";
+        data1.title = @"生活娱乐";
         SNMainCellData *data2 = [[SNMainCellData alloc] init];
         data2.icon = @"meishizhusu";
         data2.title = @"美食住宿";
@@ -174,37 +170,46 @@ const NSInteger ImageCount = 4;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    SNSecondClassViewController *vc = [[SNSecondClassViewController alloc] init];
     switch (indexPath.row) {
         case 0:
         {
-            SNEntertainmentViewController *vc = [[SNEntertainmentViewController alloc] init];
+            vc.title = @"生活娱乐";
+            vc.plist = @"SNEntertainment";
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         case 1:
         {
-            SNCateAndBedViewController *vc = [[SNCateAndBedViewController alloc] init];
+            vc.title = @"美食住宿";
+            vc.plist = @"SNEatAndBed";
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         case 2:
         {
-            SNHealthAndBeautyViewController *vc = [[SNHealthAndBeautyViewController alloc] init];
+            vc.title = @"健康美容";
+            vc.plist = @"SNHealthAndBeauty";
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         case 3:
         {
-            SNDiscoverViewController *vc = [[SNDiscoverViewController alloc] init];
+            vc.title = @"寻宝商城";
+            vc.plist = @"";
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         default:
         {
-            SNMarketViewController *vc = [[SNMarketViewController alloc] init];
+            vc.title = @"商场";
+            vc.plist = @"SNMarket";
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
+    }
+    if ([self.delegate respondsToSelector:@selector(communicateMainViewControllerHiddenTabBar:)]) {
+        [self.delegate communicateMainViewControllerHiddenTabBar:self];
     }
 }
 

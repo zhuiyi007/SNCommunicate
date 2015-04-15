@@ -29,20 +29,21 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     // 当需要返回时才显示返回按钮
-//    if (self.childViewControllers.count) {
-//        UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithImage:[UIImage imageOriginalNamed:@"NavBack"] style:UIBarButtonItemStyleBordered target:self action:@selector(back)];
-//        viewController.navigationItem.leftBarButtonItem = back;
-//    }
+    if (self.childViewControllers.count) {
+        UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithImage:[UIImage imageOriginalNamed:@"btn_back_sel"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+        
+        viewController.navigationItem.leftBarButtonItem = back;
+    }
     [super pushViewController:viewController animated:animated];
 }
 
 #pragma mark - 返回按钮的点击事件
 - (void)back
 {
-    if ([self.mainDelegate respondsToSelector:@selector(mainNavigationControllerShowTabBar:)] && !self.childViewControllers.count) {
+    [self popViewControllerAnimated:YES];
+    if ([self.mainDelegate respondsToSelector:@selector(mainNavigationControllerShowTabBar:)] && self.childViewControllers.count == 1) {
         [self.mainDelegate mainNavigationControllerShowTabBar:self];
     }
-    [self popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad

@@ -15,6 +15,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+//        CGFloat imageViewW = 48;
+//        CGFloat imageViewH = 48;
+//        CGFloat imageViewX = (self.height - imageViewW) * 0.5;
+//        CGFloat imageViewY = 0;
+//        [self.imageView setFrame:CGRectMake(imageViewX, imageViewY, imageViewW, imageViewH)];
     }
     return self;
 }
