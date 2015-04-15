@@ -59,6 +59,7 @@
 		3C49E7631ADB67C40008085F /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C49E75F1ADB67C40008085F /* MBProgressHUD+MJ.m */; };
 		3C49E7641ADB67C40008085F /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C49E7601ADB67C40008085F /* MBProgressHUD.bundle */; };
 		3C49E7651ADB67C40008085F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C49E7621ADB67C40008085F /* MBProgressHUD.m */; };
+		3C5698DE1ADE942500743E35 /* SNAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C5698DD1ADE942500743E35 /* SNAccountViewController.storyboard */; };
 		3C782A831ADD0D4900DD0FEC /* SNMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782A821ADD0D4900DD0FEC /* SNMainTableView.m */; };
 		3C782A8F1ADD113500DD0FEC /* SNSecondClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782A8B1ADD113500DD0FEC /* SNSecondClassViewController.m */; };
 		3C782A901ADD113500DD0FEC /* SNEntertainment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C782A8D1ADD113500DD0FEC /* SNEntertainment.plist */; };
@@ -205,6 +206,7 @@
 		3C49E7611ADB67C40008085F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		3C49E7621ADB67C40008085F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		3C49E7661ADB68030008085F /* Global.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.pch; sourceTree = "<group>"; };
+		3C5698DD1ADE942500743E35 /* SNAccountViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SNAccountViewController.storyboard; sourceTree = "<group>"; };
 		3C782A801ADD0BF100DD0FEC /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		3C782A811ADD0D4900DD0FEC /* SNMainTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainTableView.h; sourceTree = "<group>"; };
 		3C782A821ADD0D4900DD0FEC /* SNMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMainTableView.m; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 			children = (
 				3C49E74E1ADB62070008085F /* SNAccountViewController.h */,
 				3C49E74F1ADB62070008085F /* SNAccountViewController.m */,
+				3C5698DD1ADE942500743E35 /* SNAccountViewController.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C782A901ADD113500DD0FEC /* SNEntertainment.plist in Resources */,
+				3C5698DE1ADE942500743E35 /* SNAccountViewController.storyboard in Resources */,
 				3C49E7551ADB64C00008085F /* Images.xcassets in Resources */,
 				3C49E7641ADB67C40008085F /* MBProgressHUD.bundle in Resources */,
 				3C49E73A1ADB55B20008085F /* Info.plist in Resources */,

@@ -7,6 +7,8 @@
 //
 
 #import "SNMainNavigationController.h"
+#import "SNCommunicateMainViewController.h"
+#import "SNAccountViewController.h"
 
 @interface SNMainNavigationController ()<UINavigationControllerDelegate>
 
@@ -59,6 +61,16 @@
 -(UIViewController *)popViewControllerAnimated:(BOOL)animated
 {
     return [super popViewControllerAnimated:animated];
+}
+
+#pragma mark - 当完全显示的时候调用
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if ([viewController isKindOfClass:[SNCommunicateMainViewController class]] || [viewController isKindOfClass:[SNAccountViewController class]]) {
+        if ([self.mainDelegate respondsToSelector:@selector(mainNavigationControllerShowTabBar:)]) {
+            [self.mainDelegate mainNavigationControllerShowTabBar:self];
+        }
+    }
 }
 
 @end

@@ -49,7 +49,7 @@ const NSInteger ImageCount = 4;
     self.scrollView = scrollView;
     [self fillScrollView];
     
-    self.timer = [NSTimer timerWithTimeInterval:3
+    self.timer = [NSTimer timerWithTimeInterval:5
                                          target:self
                                        selector:@selector(nextImage)
                                        userInfo:nil

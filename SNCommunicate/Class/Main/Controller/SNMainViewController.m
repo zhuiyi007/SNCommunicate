@@ -36,7 +36,9 @@
     main.delegate = self;
     [self setupChildViewControll:main title:@"肃宁通" normalImage:[UIImage imageNamed:@"ktv"] selectImage:[UIImage imageNamed:@"ktv"]];
     
-    SNAccountViewController *account = [[SNAccountViewController alloc] init];
+    // 加载storyboard
+    UIStoryboard *accountStoryBoard = [UIStoryboard storyboardWithName:@"SNAccountViewController" bundle:nil];
+    SNAccountViewController *account = [accountStoryBoard instantiateInitialViewController];
     [self setupChildViewControll:account title:@"账户" normalImage:[UIImage imageNamed:@"jiudian"] selectImage:[UIImage imageNamed:@"jiudian"]];
 }
 
@@ -82,18 +84,6 @@
         self.customTabBar.hidden = YES;
     }];
 }
-
-//#pragma mark - 我的彩票界面隐藏tabbar的代理方法
-//- (void)mineViewControllerHiddenTabBar:(ZSMineViewController *)discoverViewController
-//{
-//    CGRect frame = self.customTabBar.frame;
-//    frame.origin.x = -320;
-//    [UIView animateWithDuration:0.25 animations:^{
-//        self.customTabBar.frame = frame;
-//    } completion:^(BOOL finished) {
-//        self.customTabBar.hidden = YES;
-//    }];
-//}
 
 #pragma mark - 返回按钮的代理方法实现
 - (void)mainNavigationControllerShowTabBar:(SNMainNavigationController *)mainNavigationController
