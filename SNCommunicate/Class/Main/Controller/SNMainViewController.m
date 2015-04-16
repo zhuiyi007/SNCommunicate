@@ -12,7 +12,7 @@
 #import "SNAccountViewController.h"
 #import "SNTabBar.h"
 
-@interface SNMainViewController ()<SNMainNavigationControllerDelegate, SNTabBar, SNCommunicateMainViewControllerDelegate>
+@interface SNMainViewController ()<SNMainNavigationControllerDelegate, SNTabBar, SNCommunicateMainViewControllerDelegate, SNAccountViewControllerDelegate>
 @property (nonatomic, weak) SNTabBar *customTabBar;
 
 @end
@@ -39,6 +39,7 @@
     // 加载storyboard
     UIStoryboard *accountStoryBoard = [UIStoryboard storyboardWithName:@"SNAccountViewController" bundle:nil];
     SNAccountViewController *account = [accountStoryBoard instantiateInitialViewController];
+    account.delegate = self;
     [self setupChildViewControll:account title:@"账户" normalImage:[UIImage imageNamed:@"jiudian"] selectImage:[UIImage imageNamed:@"jiudian"]];
 }
 
@@ -75,6 +76,17 @@
 
 #pragma mark - 隐藏tabbar的代理方法
 - (void)communicateMainViewControllerHiddenTabBar:(SNCommunicateMainViewController *)communicateMainViewController
+{
+    CGRect frame = self.customTabBar.frame;
+    frame.origin.x = -320;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.customTabBar.frame = frame;
+    } completion:^(BOOL finished) {
+        self.customTabBar.hidden = YES;
+    }];
+}
+
+- (void)accountViewControllerHiddenTabBar:(SNAccountViewController *)accountViewController
 {
     CGRect frame = self.customTabBar.frame;
     frame.origin.x = -320;

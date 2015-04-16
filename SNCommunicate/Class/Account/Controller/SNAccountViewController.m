@@ -7,8 +7,11 @@
 //
 
 #import "SNAccountViewController.h"
+#import "SNMainNavigationController.h"
 
 @interface SNAccountViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *accountLabel;
+@property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
 
 @end
 
@@ -17,11 +20,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(accountViewControllerHiddenTabBar:)]) {
+        [self.delegate accountViewControllerHiddenTabBar:self];
+    }
+}
+
+- (IBAction)loginButtonClick:(id)sender {
+}
+- (IBAction)forgotPassWordButtonClick:(id)sender {
 }
 
 /*

@@ -71,6 +71,33 @@ static SNHttpTool *sharedInstance = nil;
                                                     error:(void (^)(NSError *error))failure];
 }
 
+#warning ----接口不通----
++ (void)getSMSSendWithPhoneNumber:(NSString *)PhoneNumber
+                     andIPAddress:(NSString *)IPAddress
+                           finish:(void (^)(id responseObject))success
+                            error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<SMSSend xmlns=\"http://tempuri.org/\">"
+     "<TEL>%@</TEL>"
+     "<IP>%@</IP>"
+     "</SMSSend>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , PhoneNumber, IPAddress];
+    
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSSMSSend.asmx"
+                                            andSoapAction:@"SMSSend"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
 - (void)sendPOSTRequestWithSoapMessage:(NSString *)soapMessage
                                 andURL:(NSString *)urlSuffix
                          andSoapAction:(NSString *)action
