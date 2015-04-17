@@ -35,13 +35,9 @@
 
 - (void)createUI
 {
-    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    CGFloat height = [self countHeightWithTableView:tableView];
-    if (height < SNScreenBounds.height) {
-        height = SNScreenBounds.height;
-    }
+    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:SNTableViewFrame
+                                                                  style:UITableViewStylePlain];
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [tableView setFrame:CGRectMake(0, 0, SNScreenBounds.width, height)];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -96,21 +92,6 @@
     return 44;
 }
 
-#pragma mark - 动态计算tableView高度
-- (CGFloat)countHeightWithTableView:(UITableView *)tableView
-{
-    CGFloat tableViewHeight = 0.0;
-    for (NSInteger row = 0; row < [self tableView:tableView numberOfRowsInSection:0]; row ++) {
-        tableViewHeight += [self tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
-    }
-    return tableViewHeight;
-}
-
-- (void)dealloc
-{
-    SNLog(@"-------dealloc------");
-    SNLog(@"=======%s======", __func__);
-}
 
 /*
 #pragma mark - Navigation

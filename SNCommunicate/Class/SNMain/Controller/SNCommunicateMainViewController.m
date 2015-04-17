@@ -58,16 +58,16 @@ const NSInteger ImageCount = 4;
                               forMode:NSRunLoopCommonModes];
     
     // TableView
-    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:CGRectZero
-                                                          style:UITableViewStylePlain];
+    CGFloat tableViewY = CGRectGetMaxY(self.scrollView.frame);
+    SNMainTableView *tableView = [[SNMainTableView alloc]
+                                  initWithFrame:CGRectMake(0,
+                                                           tableViewY,
+                                                           SNScreenBounds.width,
+                                                           SNScreenBounds.height - tableViewY - 49)
+                                                                  style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
-    CGFloat height = [self countHeightWithTableView:tableView];
-    if (height < SNScreenBounds.height - CGRectGetMaxY(self.scrollView.frame)) {
-        height = SNScreenBounds.height - CGRectGetMaxY(self.scrollView.frame);
-    }
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [tableView setFrame:CGRectMake(0, CGRectGetMaxY(self.scrollView.frame), SNScreenBounds.width, height)];
     [self.view addSubview:tableView];
 }
 
@@ -216,16 +216,6 @@ const NSInteger ImageCount = 4;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 56;
-}
-
-#pragma mark - 动态计算tableView高度
-- (CGFloat)countHeightWithTableView:(UITableView *)tableView
-{
-    CGFloat tableViewHeight = 0.0;
-    for (NSInteger row = 0; row < [self tableView:tableView numberOfRowsInSection:0]; row ++) {
-        tableViewHeight += [self tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
-    }
-    return tableViewHeight;
 }
 
 

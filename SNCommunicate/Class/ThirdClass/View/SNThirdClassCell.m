@@ -75,7 +75,7 @@
 //    NSURL *url = [NSURL URLWithString:@"http://suningtong.vicp.cc:12312/img/wukong.png"];
     NSURL *url = [NSURL URLWithString:data.picURL];
     [self.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"dianwan"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        SNLog(@"123");
+//        SNLog(@"123");
     }];
     
     self.commendView.text = @"123";

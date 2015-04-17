@@ -18,6 +18,7 @@ static SNHttpTool *sharedInstance = nil;
 
 @property (nonatomic, strong) NSMutableArray *videoList;
 @property (nonatomic, strong) NSMutableString *nodeString;
+@property (nonatomic, strong) AFHTTPRequestOperation *operation;
 @property (nonatomic, strong) id result;
 
 @end
@@ -50,8 +51,10 @@ static SNHttpTool *sharedInstance = nil;
 }
 
 + (void)getBusinessWithType:(NSString *)type
-                        finish:(void (^)(id responseObject))success
-                         error:(void (^)(NSError *error))failure
+                        Big:(NSInteger)big
+                      Small:(NSInteger)small
+                     finish:(void (^)(id responseObject))success
+                      error:(void (^)(NSError *error))failure;
 {
     NSString *soapMessage =
     [NSString stringWithFormat:
@@ -60,10 +63,12 @@ static SNHttpTool *sharedInstance = nil;
      "<soap:Body>"
      "<getTypeOfBusiness xmlns=\"http://tempuri.org/\">"
      "<Type>%@</Type>"
+     "<big>%zd</big>"
+     "<small>%zd</small>"
      "</getTypeOfBusiness>"
      "</soap:Body>"
      "</soap:Envelope>"
-     , type];
+     , type, big, small];
     [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
                                                    andURL:@"WSTypeOfBusiness.asmx"
                                             andSoapAction:@"getTypeOfBusiness"
@@ -89,6 +94,7 @@ static SNHttpTool *sharedInstance = nil;
      "</soap:Body>"
      "</soap:Envelope>"
      , PhoneNumber, IPAddress];
+    
     
     
     [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
@@ -124,7 +130,9 @@ static SNHttpTool *sharedInstance = nil;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
+    [self.operation cancel];
     [operation start];
+    self.operation = operation;
 }
 
 - (NSMutableString *)nodeString {

@@ -15,6 +15,7 @@
     self = [super initWithFrame:frame style:style];
     if (self) {
         self.backgroundColor = SNMainBackgroundColor;
+        self.showsVerticalScrollIndicator = NO;
     }
     return self;
 }
@@ -35,6 +36,11 @@
         self.backgroundColor = SNMainBackgroundColor;
     }
     return self;
+}
+
+- (UIEdgeInsets)contentInset
+{
+    return UIEdgeInsetsMake(0, 0, -49, 0);
 }
 
 

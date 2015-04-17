@@ -82,6 +82,9 @@
 		3C782ACA1ADD380E00DD0FEC /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782ABF1ADD380E00DD0FEC /* NSObject+MJMember.m */; };
 		3C782ACD1ADD398900DD0FEC /* SNThirdCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782ACC1ADD398900DD0FEC /* SNThirdCellData.m */; };
 		3C80A4A61ADFE0E900E9AE0B /* SNRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A4A51ADFE0E900E9AE0B /* SNRegisterViewController.m */; };
+		3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */; };
+		3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */; };
+		3CC62CA61AE1084D004D7C8D /* SNMainTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */; };
 		3CE0C3DF1ADE586E00EF3358 /* SNEatAndBed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DC1ADE586E00EF3358 /* SNEatAndBed.plist */; };
 		3CE0C3E01ADE586E00EF3358 /* SNHealthAndBeauty.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DD1ADE586E00EF3358 /* SNHealthAndBeauty.plist */; };
 		3CE0C3E11ADE586E00EF3358 /* SNMarket.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DE1ADE586E00EF3358 /* SNMarket.plist */; };
@@ -253,6 +256,12 @@
 		3C782ACC1ADD398900DD0FEC /* SNThirdCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNThirdCellData.m; sourceTree = "<group>"; };
 		3C80A4A41ADFE0E900E9AE0B /* SNRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRegisterViewController.h; sourceTree = "<group>"; };
 		3C80A4A51ADFE0E900E9AE0B /* SNRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRegisterViewController.m; sourceTree = "<group>"; };
+		3CC62C9A1AE0ECC0004D7C8D /* UIViewController+SNCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNCommon.h"; sourceTree = "<group>"; };
+		3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNCommon.m"; sourceTree = "<group>"; };
+		3CC62CA11AE0EE22004D7C8D /* SNProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNProgressHUD.h; sourceTree = "<group>"; };
+		3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNProgressHUD.m; sourceTree = "<group>"; };
+		3CC62CA41AE1084D004D7C8D /* SNMainTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainTextField.h; sourceTree = "<group>"; };
+		3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMainTextField.m; sourceTree = "<group>"; };
 		3CE0C3DC1ADE586E00EF3358 /* SNEatAndBed.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNEatAndBed.plist; sourceTree = "<group>"; };
 		3CE0C3DD1ADE586E00EF3358 /* SNHealthAndBeauty.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNHealthAndBeauty.plist; sourceTree = "<group>"; };
 		3CE0C3DE1ADE586E00EF3358 /* SNMarket.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNMarket.plist; sourceTree = "<group>"; };
@@ -380,6 +389,8 @@
 				3C49E7451ADB598F0008085F /* SNTabBarButton.m */,
 				3C782A811ADD0D4900DD0FEC /* SNMainTableView.h */,
 				3C782A821ADD0D4900DD0FEC /* SNMainTableView.m */,
+				3CC62CA41AE1084D004D7C8D /* SNMainTextField.h */,
+				3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -401,6 +412,7 @@
 		3C49E6C01ADB55710008085F /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				3CC62CA01AE0EE22004D7C8D /* SNProgressHUD */,
 				3C782AA81ADD380E00DD0FEC /* MJExtension */,
 				3C49E75D1ADB67C40008085F /* MBProgressHUD */,
 				3C49E6C11ADB55710008085F /* AFNetworking */,
@@ -583,6 +595,8 @@
 		3C49E7561ADB67B40008085F /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				3CC62C9A1AE0ECC0004D7C8D /* UIViewController+SNCommon.h */,
+				3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */,
 				3CEFF79E1ADB728C0055F2DB /* UIView+Frame.h */,
 				3CEFF79F1ADB728C0055F2DB /* UIView+Frame.m */,
 				3C49E7571ADB67B40008085F /* UIImage+Tool.h */,
@@ -724,6 +738,15 @@
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
+		3CC62CA01AE0EE22004D7C8D /* SNProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				3CC62CA11AE0EE22004D7C8D /* SNProgressHUD.h */,
+				3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */,
+			);
+			path = SNProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -850,6 +873,7 @@
 				3C49E72C1ADB55710008085F /* SDWebImageCompat.m in Sources */,
 				3C782AC61ADD380E00DD0FEC /* MJType.m in Sources */,
 				3C49E72F1ADB55710008085F /* SDWebImageDownloaderOperation.m in Sources */,
+				3CC62CA61AE1084D004D7C8D /* SNMainTextField.m in Sources */,
 				3C782A8F1ADD113500DD0FEC /* SNSecondClassViewController.m in Sources */,
 				3C49E7151ADB55710008085F /* AFHTTPRequestOperationManager.m in Sources */,
 				3C49E7431ADB597E0008085F /* SNTabBar.m in Sources */,
@@ -882,6 +906,7 @@
 				3C49E7271ADB55710008085F /* UIScrollView+MJRefresh.m in Sources */,
 				3C49E7651ADB67C40008085F /* MBProgressHUD.m in Sources */,
 				3CE0C3E41ADE621700EF3358 /* SNThirdClassNullCell.m in Sources */,
+				3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */,
 				3C49E7211ADB55710008085F /* MJRefreshGifFooter.m in Sources */,
 				3C49E71F1ADB55710008085F /* MJRefreshConst.m in Sources */,
 				3C49E7231ADB55710008085F /* MJRefreshHeader.m in Sources */,
@@ -895,6 +920,7 @@
 				3C782AC81ADD380E00DD0FEC /* NSObject+MJCoding.m in Sources */,
 				3C49E72A1ADB55710008085F /* NSData+ImageContentType.m in Sources */,
 				3C49E7251ADB55710008085F /* MJRefreshLegendHeader.m in Sources */,
+				3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */,
 				3C49E7131ADB55710008085F /* main.m in Sources */,
 				3C49E72B1ADB55710008085F /* SDImageCache.m in Sources */,
 				3C80A4A61ADFE0E900E9AE0B /* SNRegisterViewController.m in Sources */,

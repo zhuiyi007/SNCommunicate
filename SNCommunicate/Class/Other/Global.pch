@@ -23,5 +23,6 @@
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
 #import "MBProgressHUD+MJ.h"
+#import "UIViewController+SNCommon.h"
 
 #endif

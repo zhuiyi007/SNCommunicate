@@ -7,12 +7,13 @@
 //
 
 #import "SNRegisterViewController.h"
+#import "SNMainTextField.h"
 
 @interface SNRegisterViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *phoneNumberLabel;
-@property (weak, nonatomic) IBOutlet UITextField *nameLabel;
-@property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
-@property (weak, nonatomic) IBOutlet UITextField *securityCodeLabel;
+@property (weak, nonatomic) IBOutlet SNMainTextField *phoneNumberLabel;
+@property (weak, nonatomic) IBOutlet SNMainTextField *nameLabel;
+@property (weak, nonatomic) IBOutlet SNMainTextField *passWordLabel;
+@property (weak, nonatomic) IBOutlet SNMainTextField *securityCodeLabel;
 
 @end
 
@@ -29,18 +30,17 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)getSecurityCodeButtonClick:(id)sender {
-    [SNHttpTool getSMSSendWithPhoneNumber:self.phoneNumberLabel.text andIPAddress:@"127.0.0.1" finish:^(id responseObject) {
-        SNLog(@"%@", responseObject);
-    } error:^(NSError *error) {
-        SNLog(@"%@", error);
-    }];
+    [SNHttpTool getSMSSendWithPhoneNumber:self.phoneNumberLabel.text
+                             andIPAddress:@"127.0.0.1"
+                                   finish:^(id responseObject) {
+                                       SNLog(@"%@", responseObject);
+                                   }
+                                    error:^(NSError *error) {
+                                        SNLog(@"%@", error);
+                                    }];
 }
 - (IBAction)registerButtonClick:(id)sender {
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.phoneNumberLabel resignFirstResponder];
+    
 }
 
 /*

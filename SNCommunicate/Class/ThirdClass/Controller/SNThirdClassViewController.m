@@ -42,9 +42,11 @@
 
 - (void)createUI
 {
-    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:CGRectZero
+                                                                  style:UITableViewStylePlain];
     
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    tableView.contentInset = UIEdgeInsetsZero;
     
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -54,30 +56,28 @@
 
 - (void)setData
 {
-    [SNHttpTool getBusinessWithType:self.type finish:^(NSDictionary *responseObject) {
+    [MBProgressHUD showMessage:@"正在加载"];
+    [SNHttpTool getBusinessWithType:self.type
+                                Big:0
+                              Small:0
+                             finish:^(NSDictionary *responseObject) {
+        [MBProgressHUD hideHUD];
         SNLog(@"%@",responseObject);
-        
+        [self.tableView setFrame:SNTableViewFrame];
         if (!responseObject[@"result"]) {
             self.ret_msg = responseObject[@"ret_msg"];
             [self.tableView reloadData];
-            CGFloat height = [self countHeightWithTableView:self.tableView];
-            if (height < SNScreenBounds.height) {
-                height = SNScreenBounds.height;
-            }
-            [self.tableView setFrame:CGRectMake(0, 0, SNScreenBounds.width, height)];
             return;
         }
         
         _dataArray = [SNThirdCellData dataWithDict:responseObject].result;
         
         [self.tableView reloadData];
-        CGFloat height = [self countHeightWithTableView:self.tableView];
-        if (height < SNScreenBounds.height - 49) {
-            height = SNScreenBounds.height - 49;
-        }
-        [self.tableView setFrame:CGRectMake(0, 0, SNScreenBounds.width, height)];
-        
     } error:^(NSError *error) {
+        [MBProgressHUD hideHUD];
+        [MBProgressHUD showError:@"加载失败"];
+        self.ret_msg = @"加载失败";
+        [self.tableView reloadData];
         SNLog(@"SNThirdClassViewController---%@",error);
     }];
 }
@@ -120,22 +120,6 @@
         return 44;
     }
     return 130;
-}
-
-#pragma mark - 动态计算tableView高度
-- (CGFloat)countHeightWithTableView:(UITableView *)tableView
-{
-    CGFloat tableViewHeight = 0.0;
-    for (NSInteger row = 0; row < [self tableView:tableView numberOfRowsInSection:0]; row ++) {
-        tableViewHeight += [self tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
-    }
-    return tableViewHeight;
-}
-
-- (void)dealloc
-{
-    SNLog(@"-------dealloc------");
-    SNLog(@"=======%s======", __func__);
 }
 
 /*

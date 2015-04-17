@@ -8,10 +8,11 @@
 
 #import "SNAccountViewController.h"
 #import "SNMainNavigationController.h"
+#import "SNMainTextField.h"
 
 @interface SNAccountViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *accountLabel;
-@property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
+@property (weak, nonatomic) IBOutlet SNMainTextField *accountLabel;
+@property (weak, nonatomic) IBOutlet SNMainTextField *passWordLabel;
 
 @end
 

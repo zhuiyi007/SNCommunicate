@@ -11,6 +11,8 @@
 @interface SNThirdClassViewController : UIViewController
 
 @property (nonatomic, strong) NSString *type;
+@property (nonatomic, assign) NSInteger *big;
+@property (nonatomic, assign) NSInteger *small;
 
 @end
 

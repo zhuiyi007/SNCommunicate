@@ -21,6 +21,8 @@
 #define SNLog(...)
 #endif
 
+#define SNTableViewFrame CGRectMake(0, 0, SNScreenBounds.width, SNScreenBounds.height)
+
 // PList文件名
 
 

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *Introduction;
 @property (nonatomic, strong) NSString *Level;
 @property (nonatomic, strong) NSString *Name;
+@property (nonatomic, strong) NSString *Point;
 @property (nonatomic, strong) NSString *TEL;
 @property (nonatomic, strong) NSString *Type;
 @property (nonatomic, strong) NSString *picURL;
