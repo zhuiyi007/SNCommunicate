@@ -22,6 +22,6 @@
 @property (nonatomic, strong) NSString *registerDate;
 @property (nonatomic, strong) NSString *state;
 
-+ (instancetype)dataWithDict:(NSDictionary *)dict;
+//+ (instancetype)dataWithDict:(NSDictionary *)dict;
 
 @end

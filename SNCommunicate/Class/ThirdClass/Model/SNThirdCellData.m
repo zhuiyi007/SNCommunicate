@@ -11,18 +11,11 @@
 
 @implementation SNThirdCellData
 
-+ (SNThirdCellData *)dataWithDict:(NSDictionary *)dict
+- (NSDictionary *)objectClassInArray
 {
-    SNThirdCellData *data = [[SNThirdCellData alloc] init];
-    data.status = dict[@"status"];
-    data.result = dict[@"result"];
-    NSMutableArray *tempArray = [NSMutableArray array];
-    for (NSDictionary *tempdict in data.result) {
-        SNShopData *temp = [SNShopData dataWithDict:tempdict];
-        [tempArray addObject:temp];
-    }
-    data.result = tempArray;
-    return data;
+    return @{
+             @"result" : [SNShopData class]
+             };
 }
 
 @end

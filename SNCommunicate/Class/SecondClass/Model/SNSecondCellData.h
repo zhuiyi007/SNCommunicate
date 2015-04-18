@@ -13,6 +13,4 @@
 @property (nonatomic, strong) NSString *icon;
 @property (nonatomic, strong) NSString *title;
 
-+ (SNSecondCellData *)dataWithDict:(NSDictionary *)dict;
-
 @end

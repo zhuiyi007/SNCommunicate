@@ -72,13 +72,12 @@
 - (void)setData:(SNShopData *)data
 {
     _data = data;
-//    NSURL *url = [NSURL URLWithString:@"http://suningtong.vicp.cc:12312/img/wukong.png"];
     NSURL *url = [NSURL URLWithString:data.picURL];
     [self.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"dianwan"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        SNLog(@"123");
+        SNLog(@"三级页面图片加载完毕");
     }];
     
-    self.commendView.text = @"123";
+    self.commendView.text = data.Point;
     [self.commendImage setImage:[UIImage imageNamed:@"dianwan"]];
     
     self.name.text = data.Name;

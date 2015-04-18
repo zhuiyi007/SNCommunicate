@@ -10,12 +10,4 @@
 
 @implementation SNSecondCellData
 
-+ (SNSecondCellData *)dataWithDict:(NSDictionary *)dict
-{
-    SNSecondCellData *data = [[SNSecondCellData alloc] init];
-    data.icon = dict[@"icon"];
-    data.title = dict[@"title"];
-    return data;
-}
-
 @end

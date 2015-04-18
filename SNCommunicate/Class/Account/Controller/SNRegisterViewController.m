@@ -31,9 +31,10 @@
 }
 - (IBAction)getSecurityCodeButtonClick:(id)sender {
     [SNHttpTool getSMSSendWithPhoneNumber:self.phoneNumberLabel.text
-                             andIPAddress:@"127.0.0.1"
+                             andIPAddress:@"127.0.0.2"
                                    finish:^(id responseObject) {
                                        SNLog(@"%@", responseObject);
+                                       SNLog(@"%@", responseObject[@"ret_msg"]);
                                    }
                                     error:^(NSError *error) {
                                         SNLog(@"%@", error);

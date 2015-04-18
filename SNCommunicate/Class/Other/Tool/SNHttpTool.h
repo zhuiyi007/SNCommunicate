@@ -38,4 +38,21 @@
                            finish:(void (^)(id responseObject))success
                             error:(void (^)(NSError *error))failure;
 
+/**
+ *  未登录状态下获得商家的详细信息
+ *
+ *  @param shangID 商家ID
+ *  @param Type    商家类型
+ *  @param big     最大值,下拉加载
+ *  @param small   最小值,上啦刷新
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
++ (void)getShangInfoNoIdentityWithShangID:(NSString *)shangID
+                                  andType:(NSString *)Type
+                                      Big:(NSInteger)big
+                                    Small:(NSInteger)small
+                                   finish:(void (^)(id responseObject))success
+                                    error:(void (^)(NSError *error))failure;
+
 @end

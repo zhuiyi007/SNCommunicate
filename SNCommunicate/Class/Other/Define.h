@@ -14,6 +14,9 @@
 #define SNKeyWindow    [UIApplication sharedApplication].keyWindow
 #define SNColor(r, g, b) [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:1.0]
 #define SNMainBackgroundColor SNColor(254, 242, 229)
+#define SNPriceColor          SNColor(255, 101, 80)
+
+
 // NSLog
 #ifdef DEBUG
 #define SNLog(...) NSLog(__VA_ARGS__)

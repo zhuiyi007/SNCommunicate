@@ -1,14 +1,14 @@
 //
-//  SNThirdCellData.h
+//  SNDetailsModel.h
 //  SNCommunicate
 //
-//  Created by ZhuiYi on 15/4/14.
+//  Created by ZhuiYi on 15/4/18.
 //  Copyright (c) 2015年 ZhuiYi. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface SNThirdCellData : NSObject
+@interface SNDetailsModel : NSObject
 
 @property (nonatomic, strong) NSArray *result;
 @property (nonatomic, strong) NSString *status;

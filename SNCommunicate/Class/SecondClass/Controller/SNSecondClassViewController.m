@@ -50,13 +50,7 @@
         if (self.plist) {
             NSBundle *bundle = [NSBundle mainBundle];
             NSString *path = [bundle pathForResource:self.plist ofType:@"plist"];
-            NSArray *arrayDict = [NSArray arrayWithContentsOfFile:path];
-            NSMutableArray *tempArray = [NSMutableArray array];
-            for (NSDictionary *dict in arrayDict) {
-                SNSecondCellData *data = [SNSecondCellData dataWithDict:dict];
-                [tempArray addObject:data];
-            }
-            _dataArray = tempArray;
+            _dataArray = [SNSecondCellData objectArrayWithFile:path];
         }
     }
     return _dataArray;

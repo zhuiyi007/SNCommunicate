@@ -11,6 +11,7 @@
 #import "SNThirdCellData.h"
 #import "SNThirdClassCell.h"
 #import "SNThirdClassNullCell.h"
+#import "SNDetailsViewController.h"
 
 @interface SNThirdClassViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -63,15 +64,14 @@
                              finish:^(NSDictionary *responseObject) {
         [MBProgressHUD hideHUD];
         SNLog(@"%@",responseObject);
+        self.data = [SNThirdCellData objectWithKeyValues:responseObject];
+        self.dataArray = self.data.result;
         [self.tableView setFrame:SNTableViewFrame];
         if (!responseObject[@"result"]) {
             self.ret_msg = responseObject[@"ret_msg"];
             [self.tableView reloadData];
             return;
         }
-        
-        _dataArray = [SNThirdCellData dataWithDict:responseObject].result;
-        
         [self.tableView reloadData];
     } error:^(NSError *error) {
         [MBProgressHUD hideHUD];
@@ -108,10 +108,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    SNThirdClassViewController *vc = [[SNThirdClassViewController alloc] init];
-//    vc.title = [self.dataArray[indexPath.row] title];
-//    vc.type = vc.title;
-//    [self.navigationController pushViewController:vc animated:YES];
+    SNDetailsViewController *vc = [[SNDetailsViewController alloc] init];
+    vc.title = [_dataArray[indexPath.row] Name];
+    vc.shopData = _dataArray[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

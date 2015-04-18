@@ -76,7 +76,7 @@ static SNHttpTool *sharedInstance = nil;
                                                     error:(void (^)(NSError *error))failure];
 }
 
-#warning ----接口不通----
+
 + (void)getSMSSendWithPhoneNumber:(NSString *)PhoneNumber
                      andIPAddress:(NSString *)IPAddress
                            finish:(void (^)(id responseObject))success
@@ -100,6 +100,35 @@ static SNHttpTool *sharedInstance = nil;
     [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
                                                    andURL:@"WSSMSSend.asmx"
                                             andSoapAction:@"SMSSend"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
++ (void)getShangInfoNoIdentityWithShangID:(NSString *)shangID
+                                  andType:(NSString *)Type
+                                      Big:(NSInteger)big
+                                    Small:(NSInteger)small
+                                   finish:(void (^)(id responseObject))success
+                                    error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<getShangInfoNoIdentity xmlns=\"http://tempuri.org/\">"
+     "<shangID>%@</shangID>"
+     "<Type>%@</Type>"
+     "<big>%zd</big>"
+     "<small>%zd</small>"
+     "</getShangInfoNoIdentity>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , shangID, Type, big, small];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSGetShangInfo.asmx"
+                                            andSoapAction:@"getShangInfoNoIdentity"
                                                    finish:(void (^)(id responseObject))success
                                                     error:(void (^)(NSError *error))failure];
 }
