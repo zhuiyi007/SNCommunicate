@@ -38,7 +38,7 @@
 {
     _data = data;
     self.name.text = data.Name;
-    self.price.text = data.unitPrice;
+    self.price.text = data.UnitPrice;
     [self setNeedsLayout];
 }
 

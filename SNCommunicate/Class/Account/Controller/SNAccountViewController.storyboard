@@ -39,13 +39,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入注册手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MOY-Co-Do1" userLabel="账号" customClass="SNMainTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入注册手机号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MOY-Co-Do1" userLabel="账号" customClass="SNMainTextField">
                                         <rect key="frame" x="62" y="5" width="490" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="MOY-Co-Do1" secondAttribute="trailing" constant="8" id="4po-Ok-UTI"/>
                                     <constraint firstAttribute="height" constant="39" id="Wtj-cM-cnG"/>
@@ -68,13 +68,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M4k-BY-aBv" userLabel="密码" customClass="SNMainTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入密码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="M4k-BY-aBv" userLabel="密码" customClass="SNMainTextField">
                                         <rect key="frame" x="62" y="4" width="490" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="LA0-Ej-SRh" firstAttribute="leading" secondItem="aXM-Lh-J3C" secondAttribute="leading" constant="8" id="6iv-5O-eix"/>
                                     <constraint firstAttribute="centerY" secondItem="M4k-BY-aBv" secondAttribute="centerY" id="Evn-wr-IoW"/>
@@ -90,6 +90,7 @@
                                     <constraint firstAttribute="width" constant="69" id="cOL-xT-PeR"/>
                                 </constraints>
                                 <state key="normal" title="忘记密码?">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -100,12 +101,14 @@
                                 <rect key="frame" x="20" y="459" width="560" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbK-1v-VhS">
-                                        <rect key="frame" x="345" y="5" width="30" height="30"/>
+                                        <rect key="frame" x="320" y="5" width="80" height="30"/>
+                                        <color key="backgroundColor" red="0.12156862745098039" green="0.19215686274509805" blue="0.22352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="A3S-PG-qu8"/>
+                                            <constraint firstAttribute="width" constant="80" id="A3S-PG-qu8"/>
                                             <constraint firstAttribute="height" constant="30" id="Wxc-9H-ei0"/>
                                         </constraints>
                                         <state key="normal" title="登录">
+                                            <color key="titleColor" red="0.99607843137254903" green="0.94901960784313721" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -113,12 +116,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzM-Js-gGV">
-                                        <rect key="frame" x="185" y="5" width="30" height="30"/>
+                                        <rect key="frame" x="160" y="5" width="80" height="30"/>
+                                        <color key="backgroundColor" red="0.12156862745098039" green="0.19215686274509802" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="p7X-mP-SEH"/>
+                                            <constraint firstAttribute="width" constant="80" id="p7X-mP-SEH"/>
                                             <constraint firstAttribute="height" constant="30" id="t0q-sd-ViR"/>
                                         </constraints>
                                         <state key="normal" title="注册">
+                                            <color key="titleColor" red="0.99607843137254903" green="0.94901960784313721" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -126,7 +131,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="QbK-1v-VhS" secondAttribute="centerY" id="3eW-XY-Le1"/>
                                     <constraint firstAttribute="centerX" secondItem="qzM-Js-gGV" secondAttribute="centerX" constant="80" id="PN4-F3-tSk"/>
@@ -202,13 +207,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iue-kh-gfg" userLabel="手机号" customClass="SNMainTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Iue-kh-gfg" userLabel="手机号" customClass="SNMainTextField">
                                         <rect key="frame" x="79" y="5" width="473" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Iue-kh-gfg" firstAttribute="leading" secondItem="Evf-Ke-BcX" secondAttribute="trailing" constant="20" id="6mn-c2-yIU"/>
                                     <constraint firstAttribute="centerY" secondItem="Iue-kh-gfg" secondAttribute="centerY" id="NMV-7Z-EFx"/>
@@ -231,13 +236,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入真实姓名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Vz-bi-rBN" userLabel="姓名" customClass="SNMainTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入真实姓名" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2Vz-bi-rBN" userLabel="姓名" customClass="SNMainTextField">
                                         <rect key="frame" x="79" y="4" width="473" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="2Vz-bi-rBN" secondAttribute="trailing" constant="8" id="05g-T2-k7U"/>
                                     <constraint firstItem="2Vz-bi-rBN" firstAttribute="leading" secondItem="fHa-wU-CIg" secondAttribute="trailing" constant="20" id="0mZ-dU-BJo"/>
@@ -260,13 +265,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CEa-Ll-ycY" userLabel="密码" customClass="SNMainTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入密码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CEa-Ll-ycY" userLabel="密码" customClass="SNMainTextField">
                                         <rect key="frame" x="79" y="4" width="473" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="CEa-Ll-ycY" secondAttribute="trailing" constant="8" id="5ji-mZ-PLQ"/>
                                     <constraint firstAttribute="centerY" secondItem="CEa-Ll-ycY" secondAttribute="centerY" id="6jM-BG-r1j"/>
@@ -290,12 +295,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GO6-UT-3T8">
-                                        <rect key="frame" x="477" y="4" width="75" height="30"/>
+                                        <rect key="frame" x="467" y="4" width="85" height="30"/>
+                                        <color key="backgroundColor" red="0.1215686275" green="0.19215686269999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="Ai2-XL-owi"/>
+                                            <constraint firstAttribute="width" constant="85" id="Ai2-XL-owi"/>
                                             <constraint firstAttribute="height" constant="30" id="bRq-dc-Ris"/>
                                         </constraints>
                                         <state key="normal" title="获取验证码">
+                                            <color key="titleColor" red="0.99607843139999996" green="0.94901960780000005" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -303,13 +310,13 @@
                                             <action selector="getSecurityCodeButtonClick:" destination="D81-T4-6XS" eventType="touchUpInside" id="NLM-31-TjG"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="短信验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pOq-yO-jpv" userLabel="短信验证码" customClass="SNMainTextField">
-                                        <rect key="frame" x="101" y="4" width="368" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="短信验证码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pOq-yO-jpv" userLabel="短信验证码" customClass="SNMainTextField">
+                                        <rect key="frame" x="101" y="4" width="358" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="pOq-yO-jpv" secondAttribute="centerY" id="6ti-lI-Hux"/>
                                     <constraint firstItem="GO6-UT-3T8" firstAttribute="leading" secondItem="pOq-yO-jpv" secondAttribute="trailing" constant="8" id="8qB-mu-wRE"/>
@@ -322,12 +329,14 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5I-DB-99S">
-                                <rect key="frame" x="285" y="484" width="30" height="30"/>
+                                <rect key="frame" x="260" y="484" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.19215686269999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="sug-ag-RT3"/>
+                                    <constraint firstAttribute="width" constant="80" id="sug-ag-RT3"/>
                                     <constraint firstAttribute="height" constant="30" id="vhg-ID-4M5"/>
                                 </constraints>
                                 <state key="normal" title="注册">
+                                    <color key="titleColor" red="0.99607843137254903" green="0.94901960784313721" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -362,6 +371,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9TO-hO-65H"/>
                     <connections>
+                        <outlet property="getSecurityButton" destination="GO6-UT-3T8" id="KkI-qj-4Lh"/>
                         <outlet property="nameLabel" destination="2Vz-bi-rBN" id="E0Z-I0-B0E"/>
                         <outlet property="passWordLabel" destination="CEa-Ll-ycY" id="vcu-h1-D3f"/>
                         <outlet property="phoneNumberLabel" destination="Iue-kh-gfg" id="S2g-u2-Bgc"/>

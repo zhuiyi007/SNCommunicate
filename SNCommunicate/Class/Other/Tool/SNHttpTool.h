@@ -26,19 +26,6 @@
                       error:(void (^)(NSError *error))failure;
 
 /**
- *  获取注册手机验证码
- *
- *  @param PhoneNumber 手机号
- *  @param IPAddress   IP地址
- *  @param success     成功回掉
- *  @param failure     失败回掉
- */
-+ (void)getSMSSendWithPhoneNumber:(NSString *)PhoneNumber
-                     andIPAddress:(NSString *)IPAddress
-                           finish:(void (^)(id responseObject))success
-                            error:(void (^)(NSError *error))failure;
-
-/**
  *  未登录状态下获得商家的详细信息
  *
  *  @param shangID 商家ID
@@ -54,5 +41,48 @@
                                     Small:(NSInteger)small
                                    finish:(void (^)(id responseObject))success
                                     error:(void (^)(NSError *error))failure;
+
+/**
+ *  获取注册手机验证码
+ *
+ *  @param PhoneNumber 手机号
+ *  @param success     成功回掉
+ *  @param failure     失败回掉
+ */
++ (void)getSMSSendWithPhoneNumber:(NSString *)PhoneNumber
+                           finish:(void (^)(id responseObject))success
+                            error:(void (^)(NSError *error))failure;
+
+/**
+ *  顾客注册
+ *
+ *  @param PhoneNumber  手机号码
+ *  @param passWord     密码
+ *  @param name         姓名
+ *  @param securityCode 验证码
+ *  @param success      成功回掉
+ *  @param failure      失败回调
+ */
++ (void)customerRegisterWithPhoneNumber:(NSString *)PhoneNumber
+                               passWord:(NSString *)passWord
+                                   name:(NSString *)name
+                           securityCode:(NSString *)securityCode
+                                 finish:(void (^)(id responseObject))success
+                                  error:(void (^)(NSError *error))failure;
+
+/**
+ *  顾客登录
+ *
+ *  @param PhoneNumber 电话号码
+ *  @param passWord    密码
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)customerLoginWithPhoneNumber:(NSString *)PhoneNumber
+                            passWord:(NSString *)passWord
+                              finish:(void (^)(id responseObject))success
+                               error:(void (^)(NSError *error))failure;
+
+
 
 @end

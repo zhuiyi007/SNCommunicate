@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet SNMainTextField *accountLabel;
 @property (weak, nonatomic) IBOutlet SNMainTextField *passWordLabel;
 
+@property (nonatomic, strong) SNUserModel *userModel;
+
 @end
 
 @implementation SNAccountViewController
@@ -37,8 +39,60 @@
 }
 
 - (IBAction)loginButtonClick:(id)sender {
+    if (![self isDataLegal]) {
+        return;
+    }
+    [MBProgressHUD showMessage:@"登录中"];
+    [SNHttpTool customerLoginWithPhoneNumber:self.accountLabel.text
+                                    passWord:self.passWordLabel.text
+                                      finish:^(id responseObject) {
+        [MBProgressHUD hideHUD];
+        SNLog(@"%@", responseObject);
+        if ([responseObject[@"status"] integerValue] == 0) {
+            [MBProgressHUD showError:responseObject[@"ret_msg"]];
+            return;
+        }
+        [MBProgressHUD showSuccess:@"登录成功"];
+        self.userModel = [SNUserModel sharedInstance];
+        self.userModel.phoneNumber = self.accountLabel.text;
+        self.userModel.passWord = self.passWordLabel.text;
+        self.userModel.name = responseObject[@"ret_msg"];
+        [SNArchiverManger archiveWithUserModel:[SNUserModel sharedInstance]];
+    }
+                                       error:^(NSError *error) {
+        [MBProgressHUD hideHUD];
+        [MBProgressHUD showError:@"登录超时"];
+        SNLog(@"%@", error);
+    }];
+    
 }
-- (IBAction)forgotPassWordButtonClick:(id)sender {
+- (IBAction)forgotPassWordButtonClick:(id)sender {   
+}
+
+- (BOOL)isDataLegal
+{
+    if ([self.accountLabel.text isEqualToString:@""]) {
+        [MBProgressHUD showError:@"请输入手机号"];
+        [self.accountLabel becomeFirstResponder];
+        return NO;
+    }
+    if ([self.accountLabel.text length] != 11 && [self.accountLabel.text length] != 8) {
+        [MBProgressHUD showError:@"请输入正确登录名"];
+        [self.accountLabel becomeFirstResponder];
+        return NO;
+    }
+    if ([self.passWordLabel.text isEqualToString:@""]) {
+        [MBProgressHUD showError:@"请输入密码"];
+        [self.passWordLabel becomeFirstResponder];
+        return NO;
+    }
+    if ([self.passWordLabel.text length] <= 4) {
+        [MBProgressHUD showError:@"密码必须大于4位"];
+        [self.passWordLabel becomeFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 /*

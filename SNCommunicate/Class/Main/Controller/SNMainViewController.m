@@ -9,10 +9,10 @@
 #import "SNMainViewController.h"
 #import "SNMainNavigationController.h"
 #import "SNCommunicateMainViewController.h"
-#import "SNAccountViewController.h"
+#import "SNMYViewController.h"
 #import "SNTabBar.h"
 
-@interface SNMainViewController ()<SNMainNavigationControllerDelegate, SNTabBar, SNCommunicateMainViewControllerDelegate, SNAccountViewControllerDelegate>
+@interface SNMainViewController ()<SNMainNavigationControllerDelegate, SNTabBar, SNCommunicateMainViewControllerDelegate, SNMYViewControllerDelegate>
 @property (nonatomic, weak) SNTabBar *customTabBar;
 
 @end
@@ -35,12 +35,16 @@
     SNCommunicateMainViewController *main = [[SNCommunicateMainViewController alloc] init];
     main.delegate = self;
     [self setupChildViewControll:main title:@"肃宁通" normalImage:[UIImage imageNamed:@"ktv"] selectImage:[UIImage imageNamed:@"ktv"]];
+
+    SNMYViewController *my = [[SNMYViewController alloc] init];
+    my.delegate = self;
+    [self setupChildViewControll:my title:@"中心" normalImage:[UIImage imageNamed:@"jiudian"] selectImage:[UIImage imageNamed:@"jiudian"]];
     
     // 加载storyboard
-    UIStoryboard *accountStoryBoard = [UIStoryboard storyboardWithName:@"SNAccountViewController" bundle:nil];
-    SNAccountViewController *account = [accountStoryBoard instantiateInitialViewController];
-    account.delegate = self;
-    [self setupChildViewControll:account title:@"账户" normalImage:[UIImage imageNamed:@"jiudian"] selectImage:[UIImage imageNamed:@"jiudian"]];
+//    UIStoryboard *accountStoryBoard = [UIStoryboard storyboardWithName:@"SNAccountViewController" bundle:nil];
+//    SNAccountViewController *account = [accountStoryBoard instantiateInitialViewController];
+//    account.delegate = self;
+//    [self setupChildViewControll:account title:@"账户" normalImage:[UIImage imageNamed:@"jiudian"] selectImage:[UIImage imageNamed:@"jiudian"]];
 }
 
 #pragma mark - 添加子控制器
@@ -63,7 +67,7 @@
     customTabBar.backgroundColor=[UIColor greenColor];
     customTabBar.frame = self.tabBar.frame;
     self.customTabBar = customTabBar;
-    customTabBar.delegate = self;
+    customTabBar.myDelegate = self;
     [self.view addSubview:customTabBar];
     [self.tabBar removeFromSuperview];
 }
@@ -86,7 +90,7 @@
     }];
 }
 
-- (void)accountViewControllerHiddenTabBar:(SNAccountViewController *)accountViewController
+- (void)myViewControllerHiddenTabBar:(SNMYViewController *)myViewController;
 {
     CGRect frame = self.customTabBar.frame;
     frame.origin.x = -320;

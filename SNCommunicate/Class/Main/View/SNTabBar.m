@@ -37,8 +37,8 @@
     self.btn.selected = NO;
     btn.selected = YES;
     self.btn = btn;
-    if ([self.delegate respondsToSelector:@selector(tabBar:didselectedIndex:)]) {
-        [self.delegate tabBar:self didselectedIndex:btn.tag];
+    if ([self.myDelegate respondsToSelector:@selector(tabBar:didselectedIndex:)]) {
+        [self.myDelegate tabBar:self didselectedIndex:btn.tag];
     }
 }
 

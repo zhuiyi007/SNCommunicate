@@ -41,9 +41,7 @@
     [self.view addSubview:scrollView];
     
     // 预定收藏
-    UIView *reserveView = [[UIView alloc] initWithFrame:CGRectMake(0, SNScreenBounds.height - 49, SNScreenBounds.width, 49)];
-    [reserveView setBackgroundColor:[UIColor greenColor]];
-    [self.view addSubview:reserveView];
+    [self reserveView];
 }
 
 - (void)createNilUI
@@ -57,6 +55,34 @@
     [lineView setBackgroundColor:[UIColor blackColor]];
     [nilLabel addSubview:lineView];
     
+}
+
+- (void)reserveView
+{
+    CGFloat height = 49;
+    UIView *reserveView = [[UIView alloc] initWithFrame:CGRectMake(0, SNScreenBounds.height - 49, SNScreenBounds.width, height)];
+    [reserveView setBackgroundColor:[UIColor greenColor]];
+    [self.view addSubview:reserveView];
+    
+    UIButton *reserveButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [reserveButton setFrame:CGRectMake(0, 0, reserveView.width * 0.5, height)];
+    [reserveButton setBackgroundColor:SNColor(30, 47, 55)];
+    [reserveButton setTitle:@"预定" forState:UIControlStateNormal];
+    [reserveButton setTitleColor:SNMainBackgroundColor forState:UIControlStateNormal];
+    [reserveButton.layer setMasksToBounds:YES];
+    [reserveButton.layer setBorderWidth:2.0]; //边框宽度
+    [reserveButton.layer setBorderColor:SNCGColor(119, 119, 119)]; //边框颜色
+    [reserveView addSubview:reserveButton];
+    
+    UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [collectionButton setFrame:CGRectMake(reserveView.width * 0.5, 0, reserveView.width * 0.5, height)];
+    [collectionButton setBackgroundColor:SNColor(30, 47, 55)];
+    [collectionButton setTitle:@"收藏" forState:UIControlStateNormal];
+    [collectionButton setTitleColor:SNMainBackgroundColor forState:UIControlStateNormal];
+    [collectionButton.layer setMasksToBounds:YES];
+    [collectionButton.layer setBorderWidth:2.0]; //边框宽度
+    [collectionButton.layer setBorderColor:SNCGColor(119, 119, 119)];//边框颜色
+    [reserveView addSubview:collectionButton];
 }
 
 - (void)setData

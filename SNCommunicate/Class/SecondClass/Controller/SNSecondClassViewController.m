@@ -47,7 +47,7 @@
 {
     if(!_dataArray)
     {
-        if (self.plist) {
+        if (![self.plist isEqualToString:@""]) {
             NSBundle *bundle = [NSBundle mainBundle];
             NSString *path = [bundle pathForResource:self.plist ofType:@"plist"];
             _dataArray = [SNSecondCellData objectArrayWithFile:path];

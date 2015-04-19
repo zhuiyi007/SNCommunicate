@@ -34,14 +34,24 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(margin + 1, margin, SNScreenBounds.width - 2 * margin, 20)];
     label.text = @"这个商家的其他商品";
     [self addSubview:label];
+    if (![otherGoodsArray count]) {
+        label.text = @"此商家暂无其他商品";
+        label.textAlignment = NSTextAlignmentCenter;
+        return;
+    }
         
     for (NSInteger index = 0; index < [otherGoodsArray count]; index ++) {
-        CGFloat y = CGRectGetMaxY(label.frame) + (index + 1) * lineMargin;
+        CGFloat y = (CGRectGetMaxY(label.frame) + lineMargin) * (index + 1);
         SNOtherGoodsLabelView *view = [[SNOtherGoodsLabelView alloc] init];
         [view setFrame:CGRectMake(margin, y, SNScreenBounds.width - 2 * margin, 20)];
         view.data = otherGoodsArray[index];
         [self addSubview:view];
     }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    SNLog(@"123");
 }
 
 - (void)layoutSubviews

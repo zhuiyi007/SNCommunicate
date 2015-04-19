@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString *Store;
 @property (nonatomic, strong) NSString *disCount;
 @property (nonatomic, strong) NSString *shangID;
-@property (nonatomic, strong) NSString *unitPrice;
+@property (nonatomic, strong) NSString *UnitPrice;
 @property (nonatomic, strong) NSString *yuDing;
 
 @end

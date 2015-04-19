@@ -15,6 +15,9 @@
 		3C214C051AE2A1850064644A /* SNDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C214C041AE2A1850064644A /* SNDetailsModel.m */; };
 		3C214C081AE2A4E40064644A /* SNOtherGoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C214C071AE2A4E40064644A /* SNOtherGoodsView.m */; };
 		3C214C0B1AE2A8070064644A /* SNOtherGoodsLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C214C0A1AE2A8070064644A /* SNOtherGoodsLabelView.m */; };
+		3C34749E1AE3922D009FBB68 /* SNUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C34749D1AE3922D009FBB68 /* SNUserModel.m */; };
+		3C3474A11AE39835009FBB68 /* SNArchiverManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3474A01AE39835009FBB68 /* SNArchiverManger.m */; };
+		3C3474A81AE3ADF4009FBB68 /* SNMYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3474A71AE3ADF4009FBB68 /* SNMYViewController.m */; };
 		3C49E6AA1ADB51490008085F /* SNCommunicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C49E6A91ADB51490008085F /* SNCommunicateTests.m */; };
 		3C49E7101ADB55710008085F /* SNMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C49E6B81ADB55710008085F /* SNMainViewController.m */; };
 		3C49E7111ADB55710008085F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C49E6BD1ADB55710008085F /* AppDelegate.m */; };
@@ -68,6 +71,10 @@
 		3C49E7641ADB67C40008085F /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C49E7601ADB67C40008085F /* MBProgressHUD.bundle */; };
 		3C49E7651ADB67C40008085F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C49E7621ADB67C40008085F /* MBProgressHUD.m */; };
 		3C5698DE1ADE942500743E35 /* SNAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C5698DD1ADE942500743E35 /* SNAccountViewController.storyboard */; };
+		3C71E88D1AE3723300056A7C /* SNNetManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C71E88C1AE3723300056A7C /* SNNetManger.m */; };
+		3C71E8931AE3785900056A7C /* LICENCE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C71E88F1AE3785900056A7C /* LICENCE.txt */; };
+		3C71E8941AE3785900056A7C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C71E8911AE3785900056A7C /* Reachability.m */; };
+		3C71E8951AE3785900056A7C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3C71E8921AE3785900056A7C /* README.md */; };
 		3C782A831ADD0D4900DD0FEC /* SNMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782A821ADD0D4900DD0FEC /* SNMainTableView.m */; };
 		3C782A8F1ADD113500DD0FEC /* SNSecondClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782A8B1ADD113500DD0FEC /* SNSecondClassViewController.m */; };
 		3C782A901ADD113500DD0FEC /* SNEntertainment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C782A8D1ADD113500DD0FEC /* SNEntertainment.plist */; };
@@ -129,6 +136,12 @@
 		3C214C071AE2A4E40064644A /* SNOtherGoodsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNOtherGoodsView.m; sourceTree = "<group>"; };
 		3C214C091AE2A8070064644A /* SNOtherGoodsLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNOtherGoodsLabelView.h; sourceTree = "<group>"; };
 		3C214C0A1AE2A8070064644A /* SNOtherGoodsLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNOtherGoodsLabelView.m; sourceTree = "<group>"; };
+		3C34749C1AE3922D009FBB68 /* SNUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUserModel.h; sourceTree = "<group>"; };
+		3C34749D1AE3922D009FBB68 /* SNUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserModel.m; sourceTree = "<group>"; };
+		3C34749F1AE39835009FBB68 /* SNArchiverManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNArchiverManger.h; sourceTree = "<group>"; };
+		3C3474A01AE39835009FBB68 /* SNArchiverManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNArchiverManger.m; sourceTree = "<group>"; };
+		3C3474A61AE3ADF4009FBB68 /* SNMYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMYViewController.h; sourceTree = "<group>"; };
+		3C3474A71AE3ADF4009FBB68 /* SNMYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMYViewController.m; sourceTree = "<group>"; };
 		3C49E68A1ADB51490008085F /* SNCommunicate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNCommunicate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C49E6A31ADB51490008085F /* SNCommunicateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNCommunicateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C49E6A81ADB51490008085F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -235,6 +248,12 @@
 		3C49E7621ADB67C40008085F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		3C49E7661ADB68030008085F /* Global.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.pch; sourceTree = "<group>"; };
 		3C5698DD1ADE942500743E35 /* SNAccountViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SNAccountViewController.storyboard; sourceTree = "<group>"; };
+		3C71E88B1AE3723300056A7C /* SNNetManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNNetManger.h; sourceTree = "<group>"; };
+		3C71E88C1AE3723300056A7C /* SNNetManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNNetManger.m; sourceTree = "<group>"; };
+		3C71E88F1AE3785900056A7C /* LICENCE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE.txt; sourceTree = "<group>"; };
+		3C71E8901AE3785900056A7C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		3C71E8911AE3785900056A7C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		3C71E8921AE3785900056A7C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C782A801ADD0BF100DD0FEC /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		3C782A811ADD0D4900DD0FEC /* SNMainTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainTableView.h; sourceTree = "<group>"; };
 		3C782A821ADD0D4900DD0FEC /* SNMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMainTableView.m; sourceTree = "<group>"; };
@@ -364,6 +383,39 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3C3474A21AE3ADDD009FBB68 /* MY */ = {
+			isa = PBXGroup;
+			children = (
+				3C3474A31AE3ADDD009FBB68 /* Controller */,
+				3C3474A41AE3ADDD009FBB68 /* Model */,
+				3C3474A51AE3ADDD009FBB68 /* View */,
+			);
+			path = MY;
+			sourceTree = "<group>";
+		};
+		3C3474A31AE3ADDD009FBB68 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3C3474A61AE3ADF4009FBB68 /* SNMYViewController.h */,
+				3C3474A71AE3ADF4009FBB68 /* SNMYViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3C3474A41AE3ADDD009FBB68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3C3474A51AE3ADDD009FBB68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3C49E6811ADB51490008085F = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +465,7 @@
 		3C49E6B41ADB55710008085F /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				3C3474A21AE3ADDD009FBB68 /* MY */,
 				3C214BF01AE239F80064644A /* Details */,
 				3C49E73D1ADB588E0008085F /* Account */,
 				3C782A911ADD142A00DD0FEC /* ThirdClass */,
@@ -448,6 +501,8 @@
 		3C49E6B91ADB55710008085F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3C34749C1AE3922D009FBB68 /* SNUserModel.h */,
+				3C34749D1AE3922D009FBB68 /* SNUserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -484,6 +539,7 @@
 		3C49E6C01ADB55710008085F /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				3C71E88E1AE3785900056A7C /* Reachability */,
 				3CC62CA01AE0EE22004D7C8D /* SNProgressHUD */,
 				3C782AA81ADD380E00DD0FEC /* MJExtension */,
 				3C49E75D1ADB67C40008085F /* MBProgressHUD */,
@@ -689,6 +745,17 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		3C71E88E1AE3785900056A7C /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				3C71E88F1AE3785900056A7C /* LICENCE.txt */,
+				3C71E8901AE3785900056A7C /* Reachability.h */,
+				3C71E8911AE3785900056A7C /* Reachability.m */,
+				3C71E8921AE3785900056A7C /* README.md */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		3C782A881ADD113500DD0FEC /* SecondClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -776,6 +843,10 @@
 			children = (
 				3C782AA51ADD1BF400DD0FEC /* SNHttpTool.h */,
 				3C782AA61ADD1BF400DD0FEC /* SNHttpTool.m */,
+				3C71E88B1AE3723300056A7C /* SNNetManger.h */,
+				3C71E88C1AE3723300056A7C /* SNNetManger.m */,
+				3C34749F1AE39835009FBB68 /* SNArchiverManger.h */,
+				3C3474A01AE39835009FBB68 /* SNArchiverManger.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -900,6 +971,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C71E8931AE3785900056A7C /* LICENCE.txt in Resources */,
 				3C782A901ADD113500DD0FEC /* SNEntertainment.plist in Resources */,
 				3C5698DE1ADE942500743E35 /* SNAccountViewController.storyboard in Resources */,
 				3C49E7551ADB64C00008085F /* Images.xcassets in Resources */,
@@ -954,6 +1026,7 @@
 				3C49E7371ADB55710008085F /* UIImageView+WebCache.m in Sources */,
 				3C49E71B1ADB55710008085F /* AFURLResponseSerialization.m in Sources */,
 				3C782AC91ADD380E00DD0FEC /* NSObject+MJKeyValue.m in Sources */,
+				3C3474A11AE39835009FBB68 /* SNArchiverManger.m in Sources */,
 				3C49E7191ADB55710008085F /* AFURLConnectionOperation.m in Sources */,
 				3CEFF7A61ADB960F0055F2DB /* SNMainCell.m in Sources */,
 				3C49E7181ADB55710008085F /* AFSecurityPolicy.m in Sources */,
@@ -963,6 +1036,7 @@
 				3C49E7161ADB55710008085F /* AFHTTPSessionManager.m in Sources */,
 				3C782AC51ADD380E00DD0FEC /* MJMethod.m in Sources */,
 				3C214BF61AE23A170064644A /* SNDetailsViewController.m in Sources */,
+				3C3474A81AE3ADF4009FBB68 /* SNMYViewController.m in Sources */,
 				3C782AC71ADD380E00DD0FEC /* MJTypeEncoding.m in Sources */,
 				3C49E7261ADB55710008085F /* UIScrollView+MJExtension.m in Sources */,
 				3C214BFC1AE247C10064644A /* SNDetailsScrollView.m in Sources */,
@@ -980,6 +1054,7 @@
 				3C782AC11ADD380E00DD0FEC /* MJConst.m in Sources */,
 				3C214BF91AE2427A0064644A /* SNDetailsData.m in Sources */,
 				3C49E71A1ADB55710008085F /* AFURLRequestSerialization.m in Sources */,
+				3C71E88D1AE3723300056A7C /* SNNetManger.m in Sources */,
 				3C49E7531ADB62380008085F /* SNCommunicateMainViewController.m in Sources */,
 				3C49E7351ADB55710008085F /* UIImage+WebP.m in Sources */,
 				3C49E7311ADB55710008085F /* SDWebImagePrefetcher.m in Sources */,
@@ -991,6 +1066,7 @@
 				3C49E71F1ADB55710008085F /* MJRefreshConst.m in Sources */,
 				3C49E7231ADB55710008085F /* MJRefreshHeader.m in Sources */,
 				3C49E7291ADB55710008085F /* MKAnnotationView+WebCache.m in Sources */,
+				3C71E8951AE3785900056A7C /* README.md in Sources */,
 				3C49E71C1ADB55710008085F /* AFURLSessionManager.m in Sources */,
 				3C49E72E1ADB55710008085F /* SDWebImageDownloader.m in Sources */,
 				3C782A9A1ADD174A00DD0FEC /* SNThirdClassCell.m in Sources */,
@@ -1001,6 +1077,7 @@
 				3C49E72A1ADB55710008085F /* NSData+ImageContentType.m in Sources */,
 				3C49E7251ADB55710008085F /* MJRefreshLegendHeader.m in Sources */,
 				3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */,
+				3C34749E1AE3922D009FBB68 /* SNUserModel.m in Sources */,
 				3C49E7131ADB55710008085F /* main.m in Sources */,
 				3C49E72B1ADB55710008085F /* SDImageCache.m in Sources */,
 				3C80A4A61ADFE0E900E9AE0B /* SNRegisterViewController.m in Sources */,
@@ -1009,6 +1086,7 @@
 				3C49E7201ADB55710008085F /* MJRefreshFooter.m in Sources */,
 				3C782A831ADD0D4900DD0FEC /* SNMainTableView.m in Sources */,
 				3C782A971ADD147600DD0FEC /* SNThirdClassViewController.m in Sources */,
+				3C71E8941AE3785900056A7C /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

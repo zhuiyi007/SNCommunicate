@@ -22,6 +22,7 @@
 {
     self = [super init];
     if (self) {
+        self.delegate = self;
     }
     return self;
 }
@@ -31,9 +32,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.delegate = self;
-        //注册键盘通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     }
     return self;
 }
@@ -140,6 +138,20 @@
         [self getSuperViewWithView:superView];
     }
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    //注册键盘通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 
 
 

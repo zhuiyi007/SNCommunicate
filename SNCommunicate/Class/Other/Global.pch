@@ -24,5 +24,8 @@
 #import "UIImageView+WebCache.h"
 #import "MBProgressHUD+MJ.h"
 #import "UIViewController+SNCommon.h"
+#import "SNNetManger.h"
+#import "SNUserModel.h"
+#import "SNArchiverManger.h"
 
 #endif
