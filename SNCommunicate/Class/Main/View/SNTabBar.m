@@ -14,8 +14,34 @@
 
 @end
 
+static SNTabBar *sharedInstance = nil;
+
 @implementation SNTabBar
 
++ (SNTabBar *)tabBar
+{
+    @synchronized(self){
+        if (sharedInstance == nil) {
+            sharedInstance = [[[self class] alloc] init];
+        }
+        return sharedInstance;
+    }
+}
+
++ (id)allocWithZone:(NSZone *)zone
+{
+    @synchronized(self){
+        if (sharedInstance == nil) {
+            sharedInstance = [super allocWithZone:zone];
+        }
+        return sharedInstance;
+    }
+}
+
++ (id)copyWithZone:(NSZone *)zone
+{
+    return sharedInstance;
+}
 
 - (void)addTabBarButtonWithItem:(UITabBarItem *)item
 {
@@ -42,11 +68,29 @@
     }
 }
 
-+(instancetype)tabBar
+#pragma 隐藏tabBar
+- (void)hiddenTabBar
 {
-    SNTabBar *tabBar = [[SNTabBar alloc] init];
-    return tabBar;
+    CGRect frame = self.frame;
+    frame.origin.x = -320;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.frame = frame;
+    } completion:^(BOOL finished) {
+        self.hidden = YES;
+    }];
 }
+
+#pragma 显示tabBar
+- (void)showTabBar
+{
+    self.hidden = NO;
+    CGRect frame = self.frame;
+    frame.origin.x = 0;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.frame = frame;
+    }];
+}
+
 
 - (void)layoutSubviews
 {

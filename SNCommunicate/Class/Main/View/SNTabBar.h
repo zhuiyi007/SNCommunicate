@@ -19,6 +19,10 @@
 
 - (void)addTabBarButtonWithItem:(UITabBarItem *)item;
 
+- (void)hiddenTabBar;
+
+- (void)showTabBar;
+
 @property (nonatomic, weak) id<SNTabBar> myDelegate;
 
 @end

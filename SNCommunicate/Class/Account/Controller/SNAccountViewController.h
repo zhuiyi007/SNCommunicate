@@ -8,16 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class SNAccountViewController;
-
-@protocol SNAccountViewControllerDelegate <NSObject>
-
-- (void)accountViewControllerHiddenTabBar:(SNAccountViewController *)accountViewController;
-
-@end
-
 @interface SNAccountViewController : UIViewController
 
-@property (nonatomic, weak) id<SNAccountViewControllerDelegate> delegate;
 
 @end

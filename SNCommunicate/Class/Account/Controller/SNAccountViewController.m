@@ -9,6 +9,7 @@
 #import "SNAccountViewController.h"
 #import "SNMainNavigationController.h"
 #import "SNMainTextField.h"
+#import "SNTabBar.h"
 
 @interface SNAccountViewController ()
 @property (weak, nonatomic) IBOutlet SNMainTextField *accountLabel;
@@ -22,6 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"登录";
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)]];
+    self.navigationItem.leftBarButtonItem = item;
     // Do any additional setup after loading the view.
     
 }
@@ -33,9 +37,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(accountViewControllerHiddenTabBar:)]) {
-        [self.delegate accountViewControllerHiddenTabBar:self];
-    }
+    [[SNTabBar tabBar] hiddenTabBar];
 }
 
 - (IBAction)loginButtonClick:(id)sender {
@@ -58,6 +60,7 @@
         self.userModel.passWord = self.passWordLabel.text;
         self.userModel.name = responseObject[@"ret_msg"];
         [SNArchiverManger archiveWithUserModel:[SNUserModel sharedInstance]];
+        [self.navigationController popViewControllerAnimated:YES];
     }
                                        error:^(NSError *error) {
         [MBProgressHUD hideHUD];

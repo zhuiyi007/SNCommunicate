@@ -95,6 +95,7 @@
     if (self.ret_msg) {
         SNThirdClassNullCell *cell = [SNThirdClassNullCell createCellWithIdentifier:nil];
         cell.textLabel.text = self.ret_msg;
+        tableView.userInteractionEnabled = NO;
         return cell;
     }
     NSString *identifier = @"SNEntertainmentCell";
@@ -103,6 +104,7 @@
         cell = [SNThirdClassCell createCellWithIdentifier:identifier];
     }
     cell.data = self.dataArray[indexPath.row];
+    tableView.userInteractionEnabled = YES;
     return cell;
 }
 

@@ -12,6 +12,8 @@
 #import "SNMainCell.h"
 #import "SNMainCellData.h"
 
+#import "SNTabBar.h"
+
 const NSInteger ImageCount = 4;
 
 @interface SNCommunicateMainViewController ()<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
@@ -208,9 +210,7 @@ const NSInteger ImageCount = 4;
             break;
         }
     }
-    if ([self.delegate respondsToSelector:@selector(communicateMainViewControllerHiddenTabBar:)]) {
-        [self.delegate communicateMainViewControllerHiddenTabBar:self];
-    }
+    [[SNTabBar tabBar] hiddenTabBar];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

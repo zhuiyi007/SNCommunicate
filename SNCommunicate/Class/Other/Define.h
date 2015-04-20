@@ -36,5 +36,9 @@
 // 用户信息路径
 #define SNUserInfoPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"userModel"]
 
+#pragma 通知
+// 点击个人中心的通知
+#define SNClickMyTabBar @"SNClickMyTabBar"
+
 
 #endif

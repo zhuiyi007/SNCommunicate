@@ -12,7 +12,7 @@
 #import "SNMYViewController.h"
 #import "SNTabBar.h"
 
-@interface SNMainViewController ()<SNMainNavigationControllerDelegate, SNTabBar, SNCommunicateMainViewControllerDelegate, SNMYViewControllerDelegate>
+@interface SNMainViewController ()<SNTabBar>
 @property (nonatomic, weak) SNTabBar *customTabBar;
 
 @end
@@ -33,11 +33,9 @@
 - (void)addChildSubViews
 {
     SNCommunicateMainViewController *main = [[SNCommunicateMainViewController alloc] init];
-    main.delegate = self;
     [self setupChildViewControll:main title:@"肃宁通" normalImage:[UIImage imageNamed:@"ktv"] selectImage:[UIImage imageNamed:@"ktv"]];
 
     SNMYViewController *my = [[SNMYViewController alloc] init];
-    my.delegate = self;
     [self setupChildViewControll:my title:@"中心" normalImage:[UIImage imageNamed:@"jiudian"] selectImage:[UIImage imageNamed:@"jiudian"]];
     
     // 加载storyboard
@@ -51,7 +49,6 @@
 - (void)setupChildViewControll:(UIViewController *)vc title:(NSString *)title normalImage:(UIImage *)norImage selectImage:(UIImage *)selImage
 {
     SNMainNavigationController *nav = [[SNMainNavigationController alloc] initWithRootViewController:vc];
-    nav.mainDelegate = self;
     vc.title = title;
     vc.tabBarItem.image = [norImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     vc.tabBarItem.selectedImage = [selImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -76,39 +73,8 @@
 - (void)tabBar:(UITabBar *)tabBar didselectedIndex:(NSInteger)index
 {
     self.selectedIndex = index;
-}
-
-#pragma mark - 隐藏tabbar的代理方法
-- (void)communicateMainViewControllerHiddenTabBar:(SNCommunicateMainViewController *)communicateMainViewController
-{
-    CGRect frame = self.customTabBar.frame;
-    frame.origin.x = -320;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.customTabBar.frame = frame;
-    } completion:^(BOOL finished) {
-        self.customTabBar.hidden = YES;
-    }];
-}
-
-- (void)myViewControllerHiddenTabBar:(SNMYViewController *)myViewController;
-{
-    CGRect frame = self.customTabBar.frame;
-    frame.origin.x = -320;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.customTabBar.frame = frame;
-    } completion:^(BOOL finished) {
-        self.customTabBar.hidden = YES;
-    }];
-}
-
-#pragma mark - 返回按钮的代理方法实现
-- (void)mainNavigationControllerShowTabBar:(SNMainNavigationController *)mainNavigationController
-{
-    self.customTabBar.hidden = NO;
-    CGRect frame = self.customTabBar.frame;
-    frame.origin.x = 0;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.customTabBar.frame = frame;
-    }];
+    if (index == 1) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:SNClickMyTabBar object:self];
+    }
 }
 @end

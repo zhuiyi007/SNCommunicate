@@ -8,16 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class SNCommunicateMainViewController;
-
-@protocol SNCommunicateMainViewControllerDelegate <NSObject>
-
-- (void)communicateMainViewControllerHiddenTabBar:(SNCommunicateMainViewController *)communicateMainViewController;
-
-@end
-
 @interface SNCommunicateMainViewController : UIViewController
-
-@property (nonatomic, weak) id<SNCommunicateMainViewControllerDelegate> delegate;
 
 @end
