@@ -65,7 +65,7 @@ const NSInteger ImageCount = 4;
                                   initWithFrame:CGRectMake(0,
                                                            tableViewY,
                                                            SNScreenBounds.width,
-                                                           SNScreenBounds.height - tableViewY - 49)
+                                                           SNScreenBounds.height - tableViewY)
                                                                   style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;

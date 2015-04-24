@@ -37,8 +37,8 @@
 #define SNUserInfoPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"userModel"]
 
 #pragma 通知
-// 点击个人中心的通知
-#define SNClickMyTabBar @"SNClickMyTabBar"
+#define SNClickMyTabBar     @"SNClickMyTabBar"      // 点击个人中心的通知
+#define SNLoginSuccess      @"SNLoginSuccess"       // 登录成功
 
 
 #endif

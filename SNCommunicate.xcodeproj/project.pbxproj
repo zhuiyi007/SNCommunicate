@@ -97,13 +97,13 @@
 		3C782ACA1ADD380E00DD0FEC /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782ABF1ADD380E00DD0FEC /* NSObject+MJMember.m */; };
 		3C782ACD1ADD398900DD0FEC /* SNThirdCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782ACC1ADD398900DD0FEC /* SNThirdCellData.m */; };
 		3C80A4A61ADFE0E900E9AE0B /* SNRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A4A51ADFE0E900E9AE0B /* SNRegisterViewController.m */; };
+		3CB68AFB1AE78DBC0092E9F6 /* SNNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */; };
 		3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */; };
 		3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */; };
 		3CC62CA61AE1084D004D7C8D /* SNMainTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */; };
 		3CE0C3DF1ADE586E00EF3358 /* SNEatAndBed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DC1ADE586E00EF3358 /* SNEatAndBed.plist */; };
 		3CE0C3E01ADE586E00EF3358 /* SNHealthAndBeauty.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DD1ADE586E00EF3358 /* SNHealthAndBeauty.plist */; };
 		3CE0C3E11ADE586E00EF3358 /* SNMarket.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DE1ADE586E00EF3358 /* SNMarket.plist */; };
-		3CE0C3E41ADE621700EF3358 /* SNThirdClassNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0C3E31ADE621700EF3358 /* SNThirdClassNullCell.m */; };
 		3CEFF7A01ADB728C0055F2DB /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFF79F1ADB728C0055F2DB /* UIView+Frame.m */; };
 		3CEFF7A31ADB95880055F2DB /* SNMainCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFF7A21ADB95880055F2DB /* SNMainCellData.m */; };
 		3CEFF7A61ADB960F0055F2DB /* SNMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFF7A51ADB960F0055F2DB /* SNMainCell.m */; };
@@ -299,6 +299,8 @@
 		3C782ACC1ADD398900DD0FEC /* SNThirdCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNThirdCellData.m; sourceTree = "<group>"; };
 		3C80A4A41ADFE0E900E9AE0B /* SNRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRegisterViewController.h; sourceTree = "<group>"; };
 		3C80A4A51ADFE0E900E9AE0B /* SNRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRegisterViewController.m; sourceTree = "<group>"; };
+		3CB68AF91AE78DBC0092E9F6 /* SNNullCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNNullCell.h; path = ../../SNMain/View/SNNullCell.h; sourceTree = "<group>"; };
+		3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNNullCell.m; path = ../../SNMain/View/SNNullCell.m; sourceTree = "<group>"; };
 		3CC62C9A1AE0ECC0004D7C8D /* UIViewController+SNCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNCommon.h"; sourceTree = "<group>"; };
 		3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNCommon.m"; sourceTree = "<group>"; };
 		3CC62CA11AE0EE22004D7C8D /* SNProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNProgressHUD.h; sourceTree = "<group>"; };
@@ -308,8 +310,6 @@
 		3CE0C3DC1ADE586E00EF3358 /* SNEatAndBed.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNEatAndBed.plist; sourceTree = "<group>"; };
 		3CE0C3DD1ADE586E00EF3358 /* SNHealthAndBeauty.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNHealthAndBeauty.plist; sourceTree = "<group>"; };
 		3CE0C3DE1ADE586E00EF3358 /* SNMarket.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNMarket.plist; sourceTree = "<group>"; };
-		3CE0C3E21ADE621700EF3358 /* SNThirdClassNullCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNThirdClassNullCell.h; sourceTree = "<group>"; };
-		3CE0C3E31ADE621700EF3358 /* SNThirdClassNullCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNThirdClassNullCell.m; sourceTree = "<group>"; };
 		3CEFF79E1ADB728C0055F2DB /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		3CEFF79F1ADB728C0055F2DB /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		3CEFF7A11ADB95880055F2DB /* SNMainCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainCellData.h; sourceTree = "<group>"; };
@@ -510,6 +510,8 @@
 		3C49E6BA1ADB55710008085F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3CB68AF91AE78DBC0092E9F6 /* SNNullCell.h */,
+				3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */,
 				3C49E7411ADB597E0008085F /* SNTabBar.h */,
 				3C49E7421ADB597E0008085F /* SNTabBar.m */,
 				3C49E7441ADB598F0008085F /* SNTabBarButton.h */,
@@ -832,8 +834,6 @@
 			children = (
 				3C782A981ADD174A00DD0FEC /* SNThirdClassCell.h */,
 				3C782A991ADD174A00DD0FEC /* SNThirdClassCell.m */,
-				3CE0C3E21ADE621700EF3358 /* SNThirdClassNullCell.h */,
-				3CE0C3E31ADE621700EF3358 /* SNThirdClassNullCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1019,6 +1019,7 @@
 				3C782AC61ADD380E00DD0FEC /* MJType.m in Sources */,
 				3C49E72F1ADB55710008085F /* SDWebImageDownloaderOperation.m in Sources */,
 				3CC62CA61AE1084D004D7C8D /* SNMainTextField.m in Sources */,
+				3CB68AFB1AE78DBC0092E9F6 /* SNNullCell.m in Sources */,
 				3C782A8F1ADD113500DD0FEC /* SNSecondClassViewController.m in Sources */,
 				3C49E7151ADB55710008085F /* AFHTTPRequestOperationManager.m in Sources */,
 				3C49E7431ADB597E0008085F /* SNTabBar.m in Sources */,
@@ -1060,7 +1061,6 @@
 				3C49E7311ADB55710008085F /* SDWebImagePrefetcher.m in Sources */,
 				3C49E7271ADB55710008085F /* UIScrollView+MJRefresh.m in Sources */,
 				3C49E7651ADB67C40008085F /* MBProgressHUD.m in Sources */,
-				3CE0C3E41ADE621700EF3358 /* SNThirdClassNullCell.m in Sources */,
 				3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */,
 				3C49E7211ADB55710008085F /* MJRefreshGifFooter.m in Sources */,
 				3C49E71F1ADB55710008085F /* MJRefreshConst.m in Sources */,
@@ -1126,7 +1126,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1146,6 +1147,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1168,7 +1170,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1181,6 +1184,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1228,6 +1232,7 @@
 				INFOPLIST_FILE = SNCommunicateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNCommunicate.app/SNCommunicate";
 			};
 			name = Debug;
@@ -1243,6 +1248,7 @@
 				INFOPLIST_FILE = SNCommunicateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNCommunicate.app/SNCommunicate";
 			};
 			name = Release;

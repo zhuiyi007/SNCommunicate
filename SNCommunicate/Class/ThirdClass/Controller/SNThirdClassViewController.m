@@ -10,7 +10,7 @@
 #import "SNShopData.h"
 #import "SNThirdCellData.h"
 #import "SNThirdClassCell.h"
-#import "SNThirdClassNullCell.h"
+#import "SNNullCell.h"
 #import "SNDetailsViewController.h"
 
 @interface SNThirdClassViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -93,9 +93,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.ret_msg) {
-        SNThirdClassNullCell *cell = [SNThirdClassNullCell createCellWithIdentifier:nil];
+        SNNullCell *cell = [SNNullCell createCellWithIdentifier:nil];
         cell.textLabel.text = self.ret_msg;
-        tableView.userInteractionEnabled = NO;
         return cell;
     }
     NSString *identifier = @"SNEntertainmentCell";
@@ -110,6 +109,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.ret_msg) {
+        return;
+    }
     SNDetailsViewController *vc = [[SNDetailsViewController alloc] init];
     vc.title = [_dataArray[indexPath.row] Name];
     vc.shopData = _dataArray[indexPath.row];

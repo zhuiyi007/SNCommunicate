@@ -58,20 +58,18 @@
     self.delegate = self;
 }
 
-//#pragma mark - 重写pop方法,实现滑动返回和按钮返回的功能
-//-(UIViewController *)popViewControllerAnimated:(BOOL)animated
-//{
-//    return [super popViewControllerAnimated:animated];
-//}
+#pragma mark - 重写pop方法,实现滑动返回和按钮返回的功能
+-(UIViewController *)popViewControllerAnimated:(BOOL)animated
+{
+    return [super popViewControllerAnimated:animated];
+}
 
-//#pragma mark - 当完全显示的时候调用
-//- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-//{
-//    if ([viewController isKindOfClass:[SNCommunicateMainViewController class]] || [viewController isKindOfClass:[SNAccountViewController class]]) {
-//        if ([self.mainDelegate respondsToSelector:@selector(mainNavigationControllerShowTabBar:)]) {
-//            [self.mainDelegate mainNavigationControllerShowTabBar:self];
-//        }
-//    }
-//}
+#pragma mark - 当完全显示的时候调用
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (self.childViewControllers.count == 1 || [self.topViewController isKindOfClass:[SNAccountViewController class]]) {
+        [[SNTabBar tabBar] showTabBar];
+    }
+}
 
 @end

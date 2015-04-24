@@ -60,6 +60,7 @@
         self.userModel.passWord = self.passWordLabel.text;
         self.userModel.name = responseObject[@"ret_msg"];
         [SNArchiverManger archiveWithUserModel:[SNUserModel sharedInstance]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:nil];
         [self.navigationController popViewControllerAnimated:YES];
     }
                                        error:^(NSError *error) {

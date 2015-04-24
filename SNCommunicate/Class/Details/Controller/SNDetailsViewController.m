@@ -10,8 +10,10 @@
 #import "SNDetailsData.h"
 #import "SNDetailsModel.h"
 #import "SNDetailsScrollView.h"
+#import "SNMainTableView.h"
+#import "SNNullCell.h"
 
-@interface SNDetailsViewController ()
+@interface SNDetailsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) SNDetailsScrollView *scrollView;
 @property (nonatomic, strong)  SNDetailsModel *detailsModel;
@@ -46,15 +48,20 @@
 
 - (void)createNilUI
 {
-    UILabel *nilLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, SNScreenBounds.width, 44)];
-    nilLabel.text = self.detailsModel.ret_msg;
-    nilLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:nilLabel];
+//    UILabel *nilLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, SNScreenBounds.width, 44)];
+//    nilLabel.text = self.detailsModel.ret_msg;
+//    nilLabel.textAlignment = NSTextAlignmentCenter;
+//    [self.view addSubview:nilLabel];
+//    
+//    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 43, SNScreenBounds.width, 1)];
+//    [lineView setBackgroundColor:[UIColor blackColor]];
+//    [nilLabel addSubview:lineView];
     
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 43, SNScreenBounds.width, 1)];
-    [lineView setBackgroundColor:[UIColor blackColor]];
-    [nilLabel addSubview:lineView];
-    
+    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:SNTableViewFrame style:UITableViewStylePlain];
+    [tableView setContentOffset:CGPointMake(0, 64)];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    [self.view addSubview:tableView];
 }
 
 - (void)reserveView
@@ -107,6 +114,18 @@
         [MBProgressHUD hideHUD];
         [MBProgressHUD showError:@"加载失败"];
                                            }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SNNullCell *cell = [SNNullCell createCellWithIdentifier:nil];
+    cell.textLabel.text = self.detailsModel.ret_msg;
+    return cell;
 }
 
 
