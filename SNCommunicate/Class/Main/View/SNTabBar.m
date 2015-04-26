@@ -47,6 +47,7 @@ static SNTabBar *sharedInstance = nil;
 {
     NSInteger index = self.subviews.count;
     SNTabBarButton *btn = [SNTabBarButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:item.title forState:UIControlStateNormal];
     [btn setBackgroundImage:item.image forState:UIControlStateNormal];
     [btn setBackgroundImage:item.selectedImage forState:UIControlStateSelected];
     btn.tag = index;

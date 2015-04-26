@@ -69,12 +69,11 @@
 {
     CGFloat height = 49;
     UIView *reserveView = [[UIView alloc] initWithFrame:CGRectMake(0, SNScreenBounds.height - 49, SNScreenBounds.width, height)];
-    [reserveView setBackgroundColor:[UIColor greenColor]];
     [self.view addSubview:reserveView];
     
     UIButton *reserveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [reserveButton setFrame:CGRectMake(0, 0, reserveView.width * 0.5, height)];
-    [reserveButton setBackgroundColor:SNColor(30, 47, 55)];
+    [reserveButton setBackgroundColor:SNMainGreenColor];
     
     self.detailsData = self.detailsModel.result[0];
     if ([self.detailsData.yuDing isEqualToString:@"不可预订"]) {
@@ -95,7 +94,7 @@
     
     UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [collectionButton setFrame:CGRectMake(reserveView.width * 0.5, 0, reserveView.width * 0.5, height)];
-    [collectionButton setBackgroundColor:SNColor(30, 47, 55)];
+    [collectionButton setBackgroundColor:SNMainGreenColor];
     [collectionButton setTitle:@"收藏" forState:UIControlStateNormal];
     [collectionButton setTitleColor:SNMainBackgroundColor forState:UIControlStateNormal];
     [collectionButton.layer setMasksToBounds:YES];
@@ -119,7 +118,7 @@
                             productID:[self.detailsData.ID integerValue]
                                finish:^(id responseObject) {
         SNLog(@"%@",responseObject);
-        if (!responseObject[@"status"]) {
+        if ([responseObject[@"status"] integerValue] == 0) {
            [MBProgressHUD hideHUD];
            [MBProgressHUD showError:responseObject[@"ret_msg"]];
         }
@@ -143,7 +142,7 @@
     [SNHttpTool insertCollectionWithShangID:self.detailsData.shangID passWord:self.userModel.passWord phoneNumber:self.userModel.phoneNumber shangName:self.detailsData.Name finish:^(id responseObject) {
         SNLog(@"%@",responseObject);
         [MBProgressHUD hideHUD];
-        if (responseObject[@"status"] == 0) {
+        if ([responseObject[@"status"] integerValue] == 0) {
             [MBProgressHUD showError:responseObject[@"ret_msg"]];
         }
         [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];

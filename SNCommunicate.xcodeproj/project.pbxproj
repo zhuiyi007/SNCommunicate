@@ -101,6 +101,9 @@
 		3C85F38E1AECD5D100481F0C /* SNCustomerCollect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F38D1AECD5D100481F0C /* SNCustomerCollect.m */; };
 		3C85F3911AECD5DF00481F0C /* SNCustomerCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3901AECD5DF00481F0C /* SNCustomerCollectModel.m */; };
 		3C85F3CD1AED0A9800481F0C /* SNCustomerOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3CC1AED0A9800481F0C /* SNCustomerOrderViewController.m */; };
+		3C85F3D01AED148C00481F0C /* SNCustomerOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3CF1AED148C00481F0C /* SNCustomerOrder.m */; };
+		3C85F3D31AED14D600481F0C /* SNCustomerOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3D21AED14D600481F0C /* SNCustomerOrderModel.m */; };
+		3C85F3D61AED168500481F0C /* SNCustomerOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3D51AED168500481F0C /* SNCustomerOrderCell.m */; };
 		3CB68AFB1AE78DBC0092E9F6 /* SNNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */; };
 		3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */; };
 		3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */; };
@@ -311,6 +314,12 @@
 		3C85F3901AECD5DF00481F0C /* SNCustomerCollectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCustomerCollectModel.m; sourceTree = "<group>"; };
 		3C85F3CB1AED0A9800481F0C /* SNCustomerOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCustomerOrderViewController.h; sourceTree = "<group>"; };
 		3C85F3CC1AED0A9800481F0C /* SNCustomerOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCustomerOrderViewController.m; sourceTree = "<group>"; };
+		3C85F3CE1AED148C00481F0C /* SNCustomerOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCustomerOrder.h; sourceTree = "<group>"; };
+		3C85F3CF1AED148C00481F0C /* SNCustomerOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCustomerOrder.m; sourceTree = "<group>"; };
+		3C85F3D11AED14D600481F0C /* SNCustomerOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCustomerOrderModel.h; sourceTree = "<group>"; };
+		3C85F3D21AED14D600481F0C /* SNCustomerOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCustomerOrderModel.m; sourceTree = "<group>"; };
+		3C85F3D41AED168500481F0C /* SNCustomerOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCustomerOrderCell.h; sourceTree = "<group>"; };
+		3C85F3D51AED168500481F0C /* SNCustomerOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCustomerOrderCell.m; sourceTree = "<group>"; };
 		3CB68AF91AE78DBC0092E9F6 /* SNNullCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNNullCell.h; path = ../../SNMain/View/SNNullCell.h; sourceTree = "<group>"; };
 		3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNNullCell.m; path = ../../SNMain/View/SNNullCell.m; sourceTree = "<group>"; };
 		3CC62C9A1AE0ECC0004D7C8D /* UIViewController+SNCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNCommon.h"; sourceTree = "<group>"; };
@@ -954,6 +963,10 @@
 		3C85F3C91AED0A8100481F0C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3C85F3CE1AED148C00481F0C /* SNCustomerOrder.h */,
+				3C85F3CF1AED148C00481F0C /* SNCustomerOrder.m */,
+				3C85F3D11AED14D600481F0C /* SNCustomerOrderModel.h */,
+				3C85F3D21AED14D600481F0C /* SNCustomerOrderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -961,6 +974,8 @@
 		3C85F3CA1AED0A8100481F0C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3C85F3D41AED168500481F0C /* SNCustomerOrderCell.h */,
+				3C85F3D51AED168500481F0C /* SNCustomerOrderCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1103,6 +1118,7 @@
 				3C49E72C1ADB55710008085F /* SDWebImageCompat.m in Sources */,
 				3C782AC61ADD380E00DD0FEC /* MJType.m in Sources */,
 				3C49E72F1ADB55710008085F /* SDWebImageDownloaderOperation.m in Sources */,
+				3C85F3D01AED148C00481F0C /* SNCustomerOrder.m in Sources */,
 				3CC62CA61AE1084D004D7C8D /* SNMainTextField.m in Sources */,
 				3CB68AFB1AE78DBC0092E9F6 /* SNNullCell.m in Sources */,
 				3C782A8F1ADD113500DD0FEC /* SNSecondClassViewController.m in Sources */,
@@ -1112,6 +1128,7 @@
 				3C49E7371ADB55710008085F /* UIImageView+WebCache.m in Sources */,
 				3C49E71B1ADB55710008085F /* AFURLResponseSerialization.m in Sources */,
 				3C782AC91ADD380E00DD0FEC /* NSObject+MJKeyValue.m in Sources */,
+				3C85F3D61AED168500481F0C /* SNCustomerOrderCell.m in Sources */,
 				3C3474A11AE39835009FBB68 /* SNArchiverManger.m in Sources */,
 				3C49E7191ADB55710008085F /* AFURLConnectionOperation.m in Sources */,
 				3CEFF7A61ADB960F0055F2DB /* SNMainCell.m in Sources */,
@@ -1133,6 +1150,7 @@
 				3C214BFF1AE266550064644A /* SNGoodsDetailsView.m in Sources */,
 				3C49E7331ADB55710008085F /* UIImage+GIF.m in Sources */,
 				3C214C021AE28B170064644A /* SNShopDetailsView.m in Sources */,
+				3C85F3D31AED14D600481F0C /* SNCustomerOrderModel.m in Sources */,
 				3C49E7341ADB55710008085F /* UIImage+MultiFormat.m in Sources */,
 				3CEFF7A01ADB728C0055F2DB /* UIView+Frame.m in Sources */,
 				3CEFF7A31ADB95880055F2DB /* SNMainCellData.m in Sources */,

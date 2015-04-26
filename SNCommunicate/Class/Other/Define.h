@@ -18,6 +18,7 @@
 
 #define SNMainBackgroundColor SNColor(254, 242, 229)
 #define SNPriceColor          SNColor(255, 101, 80)
+#define SNMainGreenColor      SNColor(77, 103, 116)
 
 
 #pragma NSLog

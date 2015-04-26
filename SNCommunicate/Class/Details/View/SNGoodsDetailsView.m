@@ -103,7 +103,7 @@
     _detailsData = detailsData;
     
     NSURL *url = [NSURL URLWithString:detailsData.Pic];
-    [self.topImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"ktv1"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.topImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"default_ad_1"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         SNLog(@"商品详情图片加载完毕");
     }];
     self.goodsName.text = detailsData.Name;

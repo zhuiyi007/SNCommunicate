@@ -73,12 +73,12 @@
 {
     _data = data;
     NSURL *url = [NSURL URLWithString:data.picURL];
-    [self.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"dianwan"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"img_default"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         SNLog(@"三级页面图片加载完毕");
     }];
     
     self.commendView.text = data.Point;
-    [self.commendImage setImage:[UIImage imageNamed:@"dianwan"]];
+    [self.commendImage setImage:[UIImage imageNamed:@"zan"]];
     
     self.name.text = data.Name;
     self.introduction.text = data.Introduction;

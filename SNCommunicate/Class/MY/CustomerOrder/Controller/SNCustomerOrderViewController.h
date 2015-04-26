@@ -10,4 +10,6 @@
 
 @interface SNCustomerOrderViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isFinishedOrder;
+
 @end

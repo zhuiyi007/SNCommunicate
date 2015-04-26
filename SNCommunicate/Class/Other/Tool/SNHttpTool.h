@@ -83,6 +83,38 @@
                         error:(void (^)(NSError *error))failure;
 
 /**
+ *  查询顾客订单
+ *
+ *  @param phoneNumber 电话号码
+ *  @param passWord    密码
+ *  @param big         最大值
+ *  @param small       最小值
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)selectDingDanWithPhoneNumber:(NSString *)phoneNumber
+                            passWord:(NSString *)passWord
+                                 big:(NSInteger)big
+                               small:(NSInteger)small
+                              finish:(void (^)(id responseObject))success
+                               error:(void (^)(NSError *error))failure;
+
+/**
+ *  顾客完成订单
+ *
+ *  @param phoneNumber 顾客手机号
+ *  @param passWord    密码
+ *  @param orderNumber 订单号
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)completeDingDanWithPhoneNumber:(NSString *)phoneNumber
+                              passWord:(NSString *)passWord
+                           orderNumber:(NSString *)orderNumber
+                                finish:(void (^)(id responseObject))success
+                                 error:(void (^)(NSError *error))failure;
+
+/**
  *  添加收藏
  *
  *  @param shangID     商品ID

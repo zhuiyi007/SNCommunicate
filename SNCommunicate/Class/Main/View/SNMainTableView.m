@@ -16,7 +16,7 @@
     if (self) {
         self.backgroundColor = SNMainBackgroundColor;
         self.showsVerticalScrollIndicator = NO;
-        self.contentOffset = CGPointMake(0, 64);
+        self.contentOffset = CGPointMake(0, 0);
     }
     return self;
 }

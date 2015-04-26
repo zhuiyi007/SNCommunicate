@@ -49,7 +49,7 @@
     [SNHttpTool getSMSSendWithPhoneNumber:self.phoneNumberLabel.text
                                    finish:^(id responseObject) {
         [MBProgressHUD hideHUD];
-        if ([responseObject[@"status"] isEqualToString:@"0"]) {
+        if ([responseObject[@"status"] integerValue] == 0) {
             [MBProgressHUD showError:responseObject[@"ret_msg"]];
             return;
         }

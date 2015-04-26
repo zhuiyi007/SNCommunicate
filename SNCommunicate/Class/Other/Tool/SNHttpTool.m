@@ -253,6 +253,42 @@ static SNHttpTool *sharedInstance = nil;
                                                     error:(void (^)(NSError *error))failure];
 }
 
+/**
+ *  顾客完成订单
+ *
+ *  @param phoneNumber 顾客手机号
+ *  @param passWord    密码
+ *  @param orderNumber 订单号
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)completeDingDanWithPhoneNumber:(NSString *)phoneNumber
+                            passWord:(NSString *)passWord
+                         orderNumber:(NSString *)orderNumber
+                              finish:(void (^)(id responseObject))success
+                               error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<CompleteDingDan xmlns=\"http://123.57.206.151/\">"
+     "<TEL>%@</TEL>"
+     "<PWD>%@</PWD>"
+     "<orderNum>%@</orderNum>"
+     "</CompleteDingDan>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , phoneNumber, passWord, orderNumber];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSCompleteDingDan.asmx"
+                                            andSoapAction:@"CompleteDingDan"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
 
 
 /**

@@ -14,12 +14,11 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
-//        CGFloat imageViewW = 48;
-//        CGFloat imageViewH = 48;
-//        CGFloat imageViewX = (self.height - imageViewW) * 0.5;
-//        CGFloat imageViewY = 0;
-//        [self.imageView setFrame:CGRectMake(imageViewX, imageViewY, imageViewW, imageViewH)];
+        [self setBackgroundColor:SNMainGreenColor];
+        [self.layer setMasksToBounds:YES];
+        [self.layer setBorderWidth:2.0]; //边框宽度
+        [self.layer setBorderColor:SNCGColor(119, 119, 119)]; //边框颜色
+        [self setTitleColor:SNMainBackgroundColor forState:UIControlStateNormal];
     }
     return self;
 }

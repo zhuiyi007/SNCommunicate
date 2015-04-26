@@ -67,10 +67,10 @@
     [SNHttpTool selectCollectionWithPhoneNumber:self.userModel.phoneNumber passWord:self.userModel.passWord finish:^(id responseObject) {
         [MBProgressHUD hideHUD];
         SNLog(@"%@", responseObject);
-        if (responseObject[@"status"] == 0) {
-            [MBProgressHUD showError:responseObject[@"ret_msg"]];
-        }
         self.customerCollect = [SNCustomerCollect objectWithKeyValues:responseObject];
+        if (self.customerCollect.status == 0) {
+            [MBProgressHUD showError:self.customerCollect.ret_msg];
+        }
         [self.tableView reloadData];
     } error:^(NSError *error) {
         [MBProgressHUD hideHUD];

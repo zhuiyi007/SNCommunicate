@@ -35,17 +35,18 @@
 - (void)addChildSubViews
 {
     SNCommunicateMainViewController *main = [[SNCommunicateMainViewController alloc] init];
-    [self setupChildViewControll:main title:@"肃宁通" normalImage:[UIImage imageNamed:@"ktv"] selectImage:[UIImage imageNamed:@"ktv"]];
+    [self setupChildViewControll:main title:@"肃宁通" tabBarTitle:@"首页" normalImage:nil selectImage:nil];
 
     SNMYViewController *my = [[SNMYViewController alloc] init];
-    [self setupChildViewControll:my title:@"中心" normalImage:[UIImage imageNamed:@"jiudian"] selectImage:[UIImage imageNamed:@"jiudian"]];
+    [self setupChildViewControll:my title:@"中心" tabBarTitle:@"中心" normalImage:nil selectImage:nil];
 }
 
 #pragma mark - 添加子控制器
-- (void)setupChildViewControll:(UIViewController *)vc title:(NSString *)title normalImage:(UIImage *)norImage selectImage:(UIImage *)selImage
+- (void)setupChildViewControll:(UIViewController *)vc title:(NSString *)title tabBarTitle:(NSString *)tabBarTitle normalImage:(UIImage *)norImage selectImage:(UIImage *)selImage
 {
     SNMainNavigationController *nav = [[SNMainNavigationController alloc] initWithRootViewController:vc];
     vc.title = title;
+    vc.tabBarItem.title = tabBarTitle;
     vc.tabBarItem.image = [norImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     vc.tabBarItem.selectedImage = [selImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     

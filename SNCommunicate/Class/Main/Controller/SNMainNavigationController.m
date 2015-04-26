@@ -21,9 +21,9 @@
 +(void)initialize
 {
     UINavigationBar *bar = [UINavigationBar appearanceWhenContainedIn:[SNMainNavigationController class], nil];
-    [bar setBarTintColor:SNColor(49, 78, 92)];
+    [bar setBarTintColor:SNMainGreenColor];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    dict[NSForegroundColorAttributeName] = SNColor(255, 235, 213);
+    dict[NSForegroundColorAttributeName] = SNMainBackgroundColor;
     dict[NSFontAttributeName] = [UIFont systemFontOfSize:20];
     [bar setTitleTextAttributes:dict];
 }

@@ -9,6 +9,7 @@
 #import "SNMYViewController.h"
 #import "SNAccountViewController.h"
 #import "SNCustomerCollectionViewController.h"
+#import "SNCustomerOrderViewController.h"
 #import "SNMainCellData.h"
 #import "SNMainCell.h"
 #import "SNTabBar.h"
@@ -67,7 +68,7 @@
 
 - (void)clickMyTabBar:(NSNotification *)notification
 {
-    if (self.isChecking && self.userModel.login) {
+    if (self.isChecking) {
         return;
     }
     UIStoryboard *accountStoryBoard = [UIStoryboard storyboardWithName:@"SNAccountViewController" bundle:nil];
@@ -213,9 +214,21 @@
                 break;
             }
             case 1:
+            {
+                SNCustomerOrderViewController *vc = [[SNCustomerOrderViewController alloc] init];
+                vc.title = @"未完成订单";
+                vc.isFinishedOrder = NO;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
+            }
             default:
+            {
+                SNCustomerOrderViewController *vc = [[SNCustomerOrderViewController alloc] init];
+                vc.title = @"已完成订单";
+                vc.isFinishedOrder = YES;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
+            }
         }
     }
     else {
