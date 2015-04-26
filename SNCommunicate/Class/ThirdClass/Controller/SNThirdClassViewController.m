@@ -59,8 +59,8 @@
 {
     [MBProgressHUD showMessage:@"正在加载"];
     [SNHttpTool getBusinessWithType:self.type
-                                Big:0
-                              Small:0
+                         startIndex:2
+                           pageSize:20
                              finish:^(NSDictionary *responseObject) {
         [MBProgressHUD hideHUD];
         SNLog(@"%@",responseObject);

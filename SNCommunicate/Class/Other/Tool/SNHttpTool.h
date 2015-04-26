@@ -13,15 +13,15 @@
 /**
  *  获取商家列表
  *
- *  @param type    商家类型
- *  @param big     最大值,下拉加载
- *  @param small   最小值,上啦刷新
- *  @param success 成功回掉
- *  @param failure 失败回掉
+ *  @param type             商家类型
+ *  @param startIndex       最大值,下拉加载
+ *  @param pageSize         最小值,上啦刷新
+ *  @param success          成功回掉
+ *  @param failure          失败回掉
  */
 + (void)getBusinessWithType:(NSString *)type
-                        Big:(NSInteger)big
-                      Small:(NSInteger)small
+                 startIndex:(NSInteger)startIndex
+                   pageSize:(NSInteger)pageSize
                      finish:(void (^)(id responseObject))success
                       error:(void (^)(NSError *error))failure;
 
@@ -41,6 +41,91 @@
                                     Small:(NSInteger)small
                                    finish:(void (^)(id responseObject))success
                                     error:(void (^)(NSError *error))failure;
+
+/**
+ *  登录顾客获取商品详情
+ *
+ *  @param shangID     商品ID
+ *  @param Type        类型
+ *  @param phoneNumber 电话号码
+ *  @param passWord    密码
+ *  @param big         最大值,下拉加载
+ *  @param small       最小值,上啦刷新
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)getShangInfoByIdentityWithShangID:(NSString *)shangID
+                                  andType:(NSString *)Type
+                              phoneNumber:(NSString *)phoneNumber
+                                 passWord:(NSString *)passWord
+                                      Big:(NSInteger)big
+                                    Small:(NSInteger)small
+                                   finish:(void (^)(id responseObject))success
+                                    error:(void (^)(NSError *error))failure;
+
+/**
+ *  添加订单
+ *
+ *  @param shangID     商品ID
+ *  @param phoneNumber 电话号码
+ *  @param passWord    密码
+ *  @param count       数量
+ *  @param productID   产品ID
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)addDingDanWithShangID:(NSString *)shangID
+                  phoneNumber:(NSString *)phoneNumber
+                     passWord:(NSString *)passWord
+                        count:(NSInteger)count
+                    productID:(NSInteger)productID
+                       finish:(void (^)(id responseObject))success
+                        error:(void (^)(NSError *error))failure;
+
+/**
+ *  添加收藏
+ *
+ *  @param shangID     商品ID
+ *  @param passWord    密码
+ *  @param phoneNumber 电话
+ *  @param shangName   商家名称
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)insertCollectionWithShangID:(NSString *)shangID
+                           passWord:(NSString *)passWord
+                        phoneNumber:(NSString *)phoneNumber
+                          shangName:(NSString *)shangName
+                             finish:(void (^)(id responseObject))success
+                              error:(void (^)(NSError *error))failure;
+
+/**
+ *  查询收藏夹
+ *
+ *  @param phoneNumber 顾客电话号码
+ *  @param passWord    密码
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)selectCollectionWithPhoneNumber:(NSString *)phoneNumber
+                               passWord:(NSString *)passWord
+                                 finish:(void (^)(id responseObject))success
+                                  error:(void (^)(NSError *error))failure;
+
+/**
+ *  删除收藏夹
+ *
+ *  @param ID          收藏夹ID
+ *  @param phoneNumber 电话号码
+ *  @param passWord    密码
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)deleteCollectionWithID:(NSString *)ID
+                   phoneNumber:(NSString *)phoneNumber
+                      passWord:(NSString *)passWord
+                        finish:(void (^)(id responseObject))success
+                         error:(void (^)(NSError *error))failure;
 
 /**
  *  获取注册手机验证码

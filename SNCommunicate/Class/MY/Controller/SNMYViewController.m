@@ -8,10 +8,12 @@
 
 #import "SNMYViewController.h"
 #import "SNAccountViewController.h"
+#import "SNCustomerCollectionViewController.h"
 #import "SNMainCellData.h"
 #import "SNMainCell.h"
+#import "SNTabBar.h"
 
-@interface SNMYViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface SNMYViewController ()<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @property (nonatomic, strong) SNUserModel *userModel;
 
@@ -20,6 +22,8 @@
 @property (nonatomic, strong) NSArray *dataArray;
 
 @property (nonatomic, strong) SNMainTableView *tableView;
+
+@property (nonatomic, assign) BOOL isCustomer;
 
 @end
 
@@ -63,7 +67,7 @@
 
 - (void)clickMyTabBar:(NSNotification *)notification
 {
-    if (self.isChecking) {
+    if (self.isChecking && self.userModel.login) {
         return;
     }
     UIStoryboard *accountStoryBoard = [UIStoryboard storyboardWithName:@"SNAccountViewController" bundle:nil];
@@ -91,6 +95,7 @@
             }
             [MBProgressHUD showSuccess:@"验证成功"];
             [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:nil];
+            self.userModel.login = YES;
             self.isChecking = YES;
                                           }
                                            error:^(NSError *error) {
@@ -106,10 +111,12 @@
     if ([self.userModel.phoneNumber length] == 11) {
         // 顾客身份
         [self createCustomerUI];
+        self.isCustomer = YES;
     }
     else {
         // 商家身份
         [self createShopUI];
+        self.isCustomer = NO;
     }
     [self.tableView reloadData];
 }
@@ -154,14 +161,27 @@
 
 - (void)rightBarButtonPressed
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您真的要注销么?" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"您真的要注销么?"
+                          message:nil
+                          delegate:self
+                          cancelButtonTitle:@"取消"
+                          otherButtonTitles:@"确定", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        return;
+    }
+    else {
         [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+        [SNUserModel clearUserModel];
         self.isChecking = NO;
         [self clickMyTabBar:nil];
-    }];
-    [alert addAction:action];
-    [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -180,6 +200,33 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 56;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.isCustomer) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                SNCustomerCollectionViewController *vc = [[SNCustomerCollectionViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case 1:
+                break;
+            default:
+                break;
+        }
+    }
+    else {
+        switch (indexPath.row) {
+            case 0:
+                break;
+            default:
+                break;
+        }
+    }
+    [[SNTabBar tabBar] hiddenTabBar];
 }
 
 /*

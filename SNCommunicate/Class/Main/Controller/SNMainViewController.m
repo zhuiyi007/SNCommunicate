@@ -26,6 +26,8 @@
     [self setupTabBar];
     // 2. 添加子控件
     [self addChildSubViews];
+    // 3.判断是否登录
+    [self login];
     
 }
 
@@ -37,12 +39,6 @@
 
     SNMYViewController *my = [[SNMYViewController alloc] init];
     [self setupChildViewControll:my title:@"中心" normalImage:[UIImage imageNamed:@"jiudian"] selectImage:[UIImage imageNamed:@"jiudian"]];
-    
-    // 加载storyboard
-//    UIStoryboard *accountStoryBoard = [UIStoryboard storyboardWithName:@"SNAccountViewController" bundle:nil];
-//    SNAccountViewController *account = [accountStoryBoard instantiateInitialViewController];
-//    account.delegate = self;
-//    [self setupChildViewControll:account title:@"账户" normalImage:[UIImage imageNamed:@"jiudian"] selectImage:[UIImage imageNamed:@"jiudian"]];
 }
 
 #pragma mark - 添加子控制器
@@ -76,5 +72,33 @@
     if (index == 1) {
         [[NSNotificationCenter defaultCenter] postNotificationName:SNClickMyTabBar object:self];
     }
+}
+
+- (void)login
+{
+    if (![[NSFileManager defaultManager] fileExistsAtPath:SNUserInfoPath]) {
+        // 本地没有缓存信息
+        return;
+    }
+    else { // 本地有缓存信息,直接给服务器验证
+        [SNArchiverManger unarchiveUserModel];
+        SNUserModel *userModel = [SNUserModel sharedInstance];
+        [SNHttpTool customerLoginWithPhoneNumber:userModel.phoneNumber
+                                        passWord:userModel.passWord
+                                          finish:^(id responseObject) {
+                                              [MBProgressHUD hideHUD];
+                                              SNLog(@"%@", responseObject);
+                                              if ([responseObject[@"status"] integerValue] == 0) {
+                                                  // 验证不通过,删除本地缓存
+                                                  [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+                                                  return;
+                                              }
+                                              userModel.login = YES;
+                                          }
+                                           error:^(NSError *error) {
+                                               SNLog(@"%@", error);
+                                           }];
+    }
+    
 }
 @end

@@ -16,6 +16,7 @@
     if (self) {
         self.backgroundColor = SNMainBackgroundColor;
         self.showsVerticalScrollIndicator = NO;
+        self.contentOffset = CGPointMake(0, 64);
     }
     return self;
 }
@@ -25,6 +26,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = SNMainBackgroundColor;
+        self.showsVerticalScrollIndicator = NO;
     }
     return self;
 }
@@ -34,6 +36,7 @@
     self = [super init];
     if (self) {
         self.backgroundColor = SNMainBackgroundColor;
+        self.showsVerticalScrollIndicator = NO;
     }
     return self;
 }

@@ -107,7 +107,7 @@
         SNLog(@"商品详情图片加载完毕");
     }];
     self.goodsName.text = detailsData.Name;
-    self.goodsPrice.text = detailsData.UnitPrice;
+    self.goodsPrice.text = detailsData.unitPrice;
     self.goodsDisCount.text = [NSString stringWithFormat:@"%@折", detailsData.disCount];
     self.goodsDetails.text = [NSString stringWithFormat:@"商品详情\n%@", detailsData.Description];
     self.superView = (SNDetailsScrollView *)self.superview;

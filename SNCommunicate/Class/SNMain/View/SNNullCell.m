@@ -23,13 +23,9 @@
     SNNullCell *cell = [[SNNullCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     cell.backgroundColor = SNMainBackgroundColor;
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.center = cell.center;
     return cell;
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    self.textLabel.center = self.center;
-}
 
 @end

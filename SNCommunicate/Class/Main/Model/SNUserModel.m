@@ -38,4 +38,9 @@ MJCodingImplementation
     return sharedInstance;
 }
 
++ (void)clearUserModel
+{
+    sharedInstance = nil;
+}
+
 @end

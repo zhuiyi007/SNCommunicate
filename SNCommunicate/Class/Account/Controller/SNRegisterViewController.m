@@ -84,6 +84,7 @@
         self.userModel.phoneNumber = self.phoneNumberLabel.text;
         self.userModel.passWord = self.passWordLabel.text;
         self.userModel.name = self.nameLabel.text;
+        self.userModel.login = YES;
         [SNArchiverManger archiveWithUserModel:[SNUserModel sharedInstance]];
         [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:nil];
          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -166,5 +167,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

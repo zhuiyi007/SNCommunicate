@@ -14,6 +14,10 @@
 @property (nonatomic, strong) NSString *passWord;
 @property (nonatomic, strong) NSString *name;
 
+@property (nonatomic, assign, getter = isLogin) BOOL login;
+
 + (SNUserModel *)sharedInstance;
+
++ (void)clearUserModel;
 
 @end

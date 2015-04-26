@@ -46,12 +46,6 @@
     [self.view endEditing:YES];
 }
 
-- (void)dealloc
-{
-    SNLog(@"-------dealloc------");
-    SNLog(@"=======%s======", __func__);
-}
-
 @end
 
 

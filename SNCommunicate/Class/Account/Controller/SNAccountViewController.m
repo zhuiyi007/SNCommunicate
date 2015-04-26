@@ -60,6 +60,7 @@
         self.userModel.passWord = self.passWordLabel.text;
         self.userModel.name = responseObject[@"ret_msg"];
         [SNArchiverManger archiveWithUserModel:[SNUserModel sharedInstance]];
+        self.userModel.login = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:nil];
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -108,5 +109,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end
