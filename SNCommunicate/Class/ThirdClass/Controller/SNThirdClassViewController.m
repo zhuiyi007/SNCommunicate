@@ -10,15 +10,14 @@
 #import "SNShopData.h"
 #import "SNThirdCellData.h"
 #import "SNThirdClassCell.h"
-#import "SNNullCell.h"
 #import "SNDetailsViewController.h"
+#import "MJRefresh.h"
 
 @interface SNThirdClassViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) SNThirdCellData *data;
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) UITableView *tableView;
-
 @property (nonatomic, strong) NSString *ret_msg;
 
 @end
@@ -32,7 +31,9 @@
     
     [self createUI];
     
-    [self setData];
+    [self loadMoreDatas];
+    
+    [self setRefresh];
     
 }
 
@@ -41,31 +42,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSMutableArray *)dataArray
+{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
+
 - (void)createUI
 {
-    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:CGRectZero
-                                                                  style:UITableViewStylePlain];
-    
-    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    tableView.contentInset = UIEdgeInsetsZero;
-    
+    SNMainTableView *tableView = [[SNMainTableView alloc] init];
+    tableView.frame = SNTableViewFrame;
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView = tableView;
+    [self.tableView.footer setBackgroundColor:SNMainBackgroundColor];
     [self.view addSubview:tableView];
+    
 }
 
 - (void)setData
 {
     [MBProgressHUD showMessage:@"正在加载"];
     [SNHttpTool getBusinessWithType:self.type
-                         startIndex:2
-                           pageSize:20
+                         startIndex:0
+                           pageSize:6
                              finish:^(NSDictionary *responseObject) {
         [MBProgressHUD hideHUD];
         SNLog(@"%@",responseObject);
         self.data = [SNThirdCellData objectWithKeyValues:responseObject];
-        self.dataArray = self.data.result;
+        self.dataArray = [NSMutableArray arrayWithArray:self.data.result];
         [self.tableView setFrame:SNTableViewFrame];
         if (!responseObject[@"result"]) {
             self.ret_msg = responseObject[@"ret_msg"];
@@ -82,21 +90,51 @@
     }];
 }
 
+- (void)setRefresh
+{
+    [self.tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(loadMoreDatas)];
+    self.tableView.footer.automaticallyRefresh = NO;
+}
+
+- (void)loadMoreDatas
+{
+    NSInteger startIndex = [[[self.dataArray lastObject] rowNum] integerValue] + 1;
+    NSInteger pageSize = startIndex + 20;
+    if (![self.dataArray count]) {
+        startIndex = 0;
+        pageSize = 20;
+    }
+    [SNHttpTool getBusinessWithType:self.type
+                         startIndex:startIndex
+                           pageSize:pageSize
+                             finish:^(NSDictionary *responseObject) {
+                                 SNLog(@"%@",responseObject);
+                                 self.data = [SNThirdCellData objectWithKeyValues:responseObject];
+                                 if ([self.data.status integerValue] == 0) {
+                                     [self.tableView.footer noticeNoMoreData];
+//                                     [self.tableView.footer endRefreshing];
+//                                     self.tableView.footer.hidden = YES;
+                                     return;
+                                 }
+                                 [self.dataArray addObjectsFromArray:self.data.result];
+                                 SNLog(@"-----------%zd---------", [self.dataArray count]);
+                                 [self.tableView reloadData];
+                                 [self.tableView.footer endRefreshing];
+                             } error:^(NSError *error) {
+                                 [MBProgressHUD showError:@"加载失败"];
+                                 self.ret_msg = @"加载失败";
+                                 [self.tableView reloadData];
+                                 SNLog(@"SNThirdClassViewController---%@",error);
+                             }];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (![self.dataArray count]) {
-        return 1;
-    }
     return [self.dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.ret_msg) {
-        SNNullCell *cell = [SNNullCell createCellWithIdentifier:nil];
-        cell.textLabel.text = self.ret_msg;
-        return cell;
-    }
     NSString *identifier = @"SNEntertainmentCell";
     SNThirdClassCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {

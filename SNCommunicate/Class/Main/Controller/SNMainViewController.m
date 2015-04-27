@@ -58,7 +58,6 @@
 - (void)setupTabBar
 {
     SNTabBar *customTabBar = [SNTabBar tabBar];
-    customTabBar.backgroundColor=[UIColor greenColor];
     customTabBar.frame = self.tabBar.frame;
     self.customTabBar = customTabBar;
     customTabBar.myDelegate = self;

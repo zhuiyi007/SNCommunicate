@@ -16,7 +16,7 @@
     if (self) {
         self.backgroundColor = SNMainBackgroundColor;
         self.showsVerticalScrollIndicator = NO;
-        self.contentOffset = CGPointMake(0, 0);
+//        self.contentOffset = CGPointMake(0, 0);
     }
     return self;
 }
@@ -27,6 +27,7 @@
     if (self) {
         self.backgroundColor = SNMainBackgroundColor;
         self.showsVerticalScrollIndicator = NO;
+//        self.contentOffset = CGPointMake(0, 0);
     }
     return self;
 }
@@ -37,13 +38,14 @@
     if (self) {
         self.backgroundColor = SNMainBackgroundColor;
         self.showsVerticalScrollIndicator = NO;
+//        self.contentOffset = CGPointMake(0, 0);
     }
     return self;
 }
 
 - (UIEdgeInsets)contentInset
 {
-    return UIEdgeInsetsMake(0, 0, -49, 0);
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 

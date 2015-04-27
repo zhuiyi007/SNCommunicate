@@ -32,9 +32,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor greenColor]];
-    
-    
     self.tableView = [[SNMainTableView alloc]
                                   initWithFrame:CGRectMake(0,
                                                            0,

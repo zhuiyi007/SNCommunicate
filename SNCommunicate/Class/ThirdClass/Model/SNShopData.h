@@ -18,8 +18,11 @@
 @property (nonatomic, strong) NSString *Point;
 @property (nonatomic, strong) NSString *TEL;
 @property (nonatomic, strong) NSString *Type;
+@property (nonatomic, strong) NSString *Visit;
+@property (nonatomic, strong) NSString *money;
 @property (nonatomic, strong) NSString *picURL;
 @property (nonatomic, strong) NSString *registerDate;
+@property (nonatomic, strong) NSString *rowNum;
 @property (nonatomic, strong) NSString *state;
 
 //+ (instancetype)dataWithDict:(NSDictionary *)dict;
