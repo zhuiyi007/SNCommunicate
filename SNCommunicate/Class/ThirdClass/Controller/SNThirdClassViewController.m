@@ -101,6 +101,7 @@
     NSInteger startIndex = [[[self.dataArray lastObject] rowNum] integerValue] + 1;
     NSInteger pageSize = startIndex + 20;
     if (![self.dataArray count]) {
+        [MBProgressHUD showMessage:@"正在加载"];
         startIndex = 0;
         pageSize = 20;
     }
@@ -108,6 +109,7 @@
                          startIndex:startIndex
                            pageSize:pageSize
                              finish:^(NSDictionary *responseObject) {
+                                 [MBProgressHUD hideHUD];
                                  SNLog(@"%@",responseObject);
                                  self.data = [SNThirdCellData objectWithKeyValues:responseObject];
                                  if ([self.data.status integerValue] == 0) {

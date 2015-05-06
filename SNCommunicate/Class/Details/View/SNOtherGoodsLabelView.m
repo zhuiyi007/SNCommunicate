@@ -42,6 +42,12 @@
     [self setNeedsLayout];
 }
 
+#warning 点击其他商品更换详情
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    SNLog(@"%@", self.name.text);
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];

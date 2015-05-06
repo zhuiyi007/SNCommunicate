@@ -41,7 +41,6 @@
 {
     self = [super init];
     if (self) {
-        self.showsVerticalScrollIndicator = NO;
         [self createUI];
     }
     return self;
@@ -104,7 +103,6 @@
     self.otherGoodsView.y = CGRectGetMaxY(self.shopDetailsView.frame);
     
     [self setFrame:CGRectMake(0, 0, SNScreenBounds.width, SNScreenBounds.height - 49)];
-    [self setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self setContentSize:CGSizeMake(0, CGRectGetMaxY(self.otherGoodsView.frame))];
 }
 

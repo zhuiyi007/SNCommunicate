@@ -33,10 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView = [[SNMainTableView alloc]
-                                  initWithFrame:CGRectMake(0,
-                                                           0,
-                                                           SNScreenBounds.width,
-                                                           SNScreenBounds.height - 49)
+                                  initWithFrame:SNTableViewFrame
                                   style:UITableViewStylePlain];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.tableView];
@@ -110,13 +107,14 @@
         // 顾客身份
         [self createCustomerUI];
         self.isCustomer = YES;
+        [self.tableView reloadData];
     }
     else {
         // 商家身份
         [self createShopUI];
         self.isCustomer = NO;
+        [self.tableView reloadData];
     }
-    [self.tableView reloadData];
 }
 
 - (void)createCustomerUI

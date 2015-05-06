@@ -67,23 +67,23 @@
     [self addSubview:self.shopName];
     
     self.shopTEL = [[UILabel alloc] init];
-    self.shopName.numberOfLines = 0;
+    self.shopTEL.numberOfLines = 0;
     [self addSubview:self.shopTEL];
     
     self.shopAddress = [[UILabel alloc] init];
-    self.shopName.numberOfLines = 0;
+    self.shopAddress.numberOfLines = 0;
     [self addSubview:self.shopAddress];
     
     self.shopLevel = [[UILabel alloc] init];
-    self.shopName.numberOfLines = 0;
+    self.shopLevel.numberOfLines = 0;
     [self addSubview:self.shopLevel];
     
     self.shopType = [[UILabel alloc] init];
-    self.shopName.numberOfLines = 0;
+    self.shopType.numberOfLines = 0;
     [self addSubview:self.shopType];
     
     self.shopDetail = [[UILabel alloc] init];
-    self.shopName.numberOfLines = 0;
+    self.shopDetail.numberOfLines = 0;
     [self addSubview:self.shopDetail];
 }
 
@@ -91,20 +91,20 @@
 {
     _shopData = shopData;
     self.shopName.text = [NSString stringWithFormat:@"商家名称:%@",shopData.Name];
-    self.shopTEL.text = [NSString stringWithFormat:@"电话:%@",shopData.TEL];
-    self.shopAddress.text = [NSString stringWithFormat:@"地址:%@",shopData.Address];
-    self.shopLevel.text = [NSString stringWithFormat:@"级别:%@",shopData.Level];
-    self.shopType.text = [NSString stringWithFormat:@"类型:%@",shopData.Type];
-    self.shopDetail.text = [NSString stringWithFormat:@"简介:%@",shopData.Introduction];
+    self.shopTEL.text = [NSString stringWithFormat:@"   电话:%@",shopData.TEL];
+    self.shopAddress.text = [NSString stringWithFormat:@"   地址:%@",shopData.Address];
+    self.shopLevel.text = [NSString stringWithFormat:@"   级别:%@",shopData.Level];
+    self.shopType.text = [NSString stringWithFormat:@"   类型:%@",shopData.Type];
+    self.shopDetail.text = [NSString stringWithFormat:@"   简介:%@",shopData.Introduction];
     self.superView = (SNDetailsScrollView *)self.superview;
     [self setNeedsLayout];
 }
 
+#warning 待调整
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     CGFloat margin = 10;
-    CGFloat leftMargin = 43;
     CGFloat lineMargin = 5;
     CGFloat width = SNScreenBounds.width - 2 * margin;
     
@@ -113,20 +113,23 @@
     [self.shopName setFrame:CGRectMake(margin, CGRectGetMaxY(self.lineView.frame) + margin, width, 0)];
     [self.shopName sizeToFit];
     
-    [self.shopTEL setFrame:CGRectMake(leftMargin, CGRectGetMaxY(self.shopName.frame) + lineMargin, width, 0)];
+    [self.shopTEL setFrame:CGRectMake(margin, CGRectGetMaxY(self.shopName.frame) + lineMargin, width, 0)];
     [self.shopTEL sizeToFit];
     
-    [self.shopAddress setFrame:CGRectMake(leftMargin, CGRectGetMaxY(self.shopTEL.frame) + lineMargin, width, 0)];
+    [self.shopAddress setFrame:CGRectMake(margin, CGRectGetMaxY(self.shopTEL.frame) + lineMargin, width, 0)];
     [self.shopAddress sizeToFit];
     
-    [self.shopLevel setFrame:CGRectMake(leftMargin, CGRectGetMaxY(self.shopAddress.frame) + lineMargin, width, 0)];
+    [self.shopLevel setFrame:CGRectMake(margin, CGRectGetMaxY(self.shopAddress.frame) + lineMargin, width, 0)];
     [self.shopLevel sizeToFit];
     
-    [self.shopType setFrame:CGRectMake(leftMargin, CGRectGetMaxY(self.shopLevel.frame) + lineMargin, width, 0)];
+    [self.shopType setFrame:CGRectMake(margin, CGRectGetMaxY(self.shopLevel.frame) + lineMargin, width, 0)];
     [self.shopType sizeToFit];
     
-    [self.shopDetail setFrame:CGRectMake(leftMargin, CGRectGetMaxY(self.shopType.frame) + lineMargin, width, 0)];
-    [self.shopDetail sizeToFit];
+    NSDictionary *dict = @{NSFontAttributeName : [UIFont systemFontOfSize:[UIFont systemFontSize]]};
+    
+    CGRect rect = [self.shopData.Introduction boundingRectWithSize:CGSizeMake(width, NSIntegerMax) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil];
+    
+    [self.shopDetail setFrame:CGRectMake(margin, CGRectGetMaxY(self.shopType.frame) + lineMargin, width, rect.size.height)];
     
     [self setFrame:CGRectMake(0, self.y, SNScreenBounds.width, CGRectGetMaxY(self.shopDetail.frame) + margin)];
     

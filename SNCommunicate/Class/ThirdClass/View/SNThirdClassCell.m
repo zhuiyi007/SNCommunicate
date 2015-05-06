@@ -14,9 +14,21 @@
 @property (nonatomic, strong) UILabel *introduction;
 @property (nonatomic, strong) UILabel *address;
 
-// 点赞label
-@property (nonatomic, strong) UILabel *commendView;
+// 级别view
+@property (nonatomic, strong) UIView *levelView;
+@property (nonatomic, strong) UILabel *levelLabel;
+@property (nonatomic, strong) UIImageView *levelImage;
+
+// 点赞view
+@property (nonatomic, strong) UIView *commendView;
+@property (nonatomic, strong) UILabel *commendCount;
 @property (nonatomic, strong) UIImageView *commendImage;
+
+// 访问量view
+@property (nonatomic, strong) UIView *visitView;
+@property (nonatomic, strong) UILabel *visitLable;
+@property (nonatomic, strong) UILabel *visitCount;
+
 
 
 
@@ -41,15 +53,8 @@
         [self.image setContentMode:UIViewContentModeScaleToFill];
         [self.contentView addSubview:self.image];
         
-        self.commendView = [[UILabel alloc] init];
-        self.commendView.textAlignment = NSTextAlignmentCenter;
-        [self.contentView addSubview:self.commendView];
-        
-        self.commendImage = [[UIImageView alloc] init];
-        [self.commendImage setContentMode:UIViewContentModeScaleToFill];
-        [self.contentView addSubview:self.commendImage];
-        
         self.name = [[UILabel alloc] init];
+        [self.name setFont:[UIFont systemFontOfSize:24.0]];
         [self.contentView addSubview:self.name];
         
         self.introduction = [[UILabel alloc] init];
@@ -57,6 +62,53 @@
         
         self.address = [[UILabel alloc] init];
         [self.contentView addSubview:self.address];
+        
+        // 商家级别
+        self.levelView = [[UIView alloc] init];
+        [self.contentView addSubview:self.levelView];
+        
+        self.levelLabel = [[UILabel alloc] init];
+        self.levelLabel.text = @"级别";
+        self.levelLabel.textAlignment = NSTextAlignmentLeft;
+        [self.levelLabel setFont:[UIFont systemFontOfSize:12.0]];
+        [self.levelLabel setFrame:CGRectMake(0, 0, 35, 20)];
+        [self.levelView addSubview:self.levelLabel];
+        
+        self.levelImage = [[UIImageView alloc] init];
+        [self.levelImage setContentMode:UIViewContentModeScaleToFill];
+        [self.levelImage setFrame:CGRectMake(35, 0, 25, 20)];
+        [self.levelView addSubview:self.levelImage];
+        
+        // 点赞数量
+        self.commendView = [[UIView alloc] init];
+        [self.contentView addSubview:self.commendView];
+        
+        self.commendCount = [[UILabel alloc] init];
+        self.commendCount.textAlignment = NSTextAlignmentLeft;
+        [self.commendCount setFrame:CGRectMake(0, 0, 35, 20)];
+        [self.commendView addSubview:self.commendCount];
+        
+        self.commendImage = [[UIImageView alloc] init];
+        [self.commendImage setContentMode:UIViewContentModeScaleToFill];
+        [self.commendImage setFrame:CGRectMake(35, 0, 25, 20)];
+        [self.commendView addSubview:self.commendImage];
+        
+        // 访问量
+        self.visitView = [[UIView alloc] init];
+        [self.contentView addSubview:self.visitView];
+        
+        self.visitLable = [[UILabel alloc] init];
+        self.visitLable.text = @"访问量";
+        self.visitLable.textAlignment = NSTextAlignmentLeft;
+        [self.visitLable setFont:[UIFont systemFontOfSize:12.0]];
+        [self.visitLable setFrame:CGRectMake(0, 0, 50, 20)];
+        [self.visitView addSubview:self.visitLable];
+        
+        self.visitCount = [[UILabel alloc] init];
+        self.visitCount.textAlignment = NSTextAlignmentLeft;
+        [self.visitCount setFrame:CGRectMake(50, 0, 10, 20)];
+        [self.visitView addSubview:self.visitCount];
+        
         
     }
     return self;
@@ -76,13 +128,17 @@
     [self.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"img_default"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         SNLog(@"三级页面图片加载完毕");
     }];
-    
-    self.commendView.text = data.Point;
-    [self.commendImage setImage:[UIImage imageNamed:@"zan"]];
-    
     self.name.text = data.Name;
     self.introduction.text = data.Introduction;
     self.address.text = data.Address;
+
+    [self.levelImage setImage:[UIImage imageNamed:data.Level]];
+    
+    self.commendCount.text = data.Point;
+    [self.commendImage setImage:[UIImage imageNamed:@"zan"]];
+    
+    self.visitCount.text = data.Visit;
+    
 }
 
 - (void)layoutSubviews
@@ -90,26 +146,30 @@
     [super layoutSubviews];
     CGFloat margin = 10;
     
-    [self.image setFrame:CGRectMake(margin, 25, 80, 80)];
+    [self.image setFrame:CGRectMake(margin, (self.height - 80) * 0.5, 120, 80)];
     
-    CGFloat commendH = 20;
-    CGFloat commendImageX = SNScreenBounds.width - commendH - margin;
-    CGFloat commendImageY = (self.height - commendH) / 2.0;
-    [self.commendImage setFrame:CGRectMake(commendImageX, commendImageY, commendH, commendH)];
+    CGFloat rightViewW = 60;
+    CGFloat rightViewH = 20;
+    CGFloat rightViewX = SNScreenBounds.width - margin - rightViewW;
+    CGFloat rightViewY = ( self.height - 3 * rightViewH - 2 * margin ) * 0.5;
     
-    [self.commendView sizeToFit];
-    CGFloat commendViewW = self.commendView.height + 10;
-    CGFloat commendViewX = commendImageX - commendViewW - margin;
-    [self.commendView setFrame:CGRectMake(commendViewX, commendImageY, commendViewW, commendH)];
+    [self.levelView setFrame:CGRectMake(rightViewX, rightViewY, rightViewW, rightViewH)];
     
+    [self.commendView setFrame:CGRectMake(rightViewX, CGRectGetMaxY(self.levelView.frame) + margin, rightViewW, rightViewH)];
+    
+    [self.visitView setFrame:CGRectMake(rightViewX, CGRectGetMaxY(self.commendView.frame) + margin, rightViewW, rightViewH)];
+    
+    CGFloat contentW = rightViewX - CGRectGetMaxX(self.image.frame) - 2 * margin;
+    CGFloat contentH = 40;
     CGFloat contentX = CGRectGetMaxX(self.image.frame) + margin;
-    CGFloat contentW = commendViewX - CGRectGetMaxX(self.image.frame) - 2 * margin;
-    CGFloat contentH = 20;
-    [self.name setFrame:CGRectMake(contentX, margin, contentW, contentH)];
+    CGFloat contentY = (self.height - contentH) * 0.5;
+    [self.name setFrame:CGRectMake(contentX, contentY, contentW, contentH)];
+
     
-    [self.introduction setFrame:CGRectMake(contentX , CGRectGetMaxY(self.name.frame) + margin, contentW, contentH)];
-    
-    [self.address setFrame:CGRectMake(contentX, CGRectGetMaxY(self.introduction.frame) + margin, contentW, contentH)];
+    // 商店简介和地址暂时不要
+//    [self.introduction setFrame:CGRectMake(contentX , CGRectGetMaxY(self.name.frame) + margin, contentW, contentH)];
+//    
+//    [self.address setFrame:CGRectMake(contentX, CGRectGetMaxY(self.introduction.frame) + margin, contentW, contentH)];
     
 }
 

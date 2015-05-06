@@ -1306,7 +1306,7 @@
 				INFOPLIST_FILE = SNCommunicate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "d9e0d7cc-efbb-46dc-ac8d-050e3da2c4db";
 			};
 			name = Debug;
 		};
@@ -1319,7 +1319,7 @@
 				INFOPLIST_FILE = SNCommunicate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "d9e0d7cc-efbb-46dc-ac8d-050e3da2c4db";
 			};
 			name = Release;
 		};

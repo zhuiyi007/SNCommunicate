@@ -49,11 +49,6 @@
     }
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    SNLog(@"123");
-}
-
 - (void)layoutSubviews
 {
     [super layoutSubviews];
