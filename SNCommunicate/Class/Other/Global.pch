@@ -27,5 +27,6 @@
 #import "SNNetManger.h"
 #import "SNUserModel.h"
 #import "SNArchiverManger.h"
+#import "SNBaseViewController.h"
 
 #endif

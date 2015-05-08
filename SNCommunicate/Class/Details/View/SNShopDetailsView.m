@@ -84,6 +84,7 @@
     
     self.shopDetail = [[UILabel alloc] init];
     self.shopDetail.numberOfLines = 0;
+    self.shopDetail.textAlignment = NSTextAlignmentLeft;
     [self addSubview:self.shopDetail];
 }
 
@@ -125,11 +126,13 @@
     [self.shopType setFrame:CGRectMake(margin, CGRectGetMaxY(self.shopLevel.frame) + lineMargin, width, 0)];
     [self.shopType sizeToFit];
     
-    NSDictionary *dict = @{NSFontAttributeName : [UIFont systemFontOfSize:[UIFont systemFontSize]]};
+//    NSDictionary *dict = @{NSFontAttributeName : [UIFont systemFontOfSize:[UIFont systemFontSize]]};
+//    
+//    CGRect rect = [self.shopData.Introduction boundingRectWithSize:CGSizeMake(width, NSIntegerMax) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil];
     
-    CGRect rect = [self.shopData.Introduction boundingRectWithSize:CGSizeMake(width, NSIntegerMax) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil];
+    [self.shopDetail setFrame:CGRectMake(margin, CGRectGetMaxY(self.shopType.frame) + lineMargin, width, 0)];
+    [self.shopDetail sizeToFit];
     
-    [self.shopDetail setFrame:CGRectMake(margin, CGRectGetMaxY(self.shopType.frame) + lineMargin, width, rect.size.height)];
     
     [self setFrame:CGRectMake(0, self.y, SNScreenBounds.width, CGRectGetMaxY(self.shopDetail.frame) + margin)];
     

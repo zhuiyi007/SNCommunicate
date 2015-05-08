@@ -25,6 +25,9 @@
 
 - (void)setOtherGoodsArray:(NSArray *)otherGoodsArray
 {
+    for (UIView *view in self.subviews) {
+        [view removeFromSuperview];
+    }
     _otherGoodsArray = otherGoodsArray;
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SNScreenBounds.width, 1)];
     [lineView setBackgroundColor:[UIColor blackColor]];

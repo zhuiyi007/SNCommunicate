@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNCommunicateMainViewController : UIViewController
+@interface SNCommunicateMainViewController : SNBaseViewController
 
 @end

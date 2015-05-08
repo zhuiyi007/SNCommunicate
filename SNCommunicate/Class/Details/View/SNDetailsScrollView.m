@@ -62,7 +62,7 @@
     [self addSubview:self.otherGoodsView];
 }
 
-- (void)setDataArray:(NSArray *)dataArray
+- (void)setDataArray:(NSMutableArray *)dataArray
 {
     _dataArray = dataArray;
     self.goodsDetailsView.detailsData = self.dataArray[0];
@@ -93,6 +93,14 @@
 }
 
 
+- (void)setClickedDetail:(SNDetailsData *)clickedDetail
+{
+    _clickedDetail = clickedDetail;
+    NSMutableArray *tempArray = self.dataArray;
+    [tempArray exchangeObjectAtIndex:0 withObjectAtIndex:[self.dataArray indexOfObject:clickedDetail]];
+    self.dataArray = tempArray;
+    [self setContentOffset:CGPointMake(0, 0) animated:YES];
+}
 
 
 - (void)layoutSubviews

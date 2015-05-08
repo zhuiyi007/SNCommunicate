@@ -12,8 +12,10 @@
 
 @interface SNDetailsScrollView : UIScrollView
 
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) SNShopData *shopData;
+
+@property (nonatomic, strong) SNDetailsData *clickedDetail;
 
 
 @property (nonatomic, assign) CGFloat goodsDetailsViewHeight;

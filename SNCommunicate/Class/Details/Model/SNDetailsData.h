@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString *ID;
 @property (nonatomic, strong) NSString *Name;
 @property (nonatomic, strong) NSString *Pic;
+@property (nonatomic, strong) NSString *Pic2;
+@property (nonatomic, strong) NSString *Pic3;
 @property (nonatomic, strong) NSString *Store;
 @property (nonatomic, strong) NSString *disCount;
 @property (nonatomic, strong) NSString *shangID;

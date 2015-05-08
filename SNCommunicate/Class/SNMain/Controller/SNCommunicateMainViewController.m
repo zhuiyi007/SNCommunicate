@@ -13,10 +13,11 @@
 #import "SNMainCellData.h"
 
 #import "SNTabBar.h"
+#import "SNRoundPlayScrollView.h"
 
-const NSInteger ImageCount = 4;
+static NSInteger ImageCount = 4;
 
-@interface SNCommunicateMainViewController ()<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SNCommunicateMainViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) UIScrollView *scrollView;
 @property (nonatomic, weak) UIPageControl *pageControl;
@@ -44,20 +45,8 @@ const NSInteger ImageCount = 4;
 #pragma mark - UI界面搭建
 - (void)createUI
 {
-    // UIScrollView
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SNScreenBounds.width, 220)];
-    scrollView.delegate = self;
-    [self.view addSubview:scrollView];
-    self.scrollView = scrollView;
-    [self fillScrollView];
-    
-    self.timer = [NSTimer timerWithTimeInterval:5
-                                         target:self
-                                       selector:@selector(nextImage)
-                                       userInfo:nil
-                                        repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:self.timer
-                              forMode:NSRunLoopCommonModes];
+    self.scrollView = [SNRoundPlayScrollView createRoundPlayScrollViewWithRect:CGRectMake(0, 0, SNScreenBounds.width, 220) imagesURLArray:@[@"http://123.57.206.151:80/img/pro_1_31430821377.jpg", @"http://123.57.206.151:80/img/pro2_1_31430821377.jpg", @"http://123.57.206.151:80/img/pro3_1_31430821377.jpg"] placeholderImage:@"default_ad_1"];
+    [self.view addSubview:self.scrollView];
     
     // TableView
     CGFloat tableViewY = CGRectGetMaxY(self.scrollView.frame);
@@ -71,44 +60,6 @@ const NSInteger ImageCount = 4;
     tableView.delegate = self;
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:tableView];
-}
-
-- (void)fillScrollView
-{
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    CGFloat imageW = SNScreenBounds.width;
-    CGFloat imageH = 220;
-    CGFloat imageY = 0;
-    for (NSInteger index = 1; index <= ImageCount; index++) {
-        CGFloat imageX = (index - 1) * imageW;
-        UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.frame = CGRectMake(imageX, imageY, imageW, imageH);
-        imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ktv%ld", (long)index]];
-        [self.scrollView addSubview:imageView];
-    }
-    self.scrollView.contentSize = CGSizeMake(imageW * ImageCount, 0);
-    self.scrollView.pagingEnabled = YES;
-    
-    UIPageControl *pageControl = [[UIPageControl alloc] init];
-    pageControl.centerX = self.scrollView.centerX;
-    pageControl.y = self.scrollView.height - 10;
-    [self.view addSubview:pageControl];
-    self.pageControl = pageControl;
-    self.pageControl.numberOfPages = ImageCount;
-}
-
-- (void)nextImage
-{
-    // 1.下一页
-    if (self.pageControl.currentPage == ImageCount - 1) {
-        self.pageControl.currentPage = 0;
-    } else {
-        self.pageControl.currentPage++;
-    }
-    
-    // 2.设置滚动
-    CGPoint offset = CGPointMake(self.scrollView.frame.size.width * self.pageControl.currentPage, 0);
-    [self.scrollView setContentOffset:offset animated:YES];
 }
 
 - (NSArray *)dataArray
@@ -132,25 +83,6 @@ const NSInteger ImageCount = 4;
         _dataArray = [NSArray arrayWithObjects:data1, data2, data3, data4, data5, nil];
     }
     return _dataArray;
-}
-
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    self.timer = [NSTimer timerWithTimeInterval:1.5 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    [self.timer invalidate];
-    self.timer = nil;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if (self.timer) return;
-    self.pageControl.currentPage = (scrollView.contentOffset.x + scrollView.frame.size.width * 0.5) / scrollView.frame.size.width;
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource

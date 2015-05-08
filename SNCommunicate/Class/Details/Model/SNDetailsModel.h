@@ -10,7 +10,7 @@
 
 @interface SNDetailsModel : NSObject
 
-@property (nonatomic, strong) NSArray *result;
+@property (nonatomic, strong) NSMutableArray *result;
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *ret_msg;
 

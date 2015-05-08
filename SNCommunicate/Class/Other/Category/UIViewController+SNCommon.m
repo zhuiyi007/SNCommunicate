@@ -20,6 +20,7 @@
 @implementation UIViewController (SNCommon)
 @dynamic homeShotImageV;
 
+
 - (void)showProgressHUD
 {
     [self hideProgressHUD];

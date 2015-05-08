@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNRegisterViewController : UIViewController
+@interface SNRegisterViewController : SNBaseViewController
 
 @end

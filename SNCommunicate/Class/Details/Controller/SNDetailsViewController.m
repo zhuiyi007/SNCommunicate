@@ -7,7 +7,6 @@
 //
 
 #import "SNDetailsViewController.h"
-#import "SNDetailsData.h"
 #import "SNDetailsModel.h"
 #import "SNDetailsScrollView.h"
 #import "SNMainTableView.h"
@@ -17,7 +16,6 @@
 
 @property (nonatomic, strong) SNDetailsScrollView *scrollView;
 @property (nonatomic, strong) SNDetailsModel *detailsModel;
-@property (nonatomic, strong) SNDetailsData *detailsData;
 @property (nonatomic, strong) SNUserModel *userModel;
 
 

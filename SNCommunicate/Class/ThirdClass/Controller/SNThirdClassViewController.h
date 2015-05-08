@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNThirdClassViewController : UIViewController
+@interface SNThirdClassViewController : SNBaseViewController
 
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, assign) NSInteger *big;

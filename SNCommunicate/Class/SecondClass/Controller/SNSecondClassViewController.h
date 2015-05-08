@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNSecondClassViewController : UIViewController
+@interface SNSecondClassViewController : SNBaseViewController
 
 @property (nonatomic, strong) NSString *plist;
 

@@ -8,8 +8,9 @@
 
 #import "SNGoodsDetailsView.h"
 #import "SNDetailsScrollView.h"
+#import "SNRoundPlayScrollView.h"
 
-@interface SNGoodsDetailsView()
+@interface SNGoodsDetailsView()//<UIScrollViewDelegate>
 /**
  *  分割线
  */
@@ -17,7 +18,7 @@
 /**
  *  头部图片
  */
-@property (nonatomic, strong) UIImageView *topImageView;
+@property (nonatomic, strong) SNRoundPlayScrollView *topScrollView;
 /**
  *  商品名称
  */
@@ -65,13 +66,9 @@
 - (void)goodsDetailsView
 {
     
-    // 顶部图片
-    UIImageView *topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SNScreenBounds.width, 220)];
-    self.topImageView = topImageView;
-    [self addSubview:topImageView];
-    
     self.lineView = [[UIView alloc] init];
     [self.lineView setBackgroundColor:[UIColor blackColor]];
+    [self addSubview:self.lineView];
     
     self.goodsName = [[UILabel alloc] init];
     [self addSubview:self.goodsName];
@@ -98,35 +95,32 @@
     
 }
 
+
 - (void)setDetailsData:(SNDetailsData *)detailsData
 {
     _detailsData = detailsData;
     
-    NSURL *url = [NSURL URLWithString:detailsData.Pic];
-    [self.topImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"default_ad_1"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        SNLog(@"商品详情图片加载完毕");
-    }];
+    self.topScrollView = [SNRoundPlayScrollView createRoundPlayScrollViewWithRect:CGRectMake(0, 0, SNScreenBounds.width, 220) imagesURLArray:@[detailsData.Pic, detailsData.Pic2, detailsData.Pic3] placeholderImage:@"default_ad_1"];
+    [self addSubview:self.topScrollView];
+    
     self.goodsName.text = detailsData.Name;
     self.goodsPrice.text = [NSString stringWithFormat:@"%@ 元", detailsData.unitPrice];
     self.goodsDisCount.text = [NSString stringWithFormat:@"%@折", detailsData.disCount];
     self.goodsDetails.text = [NSString stringWithFormat:@"商品详情\n%@", detailsData.Description];
     self.superView = (SNDetailsScrollView *)self.superview;
     [self setNeedsLayout];
-    
-    
 }
-
 
 - (void)layoutSubviews
 {
+    
     [super layoutSubviews];
+    CGFloat screenWidth = SNScreenBounds.width;
     CGFloat margin = 10;
     CGFloat width = 0;
     CGFloat height = 0;
     
-    [self.topImageView setFrame:CGRectMake(0, 64, SNScreenBounds.width, 220)];
-    
-    [self.lineView setFrame:CGRectMake(0, CGRectGetMaxY(self.topImageView.frame), SNScreenBounds.width, 1)];
+    [self.lineView setFrame:CGRectMake(0, CGRectGetMaxY(self.topScrollView.frame), screenWidth, 1)];
     
     [self.goodsName setFrame:CGRectMake(margin, CGRectGetMaxY(self.lineView.frame) + margin, 0, 0)];
     [self.goodsName sizeToFit];
@@ -134,17 +128,17 @@
     [self.goodsPrice sizeToFit];
     width = self.goodsPrice.width;
     height = self.goodsPrice.height;
-    [self.goodsPrice setFrame:CGRectMake(SNScreenBounds.width - width - 10, CGRectGetMaxY(self.lineView.frame) + margin, width, height)];
+    [self.goodsPrice setFrame:CGRectMake(screenWidth - width - 10, CGRectGetMaxY(self.lineView.frame) + margin, width, height)];
     
     [self.goodsDisCount sizeToFit];
     width = self.goodsDisCount.width;
     height = self.goodsDisCount.height;
-    [self.goodsDisCount setFrame:CGRectMake(SNScreenBounds.width - width - 10, CGRectGetMaxY(self.goodsPrice.frame) + margin, width, height)];
+    [self.goodsDisCount setFrame:CGRectMake(screenWidth - width - 10, CGRectGetMaxY(self.goodsPrice.frame) + margin, width, height)];
     
-    [self.goodsDetails setFrame:CGRectMake(margin, CGRectGetMaxY(self.goodsDisCount.frame) + margin, SNScreenBounds.width - 2 * margin, 0)];
+    [self.goodsDetails setFrame:CGRectMake(margin, CGRectGetMaxY(self.goodsDisCount.frame) + margin, screenWidth - 2 * margin, 0)];
     [self.goodsDetails sizeToFit];
     
-    [self setFrame:CGRectMake(0, 0, SNScreenBounds.width, CGRectGetMaxY(self.goodsDetails.frame) + margin)];
+    [self setFrame:CGRectMake(0, 0, screenWidth, CGRectGetMaxY(self.goodsDetails.frame) + margin)];
     
     self.superView.goodsDetailsViewHeight = self.height;
 

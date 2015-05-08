@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNCustomerCollectionViewController : UIViewController
+@interface SNCustomerCollectionViewController : SNBaseViewController
 
 @end

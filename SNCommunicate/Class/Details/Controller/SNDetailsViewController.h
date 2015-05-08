@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SNShopData.h"
+#import "SNDetailsData.h"
 
-@interface SNDetailsViewController : UIViewController
+@interface SNDetailsViewController : SNBaseViewController
 @property (nonatomic, strong) SNShopData *shopData;
+@property (nonatomic, strong) SNDetailsData *detailsData;
 
 @end

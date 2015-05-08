@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNCustomerOrderViewController : UIViewController
+@interface SNCustomerOrderViewController : SNBaseViewController
 
 @property (nonatomic, assign) BOOL isFinishedOrder;
 

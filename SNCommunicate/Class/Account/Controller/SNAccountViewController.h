@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNAccountViewController : UIViewController
+@interface SNAccountViewController : SNBaseViewController
 
 
 @end

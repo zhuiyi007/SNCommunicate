@@ -7,6 +7,9 @@
 //
 
 #import "SNOtherGoodsLabelView.h"
+#import "SNDetailsScrollView.h"
+#import "SNDetailsViewController.h"
+
 @interface SNOtherGoodsLabelView ()
 
 @property (nonatomic, strong) UILabel *name;
@@ -45,7 +48,31 @@
 #warning 点击其他商品更换详情
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    SNLog(@"%@", self.name.text);
+    for (UIView *view = [self superview]; view; view = [view superview]) {
+        UIResponder *nextResponder = [view nextResponder];
+        if ([nextResponder isKindOfClass:[SNDetailsViewController class]]) {
+            SNDetailsViewController *tempController = (SNDetailsViewController *)nextResponder;
+            tempController.detailsData = self.data;
+        }
+        if ([view isKindOfClass:[SNDetailsScrollView class]]) {
+            SNDetailsScrollView *tempView = (SNDetailsScrollView *)view;
+            tempView.clickedDetail = self.data;
+        }
+    }
+}
+
+- (void)viewController {
+    for (UIView *view = [self superview]; view; view = [view superview]) {
+        UIResponder *nextResponder = [view nextResponder];
+        if ([nextResponder isKindOfClass:[SNDetailsViewController class]]) {
+            SNDetailsViewController *tempController = (SNDetailsViewController *)nextResponder;
+            tempController.detailsData = self.data;
+        }
+        if ([view isKindOfClass:[SNDetailsScrollView class]]) {
+            SNDetailsScrollView *tempView = (SNDetailsScrollView *)view;
+            tempView.clickedDetail = self.data;
+        }
+    }
 }
 
 - (void)layoutSubviews

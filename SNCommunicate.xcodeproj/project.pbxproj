@@ -104,6 +104,8 @@
 		3C85F3D01AED148C00481F0C /* SNCustomerOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3CF1AED148C00481F0C /* SNCustomerOrder.m */; };
 		3C85F3D31AED14D600481F0C /* SNCustomerOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3D21AED14D600481F0C /* SNCustomerOrderModel.m */; };
 		3C85F3D61AED168500481F0C /* SNCustomerOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3D51AED168500481F0C /* SNCustomerOrderCell.m */; };
+		3C962BB51AFC8562002341E4 /* SNRoundPlayScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BB41AFC8562002341E4 /* SNRoundPlayScrollView.m */; };
+		3C962BB81AFCA33A002341E4 /* SNBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BB71AFCA33A002341E4 /* SNBaseViewController.m */; };
 		3CB68AFB1AE78DBC0092E9F6 /* SNNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */; };
 		3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */; };
 		3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */; };
@@ -320,6 +322,10 @@
 		3C85F3D21AED14D600481F0C /* SNCustomerOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCustomerOrderModel.m; sourceTree = "<group>"; };
 		3C85F3D41AED168500481F0C /* SNCustomerOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCustomerOrderCell.h; sourceTree = "<group>"; };
 		3C85F3D51AED168500481F0C /* SNCustomerOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCustomerOrderCell.m; sourceTree = "<group>"; };
+		3C962BB31AFC8562002341E4 /* SNRoundPlayScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRoundPlayScrollView.h; sourceTree = "<group>"; };
+		3C962BB41AFC8562002341E4 /* SNRoundPlayScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRoundPlayScrollView.m; sourceTree = "<group>"; };
+		3C962BB61AFCA33A002341E4 /* SNBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBaseViewController.h; sourceTree = "<group>"; };
+		3C962BB71AFCA33A002341E4 /* SNBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBaseViewController.m; sourceTree = "<group>"; };
 		3CB68AF91AE78DBC0092E9F6 /* SNNullCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNNullCell.h; path = ../../SNMain/View/SNNullCell.h; sourceTree = "<group>"; };
 		3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNNullCell.m; path = ../../SNMain/View/SNNullCell.m; sourceTree = "<group>"; };
 		3CC62C9A1AE0ECC0004D7C8D /* UIViewController+SNCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNCommon.h"; sourceTree = "<group>"; };
@@ -503,6 +509,8 @@
 				3C49E6B81ADB55710008085F /* SNMainViewController.m */,
 				3C49E7471ADB59E20008085F /* SNMainNavigationController.h */,
 				3C49E7481ADB59E20008085F /* SNMainNavigationController.m */,
+				3C962BB61AFCA33A002341E4 /* SNBaseViewController.h */,
+				3C962BB71AFCA33A002341E4 /* SNBaseViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -529,6 +537,8 @@
 				3C782A821ADD0D4900DD0FEC /* SNMainTableView.m */,
 				3CC62CA41AE1084D004D7C8D /* SNMainTextField.h */,
 				3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */,
+				3C962BB31AFC8562002341E4 /* SNRoundPlayScrollView.h */,
+				3C962BB41AFC8562002341E4 /* SNRoundPlayScrollView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1144,6 +1154,7 @@
 				3C782AC71ADD380E00DD0FEC /* MJTypeEncoding.m in Sources */,
 				3C49E7261ADB55710008085F /* UIScrollView+MJExtension.m in Sources */,
 				3C214BFC1AE247C10064644A /* SNDetailsScrollView.m in Sources */,
+				3C962BB51AFC8562002341E4 /* SNRoundPlayScrollView.m in Sources */,
 				3C782ACA1ADD380E00DD0FEC /* NSObject+MJMember.m in Sources */,
 				3C49E71E1ADB55710008085F /* MJRefreshComponent.m in Sources */,
 				3C214C081AE2A4E40064644A /* SNOtherGoodsView.m in Sources */,
@@ -1162,6 +1173,7 @@
 				3C71E88D1AE3723300056A7C /* SNNetManger.m in Sources */,
 				3C49E7531ADB62380008085F /* SNCommunicateMainViewController.m in Sources */,
 				3C49E7351ADB55710008085F /* UIImage+WebP.m in Sources */,
+				3C962BB81AFCA33A002341E4 /* SNBaseViewController.m in Sources */,
 				3C49E7311ADB55710008085F /* SDWebImagePrefetcher.m in Sources */,
 				3C49E7271ADB55710008085F /* UIScrollView+MJRefresh.m in Sources */,
 				3C49E7651ADB67C40008085F /* MBProgressHUD.m in Sources */,
