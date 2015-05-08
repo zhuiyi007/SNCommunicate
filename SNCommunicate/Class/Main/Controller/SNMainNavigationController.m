@@ -46,6 +46,10 @@
     [self popViewControllerAnimated:YES];
     if (self.childViewControllers.count == 1 || [self.topViewController isKindOfClass:[SNAccountViewController class]]) {
         [[SNTabBar tabBar] showTabBar];
+        if ([[self.childViewControllers firstObject] isKindOfClass:[SNCommunicateMainViewController class]]) {
+            SNCommunicateMainViewController *vc = [self.childViewControllers firstObject];
+            [vc.scrollView startTimer];
+        }
     }
 }
 

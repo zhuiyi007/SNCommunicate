@@ -10,6 +10,13 @@
 
 @interface SNRoundPlayScrollView : UIScrollView
 
-+ (instancetype)createRoundPlayScrollViewWithRect:(CGRect)rect imagesURLArray:(NSArray *)imagesURLArray placeholderImage:(NSString *)placeholderImage;
++ (instancetype)createRoundPlayScrollViewWithFrame:(CGRect)frame placeholderImage:(NSString *)placeholderImage;
+
+
+- (void)insertImageWithImagesURLArray:(NSArray *)imagesURLArray placeholderImage:(NSString *)placeholderImage;
+
+- (void)endTimer;
+
+- (void)startTimer;
 
 @end

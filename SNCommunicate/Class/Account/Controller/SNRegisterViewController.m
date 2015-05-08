@@ -8,6 +8,7 @@
 
 #import "SNRegisterViewController.h"
 #import "SNMainTextField.h"
+#import "SNBase64.h"
 
 @interface SNRegisterViewController ()
 @property (weak, nonatomic) IBOutlet SNMainTextField *phoneNumberLabel;
@@ -28,8 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:SNMainBackgroundColor];
     self.title = @"注册";
-    self.count = 10;
+    self.count = 60;
     // Do any additional setup after loading the view.
 }
 
@@ -67,9 +69,10 @@
     if (![self isDataLegal]) {
         return;
     }
+    NSString *passWord = [SNBase64 base64StringFromText:self.passWordLabel.text];
     [MBProgressHUD showMessage:@"正在注册"];
     [SNHttpTool customerRegisterWithPhoneNumber:self.phoneNumberLabel.text
-                                       passWord:self.passWordLabel.text
+                                       passWord:passWord
                                            name:self.nameLabel.text
                                    securityCode:self.securityCodeLabel.text
                                          finish:^(id responseObject) {
@@ -82,7 +85,7 @@
         [MBProgressHUD showSuccess:@"注册成功"];
         self.userModel = [SNUserModel sharedInstance];
         self.userModel.phoneNumber = self.phoneNumberLabel.text;
-        self.userModel.passWord = self.passWordLabel.text;
+        self.userModel.passWord = passWord;
         self.userModel.name = self.nameLabel.text;
         self.userModel.login = YES;
         [SNArchiverManger archiveWithUserModel:[SNUserModel sharedInstance]];

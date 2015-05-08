@@ -10,6 +10,18 @@
 
 @interface SNHttpTool : NSObject
 
+
+/**
+ *  根据级别返回商家信息
+ *
+ *  @param level   商家级别
+ *  @param success 成功回掉
+ *  @param failure 失败回掉
+ */
++ (void)getLevelOfBusinessWithLevel:(NSString *)level
+                             finish:(void (^)(id responseObject))success
+                              error:(void (^)(NSError *error))failure;
+
 /**
  *  获取商家列表
  *

@@ -106,6 +106,7 @@
 		3C85F3D61AED168500481F0C /* SNCustomerOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3D51AED168500481F0C /* SNCustomerOrderCell.m */; };
 		3C962BB51AFC8562002341E4 /* SNRoundPlayScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BB41AFC8562002341E4 /* SNRoundPlayScrollView.m */; };
 		3C962BB81AFCA33A002341E4 /* SNBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BB71AFCA33A002341E4 /* SNBaseViewController.m */; };
+		3C962BBB1AFCC4B5002341E4 /* SNBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BBA1AFCC4B5002341E4 /* SNBase64.m */; };
 		3CB68AFB1AE78DBC0092E9F6 /* SNNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */; };
 		3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */; };
 		3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */; };
@@ -326,6 +327,8 @@
 		3C962BB41AFC8562002341E4 /* SNRoundPlayScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRoundPlayScrollView.m; sourceTree = "<group>"; };
 		3C962BB61AFCA33A002341E4 /* SNBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBaseViewController.h; sourceTree = "<group>"; };
 		3C962BB71AFCA33A002341E4 /* SNBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBaseViewController.m; sourceTree = "<group>"; };
+		3C962BB91AFCC4B5002341E4 /* SNBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBase64.h; sourceTree = "<group>"; };
+		3C962BBA1AFCC4B5002341E4 /* SNBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBase64.m; sourceTree = "<group>"; };
 		3CB68AF91AE78DBC0092E9F6 /* SNNullCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNNullCell.h; path = ../../SNMain/View/SNNullCell.h; sourceTree = "<group>"; };
 		3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNNullCell.m; path = ../../SNMain/View/SNNullCell.m; sourceTree = "<group>"; };
 		3CC62C9A1AE0ECC0004D7C8D /* UIViewController+SNCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNCommon.h"; sourceTree = "<group>"; };
@@ -852,6 +855,8 @@
 				3C71E88C1AE3723300056A7C /* SNNetManger.m */,
 				3C34749F1AE39835009FBB68 /* SNArchiverManger.h */,
 				3C3474A01AE39835009FBB68 /* SNArchiverManger.m */,
+				3C962BB91AFCC4B5002341E4 /* SNBase64.h */,
+				3C962BBA1AFCC4B5002341E4 /* SNBase64.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1191,6 +1196,7 @@
 				3C49E7241ADB55710008085F /* MJRefreshLegendFooter.m in Sources */,
 				3C782AC81ADD380E00DD0FEC /* NSObject+MJCoding.m in Sources */,
 				3C49E72A1ADB55710008085F /* NSData+ImageContentType.m in Sources */,
+				3C962BBB1AFCC4B5002341E4 /* SNBase64.m in Sources */,
 				3C49E7251ADB55710008085F /* MJRefreshLegendHeader.m in Sources */,
 				3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */,
 				3C34749E1AE3922D009FBB68 /* SNUserModel.m in Sources */,

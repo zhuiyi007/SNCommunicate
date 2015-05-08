@@ -27,7 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:SNMainBackgroundColor];
     
     [self createUI];
     
@@ -63,33 +62,6 @@
     
 }
 
-- (void)setData
-{
-    [MBProgressHUD showMessage:@"正在加载"];
-    [SNHttpTool getBusinessWithType:self.type
-                         startIndex:0
-                           pageSize:6
-                             finish:^(NSDictionary *responseObject) {
-        [MBProgressHUD hideHUD];
-        SNLog(@"%@",responseObject);
-        self.data = [SNThirdCellData objectWithKeyValues:responseObject];
-        self.dataArray = [NSMutableArray arrayWithArray:self.data.result];
-        [self.tableView setFrame:SNTableViewFrame];
-        if (!responseObject[@"result"]) {
-            self.ret_msg = responseObject[@"ret_msg"];
-            [self.tableView reloadData];
-            return;
-        }
-        [self.tableView reloadData];
-    } error:^(NSError *error) {
-        [MBProgressHUD hideHUD];
-        [MBProgressHUD showError:@"加载失败"];
-        self.ret_msg = @"加载失败";
-        [self.tableView reloadData];
-        SNLog(@"SNThirdClassViewController---%@",error);
-    }];
-}
-
 - (void)setRefresh
 {
     [self.tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(loadMoreDatas)];
@@ -114,8 +86,6 @@
                                  self.data = [SNThirdCellData objectWithKeyValues:responseObject];
                                  if ([self.data.status integerValue] == 0) {
                                      [self.tableView.footer noticeNoMoreData];
-//                                     [self.tableView.footer endRefreshing];
-//                                     self.tableView.footer.hidden = YES;
                                      return;
                                  }
                                  [self.dataArray addObjectsFromArray:self.data.result];

@@ -15,47 +15,56 @@
 
 @implementation SNRoundPlayScrollView
 
-
-+ (instancetype)createRoundPlayScrollViewWithRect:(CGRect)rect imagesURLArray:(NSArray *)imagesURLArray placeholderImage:(NSString *)placeholderImage
++ (SNRoundPlayScrollView *)createRoundPlayScrollViewWithFrame:(CGRect)frame placeholderImage:(NSString *)placeholderImage
 {
-    CGFloat width = rect.size.width;
-    CGFloat height = rect.size.height;
+    SNRoundPlayScrollView *scrollView = [[self alloc] initWithFrame:frame];
+    return scrollView;
+}
+
+
+- (void)insertImageWithImagesURLArray:(NSArray *)imagesURLArray placeholderImage:(NSString *)placeholderImage
+{
+    CGFloat width = self.width;
+    CGFloat height = self.height;
     NSInteger count = [imagesURLArray count];
-    SNRoundPlayScrollView *scrollView = [[self alloc] init];
-    scrollView.count = count;
-    scrollView.delegate = scrollView;
-    scrollView.showsHorizontalScrollIndicator = NO;
-    scrollView.pagingEnabled = YES;
+    self.count = count;
+    self.delegate = self;
+    self.showsHorizontalScrollIndicator = NO;
+    self.pagingEnabled = YES;
     
-    [scrollView startTimer];
+    [self startTimer];
     
-    [scrollView setFrame:rect];
-    [scrollView setContentSize:CGSizeMake(width * count, 0)];
+    [self setContentSize:CGSizeMake(width * count, 0)];
     for (NSInteger index = 0; index < count; index ++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
         imageView.x = index * width;
         imageView.y = 0;
         [imageView setContentMode:UIViewContentModeScaleToFill];
         [imageView sd_setImageWithURL:imagesURLArray[index] placeholderImage:[UIImage imageNamed:placeholderImage]];
-        [scrollView addSubview:imageView];
+        [self addSubview:imageView];
     }
-    scrollView.pageControl = [[UIPageControl alloc] init];
-    scrollView.pageControl.numberOfPages = count;
-    [scrollView addSubview:scrollView.pageControl];
-    scrollView.pageControl.centerX = scrollView.contentOffset.x + scrollView.width * 0.5;
-    scrollView.pageControl.y = scrollView.height - 10;
-    return scrollView;
+    self.pageControl = [[UIPageControl alloc] init];
+    self.pageControl.numberOfPages = count;
+    [self addSubview:self.pageControl];
+    self.pageControl.centerX = self.contentOffset.x + self.width * 0.5;
+    self.pageControl.y = self.height - 10;
 }
 
 - (void)startTimer
 {
-    self.timer = [NSTimer timerWithTimeInterval:5
+    self.timer = [NSTimer timerWithTimeInterval:1
                                                target:self
                                              selector:@selector(nextImage)
                                              userInfo:nil
                                               repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.timer
                               forMode:NSRunLoopCommonModes];
+}
+
+- (void)endTimer
+{
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 - (void)scrollViewDidEndDecelerating:(SNRoundPlayScrollView *)scrollView
@@ -66,8 +75,7 @@
 
 - (void)scrollViewWillBeginDragging:(SNRoundPlayScrollView *)scrollView
 {
-    [scrollView.timer invalidate];
-    scrollView.timer = nil;
+    [scrollView endTimer];
 }
 
 - (void)scrollViewDidScroll:(SNRoundPlayScrollView *)scrollView

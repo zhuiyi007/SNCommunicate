@@ -45,7 +45,6 @@
     [self setNeedsLayout];
 }
 
-#warning 点击其他商品更换详情
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UIView *view = [self superview]; view; view = [view superview]) {

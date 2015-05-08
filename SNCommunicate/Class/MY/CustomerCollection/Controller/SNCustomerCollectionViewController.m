@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view setBackgroundColor:SNMainBackgroundColor];
+//    [self.view setBackgroundColor:SNMainBackgroundColor];
     self.title = @"我的收藏";
     [self createUI];
     [self setData];

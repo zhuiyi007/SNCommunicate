@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:SNMainBackgroundColor];
+//    [self.view setBackgroundColor:SNMainBackgroundColor];
     // Do any additional setup after loading the view.
     [self createUI];
     [self setData];

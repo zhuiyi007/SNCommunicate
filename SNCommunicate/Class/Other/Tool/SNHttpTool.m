@@ -52,6 +52,36 @@ static SNHttpTool *sharedInstance = nil;
 }
 
 /**
+ *  根据级别返回商家信息
+ *
+ *  @param level   商家级别
+ *  @param success 成功回掉
+ *  @param failure 失败回掉
+ */
++ (void)getLevelOfBusinessWithLevel:(NSString *)level
+                             finish:(void (^)(id responseObject))success
+                              error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<getLevelOfBusiness xmlns=\"http://123.57.206.151/\">"
+     "<Level>%@</Level>"
+     "</getLevelOfBusiness>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , level];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSGetLevel.asmx"
+                                            andSoapAction:@"getLevelOfBusiness"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
+/**
  *  获取商家列表
  *
  *  @param type             商家类型

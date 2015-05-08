@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SNRoundPlayScrollView.h"
 
 @interface SNCommunicateMainViewController : SNBaseViewController
+
+@property (nonatomic, strong) SNRoundPlayScrollView *scrollView;
 
 @end

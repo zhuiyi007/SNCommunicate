@@ -31,7 +31,7 @@
 
 #pragma 常用frame
 
-#define SNTableViewFrame CGRectMake(0, 0, SNScreenBounds.width, SNScreenBounds.height)
+#define SNTableViewFrame CGRectMake(0, 0, SNScreenBounds.width, SNScreenBounds.height - 64)
 
 #pragma 路径
 // 用户信息路径

@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:SNMainBackgroundColor];
+//    [self.view setBackgroundColor:SNMainBackgroundColor];
     [self setData];
     
     // Do any additional setup after loading the view.
@@ -56,7 +56,7 @@
 
 - (void)createNilUI
 {
-    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:CGRectMake(0, 64, SNScreenBounds.width, SNScreenBounds.height - 64) style:UITableViewStylePlain];
+    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:SNTableViewFrame style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -66,7 +66,7 @@
 - (void)reserveView
 {
     CGFloat height = 49;
-    UIView *reserveView = [[UIView alloc] initWithFrame:CGRectMake(0, SNScreenBounds.height - 49, SNScreenBounds.width, height)];
+    UIView *reserveView = [[UIView alloc] initWithFrame:CGRectMake(0, SNScreenBounds.height - 49 - 64, SNScreenBounds.width, height)];
     [self.view addSubview:reserveView];
     
     UIButton *reserveButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -164,7 +164,7 @@
             [MBProgressHUD hideHUD];
             SNLog(@"%@",responseObject);
             self.detailsModel = [SNDetailsModel objectWithKeyValues:responseObject];
-            if (self.detailsModel.ret_msg) {
+            if ([self.detailsModel.status integerValue] == 0) {
                 [self createNilUI];
                 return;
             }
@@ -211,6 +211,7 @@
     cell.textLabel.text = self.detailsModel.ret_msg;
     return cell;
 }
+
 
 
 /*

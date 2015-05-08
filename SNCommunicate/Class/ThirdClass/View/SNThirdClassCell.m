@@ -55,6 +55,7 @@
         
         self.name = [[UILabel alloc] init];
         [self.name setFont:[UIFont systemFontOfSize:24.0]];
+        self.name.numberOfLines = 0;
         [self.contentView addSubview:self.name];
         
         self.introduction = [[UILabel alloc] init];
@@ -160,10 +161,10 @@
     [self.visitView setFrame:CGRectMake(rightViewX, CGRectGetMaxY(self.commendView.frame) + margin, rightViewW, rightViewH)];
     
     CGFloat contentW = rightViewX - CGRectGetMaxX(self.image.frame) - 2 * margin;
-    CGFloat contentH = 40;
     CGFloat contentX = CGRectGetMaxX(self.image.frame) + margin;
-    CGFloat contentY = (self.height - contentH) * 0.5;
-    [self.name setFrame:CGRectMake(contentX, contentY, contentW, contentH)];
+    [self.name setFrame:CGRectMake(contentX, 0, contentW, 0)];
+    [self.name sizeToFit];
+    self.name.y = (self.height - self.name.height) * 0.5;
 
     
     // 商店简介和地址暂时不要

@@ -65,6 +65,8 @@
 
 - (void)goodsDetailsView
 {
+    self.topScrollView = [SNRoundPlayScrollView createRoundPlayScrollViewWithFrame:CGRectMake(0, 0, SNScreenBounds.width, 220) placeholderImage:@"default_ad_1"];
+    [self addSubview:self.topScrollView];
     
     self.lineView = [[UIView alloc] init];
     [self.lineView setBackgroundColor:[UIColor blackColor]];
@@ -100,8 +102,7 @@
 {
     _detailsData = detailsData;
     
-    self.topScrollView = [SNRoundPlayScrollView createRoundPlayScrollViewWithRect:CGRectMake(0, 0, SNScreenBounds.width, 220) imagesURLArray:@[detailsData.Pic, detailsData.Pic2, detailsData.Pic3] placeholderImage:@"default_ad_1"];
-    [self addSubview:self.topScrollView];
+    [self.topScrollView insertImageWithImagesURLArray:@[detailsData.Pic, detailsData.Pic2, detailsData.Pic3] placeholderImage:@"default_ad_1"];
     
     self.goodsName.text = detailsData.Name;
     self.goodsPrice.text = [NSString stringWithFormat:@"%@ 元", detailsData.unitPrice];

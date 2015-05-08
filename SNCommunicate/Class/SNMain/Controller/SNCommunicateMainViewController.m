@@ -13,17 +13,15 @@
 #import "SNMainCellData.h"
 
 #import "SNTabBar.h"
-#import "SNRoundPlayScrollView.h"
-
-static NSInteger ImageCount = 4;
 
 @interface SNCommunicateMainViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, weak) UIScrollView *scrollView;
-@property (nonatomic, weak) UIPageControl *pageControl;
+
 @property (nonatomic, strong) NSTimer *timer;
 
 @property (nonatomic, strong) NSArray *dataArray;
+
+@property (nonatomic, strong) NSMutableArray *imageArray;
 
 @end
 
@@ -34,7 +32,7 @@ static NSInteger ImageCount = 4;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self createUI];
-
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,7 +43,8 @@ static NSInteger ImageCount = 4;
 #pragma mark - UI界面搭建
 - (void)createUI
 {
-    self.scrollView = [SNRoundPlayScrollView createRoundPlayScrollViewWithRect:CGRectMake(0, 0, SNScreenBounds.width, 220) imagesURLArray:@[@"http://123.57.206.151:80/img/pro_1_31430821377.jpg", @"http://123.57.206.151:80/img/pro2_1_31430821377.jpg", @"http://123.57.206.151:80/img/pro3_1_31430821377.jpg"] placeholderImage:@"default_ad_1"];
+    
+    self.scrollView = [SNRoundPlayScrollView createRoundPlayScrollViewWithFrame:CGRectMake(0, 0, SNScreenBounds.width, 220) placeholderImage:@"default_ad_1"];
     [self.view addSubview:self.scrollView];
     
     // TableView
@@ -60,6 +59,20 @@ static NSInteger ImageCount = 4;
     tableView.delegate = self;
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:tableView];
+}
+
+- (void)initData
+{
+    [SNHttpTool getLevelOfBusinessWithLevel:@"钻石" finish:^(id responseObject) {
+        NSArray *tempArray = (NSArray *)responseObject[@"result"];
+        for (NSDictionary *dict in tempArray) {
+            [self.imageArray addObject:dict[@"picURL"]];
+        }
+        [self.scrollView insertImageWithImagesURLArray:self.imageArray placeholderImage:@"default_ad_1"];
+    } error:^(NSError *error) {
+        
+    }];
+    
 }
 
 - (NSArray *)dataArray
@@ -85,6 +98,14 @@ static NSInteger ImageCount = 4;
     return _dataArray;
 }
 
+- (NSMutableArray *)imageArray
+{
+    if (!_imageArray) {
+        _imageArray = [NSMutableArray array];
+    }
+    return _imageArray;
+}
+
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -104,6 +125,7 @@ static NSInteger ImageCount = 4;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.scrollView endTimer];
     SNSecondClassViewController *vc = [[SNSecondClassViewController alloc] init];
     switch (indexPath.row) {
         case 0:

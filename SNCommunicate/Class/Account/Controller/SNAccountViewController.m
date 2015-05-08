@@ -10,6 +10,7 @@
 #import "SNMainNavigationController.h"
 #import "SNMainTextField.h"
 #import "SNTabBar.h"
+#import "SNBase64.h"
 
 @interface SNAccountViewController ()
 @property (weak, nonatomic) IBOutlet SNMainTextField *accountLabel;
@@ -44,9 +45,10 @@
     if (![self isDataLegal]) {
         return;
     }
+    NSString *passWord = [SNBase64 base64StringFromText:self.passWordLabel.text];
     [MBProgressHUD showMessage:@"登录中"];
     [SNHttpTool customerLoginWithPhoneNumber:self.accountLabel.text
-                                    passWord:self.passWordLabel.text
+                                    passWord:passWord
                                       finish:^(id responseObject) {
         [MBProgressHUD hideHUD];
         SNLog(@"%@", responseObject);
@@ -57,7 +59,7 @@
         [MBProgressHUD showSuccess:@"登录成功"];
         self.userModel = [SNUserModel sharedInstance];
         self.userModel.phoneNumber = self.accountLabel.text;
-        self.userModel.passWord = self.passWordLabel.text;
+        self.userModel.passWord = passWord;
         self.userModel.name = responseObject[@"ret_msg"];
         [SNArchiverManger archiveWithUserModel:[SNUserModel sharedInstance]];
         self.userModel.login = YES;

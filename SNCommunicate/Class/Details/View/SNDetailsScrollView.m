@@ -110,7 +110,7 @@
     self.shopDetailsView.y = CGRectGetMaxY(self.goodsDetailsView.frame);
     self.otherGoodsView.y = CGRectGetMaxY(self.shopDetailsView.frame);
     
-    [self setFrame:CGRectMake(0, 0, SNScreenBounds.width, SNScreenBounds.height - 49)];
+    [self setFrame:CGRectMake(0, 0, SNScreenBounds.width, SNScreenBounds.height - 49 - 64)];
     [self setContentSize:CGSizeMake(0, CGRectGetMaxY(self.otherGoodsView.frame))];
 }
 
