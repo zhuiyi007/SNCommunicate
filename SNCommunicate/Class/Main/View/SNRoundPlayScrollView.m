@@ -24,6 +24,12 @@
 
 - (void)insertImageWithImagesURLArray:(NSArray *)imagesURLArray placeholderImage:(NSString *)placeholderImage
 {
+    for (UIView *view in self.subviews) {
+        [view removeFromSuperview];
+    }
+    [self endTimer];
+    [self startTimer];
+    
     CGFloat width = self.width;
     CGFloat height = self.height;
     NSInteger count = [imagesURLArray count];
@@ -31,8 +37,6 @@
     self.delegate = self;
     self.showsHorizontalScrollIndicator = NO;
     self.pagingEnabled = YES;
-    
-    [self startTimer];
     
     [self setContentSize:CGSizeMake(width * count, 0)];
     for (NSInteger index = 0; index < count; index ++) {

@@ -108,6 +108,7 @@
 		3C962BB81AFCA33A002341E4 /* SNBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BB71AFCA33A002341E4 /* SNBaseViewController.m */; };
 		3C962BBB1AFCC4B5002341E4 /* SNBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BBA1AFCC4B5002341E4 /* SNBase64.m */; };
 		3CB68AFB1AE78DBC0092E9F6 /* SNNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */; };
+		3CBEC55D1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEC55C1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m */; };
 		3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */; };
 		3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */; };
 		3CC62CA61AE1084D004D7C8D /* SNMainTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */; };
@@ -331,6 +332,8 @@
 		3C962BBA1AFCC4B5002341E4 /* SNBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBase64.m; sourceTree = "<group>"; };
 		3CB68AF91AE78DBC0092E9F6 /* SNNullCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNNullCell.h; path = ../../SNMain/View/SNNullCell.h; sourceTree = "<group>"; };
 		3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNNullCell.m; path = ../../SNMain/View/SNNullCell.m; sourceTree = "<group>"; };
+		3CBEC55B1AFDCCCF00EC27CC /* SNBusinessOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessOrderViewController.h; sourceTree = "<group>"; };
+		3CBEC55C1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessOrderViewController.m; sourceTree = "<group>"; };
 		3CC62C9A1AE0ECC0004D7C8D /* UIViewController+SNCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNCommon.h"; sourceTree = "<group>"; };
 		3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNCommon.m"; sourceTree = "<group>"; };
 		3CC62CA11AE0EE22004D7C8D /* SNProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNProgressHUD.h; sourceTree = "<group>"; };
@@ -416,6 +419,7 @@
 		3C3474A21AE3ADDD009FBB68 /* MY */ = {
 			isa = PBXGroup;
 			children = (
+				3CBEC5571AFDCCA000EC27CC /* BusinessOrder */,
 				3C85F3C71AED0A8100481F0C /* CustomerOrder */,
 				3C85F3851AECCA5E00481F0C /* CustomerCollection */,
 				3C85F3831AECCA2700481F0C /* Model */,
@@ -995,6 +999,39 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3CBEC5571AFDCCA000EC27CC /* BusinessOrder */ = {
+			isa = PBXGroup;
+			children = (
+				3CBEC5581AFDCCA000EC27CC /* Controller */,
+				3CBEC5591AFDCCA000EC27CC /* Model */,
+				3CBEC55A1AFDCCA000EC27CC /* View */,
+			);
+			path = BusinessOrder;
+			sourceTree = "<group>";
+		};
+		3CBEC5581AFDCCA000EC27CC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3CBEC55B1AFDCCCF00EC27CC /* SNBusinessOrderViewController.h */,
+				3CBEC55C1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3CBEC5591AFDCCA000EC27CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3CBEC55A1AFDCCA000EC27CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3CC62CA01AE0EE22004D7C8D /* SNProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -1162,6 +1199,7 @@
 				3C962BB51AFC8562002341E4 /* SNRoundPlayScrollView.m in Sources */,
 				3C782ACA1ADD380E00DD0FEC /* NSObject+MJMember.m in Sources */,
 				3C49E71E1ADB55710008085F /* MJRefreshComponent.m in Sources */,
+				3CBEC55D1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m in Sources */,
 				3C214C081AE2A4E40064644A /* SNOtherGoodsView.m in Sources */,
 				3C214BFF1AE266550064644A /* SNGoodsDetailsView.m in Sources */,
 				3C49E7331ADB55710008085F /* UIImage+GIF.m in Sources */,

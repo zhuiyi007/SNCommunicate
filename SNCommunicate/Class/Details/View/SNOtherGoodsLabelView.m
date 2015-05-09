@@ -60,20 +60,6 @@
     }
 }
 
-- (void)viewController {
-    for (UIView *view = [self superview]; view; view = [view superview]) {
-        UIResponder *nextResponder = [view nextResponder];
-        if ([nextResponder isKindOfClass:[SNDetailsViewController class]]) {
-            SNDetailsViewController *tempController = (SNDetailsViewController *)nextResponder;
-            tempController.detailsData = self.data;
-        }
-        if ([view isKindOfClass:[SNDetailsScrollView class]]) {
-            SNDetailsScrollView *tempView = (SNDetailsScrollView *)view;
-            tempView.clickedDetail = self.data;
-        }
-    }
-}
-
 - (void)layoutSubviews
 {
     [super layoutSubviews];

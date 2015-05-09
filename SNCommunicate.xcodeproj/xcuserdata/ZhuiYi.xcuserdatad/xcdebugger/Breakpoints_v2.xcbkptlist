@@ -44,12 +44,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SNCommunicate/Class/Details/Controller/SNDetailsViewController.m"
-            timestampString = "452769521.667673"
+            timestampString = "452847721.068121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-addReserve"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-addCollection"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -60,12 +60,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SNCommunicate/Class/Details/Controller/SNDetailsViewController.m"
-            timestampString = "452769524.001797"
+            timestampString = "452847721.068121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "-addCollection"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-addReserve"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

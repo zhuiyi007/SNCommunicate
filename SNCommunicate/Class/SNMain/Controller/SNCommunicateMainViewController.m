@@ -53,7 +53,7 @@
                                   initWithFrame:CGRectMake(0,
                                                            tableViewY,
                                                            SNScreenBounds.width,
-                                                           SNScreenBounds.height - tableViewY)
+                                                           SNScreenBounds.height - tableViewY - 64 - 49)
                                                                   style:UITableViewStylePlain];
     tableView.dataSource = self;
     tableView.delegate = self;
