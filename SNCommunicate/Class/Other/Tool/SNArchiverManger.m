@@ -8,32 +8,26 @@
 
 #import "SNArchiverManger.h"
 
-static SNArchiverManger *sharedInstance = nil;
+static SNArchiverManger *sharedInstance;
 
 @implementation SNArchiverManger
 
-+ (SNArchiverManger *)sharedInstance
-{
-    @synchronized(self){
-        if (sharedInstance == nil) {
-            sharedInstance = [[[self class] alloc] init];
-        }
-        return sharedInstance;
-    }
++ (SNArchiverManger *)sharedInstance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        // 使用shared方法只能做一次初始化！
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
 
-+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self){
++ (SNArchiverManger *)allocWithZone:(struct _NSZone *)zone {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         if (sharedInstance == nil) {
             sharedInstance = [super allocWithZone:zone];
         }
-        return sharedInstance;
-    }
-}
-
-+ (id)copyWithZone:(NSZone *)zone
-{
+    });
     return sharedInstance;
 }
 
@@ -49,13 +43,6 @@ static SNArchiverManger *sharedInstance = nil;
     model = [NSKeyedUnarchiver unarchiveObjectWithFile:SNUserInfoPath];
     return model;
 }
-
-/*解归档
- NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"array.src"];
- id array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
- NSLog(@"%@",array);
- */
-
 
 
 @end

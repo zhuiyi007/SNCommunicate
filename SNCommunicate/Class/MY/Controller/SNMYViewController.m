@@ -272,7 +272,6 @@
             {
                 SNCustomerOrderViewController *vc = [[SNCustomerOrderViewController alloc] init];
                 vc.title = @"库存";
-                vc.isFinishedOrder = YES;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }

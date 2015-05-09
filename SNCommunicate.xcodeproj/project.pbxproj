@@ -109,6 +109,9 @@
 		3C962BBB1AFCC4B5002341E4 /* SNBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BBA1AFCC4B5002341E4 /* SNBase64.m */; };
 		3CB68AFB1AE78DBC0092E9F6 /* SNNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */; };
 		3CBEC55D1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEC55C1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m */; };
+		3CBEC5601AFE00C000EC27CC /* SNBusinessOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEC55F1AFE00C000EC27CC /* SNBusinessOrderModel.m */; };
+		3CBEC5631AFE00E900EC27CC /* SNBusinessOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEC5621AFE00E900EC27CC /* SNBusinessOrder.m */; };
+		3CBEC5661AFE06C100EC27CC /* SNBusinessOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEC5651AFE06C100EC27CC /* SNBusinessOrderCell.m */; };
 		3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */; };
 		3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */; };
 		3CC62CA61AE1084D004D7C8D /* SNMainTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */; };
@@ -334,6 +337,12 @@
 		3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNNullCell.m; path = ../../SNMain/View/SNNullCell.m; sourceTree = "<group>"; };
 		3CBEC55B1AFDCCCF00EC27CC /* SNBusinessOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessOrderViewController.h; sourceTree = "<group>"; };
 		3CBEC55C1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessOrderViewController.m; sourceTree = "<group>"; };
+		3CBEC55E1AFE00C000EC27CC /* SNBusinessOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessOrderModel.h; sourceTree = "<group>"; };
+		3CBEC55F1AFE00C000EC27CC /* SNBusinessOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessOrderModel.m; sourceTree = "<group>"; };
+		3CBEC5611AFE00E900EC27CC /* SNBusinessOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessOrder.h; sourceTree = "<group>"; };
+		3CBEC5621AFE00E900EC27CC /* SNBusinessOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessOrder.m; sourceTree = "<group>"; };
+		3CBEC5641AFE06C100EC27CC /* SNBusinessOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessOrderCell.h; sourceTree = "<group>"; };
+		3CBEC5651AFE06C100EC27CC /* SNBusinessOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessOrderCell.m; sourceTree = "<group>"; };
 		3CC62C9A1AE0ECC0004D7C8D /* UIViewController+SNCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNCommon.h"; sourceTree = "<group>"; };
 		3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNCommon.m"; sourceTree = "<group>"; };
 		3CC62CA11AE0EE22004D7C8D /* SNProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNProgressHUD.h; sourceTree = "<group>"; };
@@ -1021,6 +1030,10 @@
 		3CBEC5591AFDCCA000EC27CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3CBEC55E1AFE00C000EC27CC /* SNBusinessOrderModel.h */,
+				3CBEC55F1AFE00C000EC27CC /* SNBusinessOrderModel.m */,
+				3CBEC5611AFE00E900EC27CC /* SNBusinessOrder.h */,
+				3CBEC5621AFE00E900EC27CC /* SNBusinessOrder.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1028,6 +1041,8 @@
 		3CBEC55A1AFDCCA000EC27CC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3CBEC5641AFE06C100EC27CC /* SNBusinessOrderCell.h */,
+				3CBEC5651AFE06C100EC27CC /* SNBusinessOrderCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1178,6 +1193,7 @@
 				3C49E7431ADB597E0008085F /* SNTabBar.m in Sources */,
 				3C49E7171ADB55710008085F /* AFNetworkReachabilityManager.m in Sources */,
 				3C49E7371ADB55710008085F /* UIImageView+WebCache.m in Sources */,
+				3CBEC5601AFE00C000EC27CC /* SNBusinessOrderModel.m in Sources */,
 				3C49E71B1ADB55710008085F /* AFURLResponseSerialization.m in Sources */,
 				3C782AC91ADD380E00DD0FEC /* NSObject+MJKeyValue.m in Sources */,
 				3C85F3D61AED168500481F0C /* SNCustomerOrderCell.m in Sources */,
@@ -1233,10 +1249,12 @@
 				3C49E7631ADB67C40008085F /* MBProgressHUD+MJ.m in Sources */,
 				3C49E7241ADB55710008085F /* MJRefreshLegendFooter.m in Sources */,
 				3C782AC81ADD380E00DD0FEC /* NSObject+MJCoding.m in Sources */,
+				3CBEC5631AFE00E900EC27CC /* SNBusinessOrder.m in Sources */,
 				3C49E72A1ADB55710008085F /* NSData+ImageContentType.m in Sources */,
 				3C962BBB1AFCC4B5002341E4 /* SNBase64.m in Sources */,
 				3C49E7251ADB55710008085F /* MJRefreshLegendHeader.m in Sources */,
 				3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */,
+				3CBEC5661AFE06C100EC27CC /* SNBusinessOrderCell.m in Sources */,
 				3C34749E1AE3922D009FBB68 /* SNUserModel.m in Sources */,
 				3C49E7131ADB55710008085F /* main.m in Sources */,
 				3C49E72B1ADB55710008085F /* SDImageCache.m in Sources */,

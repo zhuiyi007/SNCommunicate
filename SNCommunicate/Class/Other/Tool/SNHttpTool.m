@@ -12,7 +12,7 @@
 #define HTTP @"http://123.57.206.151/"
 #define SOAPAction @"http://123.57.206.151/"
 
-static SNHttpTool *sharedInstance = nil;
+static SNHttpTool *sharedInstance;
 
 @interface SNHttpTool ()<NSXMLParserDelegate>
 
@@ -26,28 +26,22 @@ static SNHttpTool *sharedInstance = nil;
 
 @implementation SNHttpTool
 
-+ (SNHttpTool *)sharedInstance
-{
-    @synchronized(self){
-        if (sharedInstance == nil) {
-            sharedInstance = [[[self class] alloc] init];
-        }
-        return sharedInstance;
-    }
++ (SNHttpTool *)sharedInstance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        // 使用shared方法只能做一次初始化！
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
 
-+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self){
++ (SNHttpTool *)allocWithZone:(struct _NSZone *)zone {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         if (sharedInstance == nil) {
             sharedInstance = [super allocWithZone:zone];
         }
-        return sharedInstance;
-    }
-}
-
-+ (id)copyWithZone:(NSZone *)zone
-{
+    });
     return sharedInstance;
 }
 
@@ -619,7 +613,7 @@ static SNHttpTool *sharedInstance = nil;
                                 finish:(void (^)(id responseObject))success
                                  error:(void (^)(NSError *error))failure
 {
-    if (![[SNNetManger instance] isNetworkRunning]) {
+    if (![[SNNetManger sharedInstance] isNetworkRunning]) {
         [MBProgressHUD hideHUD];
         [MBProgressHUD showError:@"网络未连接"];
         return;
