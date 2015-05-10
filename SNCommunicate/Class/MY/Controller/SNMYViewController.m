@@ -11,6 +11,7 @@
 #import "SNCustomerCollectionViewController.h"
 #import "SNCustomerOrderViewController.h"
 #import "SNBusinessOrderViewController.h"
+#import "SNBusinessStoreViewController.h"
 #import "SNMainCellData.h"
 #import "SNMainCell.h"
 #import "SNTabBar.h"
@@ -128,12 +129,14 @@
         // 顾客身份
         [self createCustomerUI];
         self.isCustomer = YES;
+        self.title = self.userModel.name;
         [self.tableView reloadData];
     }
     else {
         // 商家身份
         [self createShopUI];
         self.isCustomer = NO;
+        self.title = self.userModel.name;
         [self.tableView reloadData];
     }
 }
@@ -270,7 +273,7 @@
             }
             default:
             {
-                SNCustomerOrderViewController *vc = [[SNCustomerOrderViewController alloc] init];
+                SNBusinessStoreViewController *vc = [[SNBusinessStoreViewController alloc] init];
                 vc.title = @"库存";
                 [self.navigationController pushViewController:vc animated:YES];
                 break;

@@ -352,6 +352,75 @@ static SNHttpTool *sharedInstance;
                                                     error:(void (^)(NSError *error))failure];
 }
 
+/**
+ *  获取商家所有商品
+ *
+ *  @param loginNum 商家登录码
+ *  @param success  成功回调
+ *  @param failure  失败回调
+ */
++ (void)getShangPinByLoginNum:(NSString *)loginNum
+                       finish:(void (^)(id responseObject))success
+                        error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<GetShangPinByLoginNum xmlns=\"http://123.57.206.151/\">"
+     "<loginNum>%@</loginNum>"
+     "</GetShangPinByLoginNum>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , loginNum];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSGetShangPinByLoginNum.asmx"
+                                            andSoapAction:@"GetShangPinByLoginNum"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
+/**
+ *  商家修改库存
+ *
+ *  @param loginNum  登录码
+ *  @param password  密码
+ *  @param store     库存数
+ *  @param productID 产品ID
+ *  @param success   成功回调
+ *  @param failure   失败回调
+ */
++ (void)changeStoreWithLoginNum:(NSString *)loginNum
+                       passWord:(NSString *)password
+                          store:(NSInteger)store
+                      productID:(NSInteger)productID
+                         finish:(void (^)(id responseObject))success
+                          error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<ChangeStore xmlns=\"http://123.57.206.151/\">"
+     "<loginNum>%@</loginNum>"
+     "<PWD>%@</PWD>"
+     "<Store>%zd</Store>"
+     "<proID>%zd</proID>"
+     "</ChangeStore>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , loginNum, password, store, productID];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSChangeStore.asmx"
+                                            andSoapAction:@"ChangeStore"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
 
 
 /**

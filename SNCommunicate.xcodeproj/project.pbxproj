@@ -118,6 +118,8 @@
 		3CE0C3DF1ADE586E00EF3358 /* SNEatAndBed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DC1ADE586E00EF3358 /* SNEatAndBed.plist */; };
 		3CE0C3E01ADE586E00EF3358 /* SNHealthAndBeauty.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DD1ADE586E00EF3358 /* SNHealthAndBeauty.plist */; };
 		3CE0C3E11ADE586E00EF3358 /* SNMarket.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DE1ADE586E00EF3358 /* SNMarket.plist */; };
+		3CED6E3B1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CED6E3A1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m */; };
+		3CED6E3E1AFF1B8B004D37E5 /* SNBusinessStroeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CED6E3D1AFF1B8B004D37E5 /* SNBusinessStroeCell.m */; };
 		3CEFF7A01ADB728C0055F2DB /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFF79F1ADB728C0055F2DB /* UIView+Frame.m */; };
 		3CEFF7A31ADB95880055F2DB /* SNMainCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFF7A21ADB95880055F2DB /* SNMainCellData.m */; };
 		3CEFF7A61ADB960F0055F2DB /* SNMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFF7A51ADB960F0055F2DB /* SNMainCell.m */; };
@@ -352,6 +354,10 @@
 		3CE0C3DC1ADE586E00EF3358 /* SNEatAndBed.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNEatAndBed.plist; sourceTree = "<group>"; };
 		3CE0C3DD1ADE586E00EF3358 /* SNHealthAndBeauty.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNHealthAndBeauty.plist; sourceTree = "<group>"; };
 		3CE0C3DE1ADE586E00EF3358 /* SNMarket.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNMarket.plist; sourceTree = "<group>"; };
+		3CED6E391AFF0AB7004D37E5 /* SNBusinessStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessStoreViewController.h; sourceTree = "<group>"; };
+		3CED6E3A1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessStoreViewController.m; sourceTree = "<group>"; };
+		3CED6E3C1AFF1B8B004D37E5 /* SNBusinessStroeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessStroeCell.h; sourceTree = "<group>"; };
+		3CED6E3D1AFF1B8B004D37E5 /* SNBusinessStroeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessStroeCell.m; sourceTree = "<group>"; };
 		3CEFF79E1ADB728C0055F2DB /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		3CEFF79F1ADB728C0055F2DB /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		3CEFF7A11ADB95880055F2DB /* SNMainCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainCellData.h; sourceTree = "<group>"; };
@@ -428,6 +434,7 @@
 		3C3474A21AE3ADDD009FBB68 /* MY */ = {
 			isa = PBXGroup;
 			children = (
+				3CED6E351AFF0AA6004D37E5 /* BusinessStore */,
 				3CBEC5571AFDCCA000EC27CC /* BusinessOrder */,
 				3C85F3C71AED0A8100481F0C /* CustomerOrder */,
 				3C85F3851AECCA5E00481F0C /* CustomerCollection */,
@@ -1056,6 +1063,41 @@
 			path = SNProgressHUD;
 			sourceTree = "<group>";
 		};
+		3CED6E351AFF0AA6004D37E5 /* BusinessStore */ = {
+			isa = PBXGroup;
+			children = (
+				3CED6E361AFF0AA6004D37E5 /* Controller */,
+				3CED6E371AFF0AA6004D37E5 /* Model */,
+				3CED6E381AFF0AA6004D37E5 /* View */,
+			);
+			path = BusinessStore;
+			sourceTree = "<group>";
+		};
+		3CED6E361AFF0AA6004D37E5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3CED6E391AFF0AB7004D37E5 /* SNBusinessStoreViewController.h */,
+				3CED6E3A1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3CED6E371AFF0AA6004D37E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3CED6E381AFF0AA6004D37E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3CED6E3C1AFF1B8B004D37E5 /* SNBusinessStroeCell.h */,
+				3CED6E3D1AFF1B8B004D37E5 /* SNBusinessStroeCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1214,6 +1256,7 @@
 				3C214BFC1AE247C10064644A /* SNDetailsScrollView.m in Sources */,
 				3C962BB51AFC8562002341E4 /* SNRoundPlayScrollView.m in Sources */,
 				3C782ACA1ADD380E00DD0FEC /* NSObject+MJMember.m in Sources */,
+				3CED6E3E1AFF1B8B004D37E5 /* SNBusinessStroeCell.m in Sources */,
 				3C49E71E1ADB55710008085F /* MJRefreshComponent.m in Sources */,
 				3CBEC55D1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m in Sources */,
 				3C214C081AE2A4E40064644A /* SNOtherGoodsView.m in Sources */,
@@ -1263,6 +1306,7 @@
 				3C49E7101ADB55710008085F /* SNMainViewController.m in Sources */,
 				3C49E7201ADB55710008085F /* MJRefreshFooter.m in Sources */,
 				3C782A831ADD0D4900DD0FEC /* SNMainTableView.m in Sources */,
+				3CED6E3B1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m in Sources */,
 				3C782A971ADD147600DD0FEC /* SNThirdClassViewController.m in Sources */,
 				3C85F3911AECD5DF00481F0C /* SNCustomerCollectModel.m in Sources */,
 				3C71E8941AE3785900056A7C /* Reachability.m in Sources */,

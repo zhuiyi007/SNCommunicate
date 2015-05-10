@@ -144,6 +144,34 @@
                           error:(void (^)(NSError *error))failure;
 
 /**
+ *  获取商家所有商品
+ *
+ *  @param loginNum 商家登录码
+ *  @param success  成功回调
+ *  @param failure  失败回调
+ */
++ (void)getShangPinByLoginNum:(NSString *)loginNum
+                       finish:(void (^)(id responseObject))success
+                        error:(void (^)(NSError *error))failure;
+
+/**
+ *  商家修改库存
+ *
+ *  @param loginNum  登录码
+ *  @param password  密码
+ *  @param store     库存数
+ *  @param productID 产品ID
+ *  @param success   成功回调
+ *  @param failure   失败回调
+ */
++ (void)changeStoreWithLoginNum:(NSString *)loginNum
+                       passWord:(NSString *)password
+                          store:(NSInteger)store
+                      productID:(NSInteger)productID
+                         finish:(void (^)(id responseObject))success
+                          error:(void (^)(NSError *error))failure;
+
+/**
  *  添加收藏
  *
  *  @param shangID     商品ID
