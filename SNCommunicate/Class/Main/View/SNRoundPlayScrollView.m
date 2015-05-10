@@ -56,7 +56,7 @@
 
 - (void)startTimer
 {
-    self.timer = [NSTimer timerWithTimeInterval:1
+    self.timer = [NSTimer timerWithTimeInterval:5
                                                target:self
                                              selector:@selector(nextImage)
                                              userInfo:nil

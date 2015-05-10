@@ -24,13 +24,19 @@
 		<key>icon</key>
 		<string>zizhucan</string>
 		<key>title</key>
-		<string>自助餐</string>
+		<string>自助餐厅</string>
 	</dict>
 	<dict>
 		<key>icon</key>
 		<string>kuaican</string>
 		<key>title</key>
-		<string>快餐</string>
+		<string>快餐厅</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>jiudian</string>
+		<key>title</key>
+		<string>旅店宾馆</string>
 	</dict>
 </array>
 </plist>
