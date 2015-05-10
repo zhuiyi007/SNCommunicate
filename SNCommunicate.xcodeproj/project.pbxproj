@@ -1148,6 +1148,7 @@
 				TargetAttributes = {
 					3C49E6891ADB51490008085F = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = BSBY52WEJ6;
 					};
 					3C49E6A21ADB51490008085F = {
 						CreatedOnToolsVersion = 6.1;
@@ -1350,8 +1351,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1371,7 +1372,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1394,8 +1395,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1408,7 +1409,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1420,11 +1421,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SNCommunicate/Class/Other/Global.pch";
 				INFOPLIST_FILE = SNCommunicate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d9e0d7cc-efbb-46dc-ac8d-050e3da2c4db";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 			};
 			name = Debug;
 		};
@@ -1433,11 +1437,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SNCommunicate/Class/Other/Global.pch";
 				INFOPLIST_FILE = SNCommunicate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d9e0d7cc-efbb-46dc-ac8d-050e3da2c4db";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 			};
 			name = Release;
 		};
@@ -1456,7 +1463,7 @@
 				INFOPLIST_FILE = SNCommunicateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNCommunicate.app/SNCommunicate";
 			};
 			name = Debug;
@@ -1472,7 +1479,7 @@
 				INFOPLIST_FILE = SNCommunicateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNCommunicate.app/SNCommunicate";
 			};
 			name = Release;

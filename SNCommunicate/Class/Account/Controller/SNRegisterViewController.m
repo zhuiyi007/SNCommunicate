@@ -157,7 +157,7 @@
     if (self.count == -1) {
         [self.getSecurityButton setEnabled:YES];
         [self removeTimer];
-        self.count = 10;
+        self.count = 60;
     }
 }
 
