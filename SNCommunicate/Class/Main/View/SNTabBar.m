@@ -73,7 +73,7 @@ static SNTabBar *sharedInstance = nil;
 - (void)hiddenTabBar
 {
     CGRect frame = self.frame;
-    frame.origin.x = -320;
+    frame.origin.x = -SNScreenBounds.width;
     [UIView animateWithDuration:0.25 animations:^{
         self.frame = frame;
     } completion:^(BOOL finished) {

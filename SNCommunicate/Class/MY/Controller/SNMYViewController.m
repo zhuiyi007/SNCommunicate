@@ -10,6 +10,8 @@
 #import "SNAccountViewController.h"
 #import "SNCustomerCollectionViewController.h"
 #import "SNCustomerOrderViewController.h"
+#import "SNBusinessOrderViewController.h"
+#import "SNBusinessStoreViewController.h"
 #import "SNMainCellData.h"
 #import "SNMainCell.h"
 #import "SNTabBar.h"
@@ -75,29 +77,49 @@
     else { // 本地有缓存信息,直接给服务器验证
         [SNArchiverManger unarchiveUserModel];
         [MBProgressHUD showMessage:@"正在验证身份"];
-        [SNHttpTool customerLoginWithPhoneNumber:self.userModel.phoneNumber
-                                        passWord:self.userModel.passWord
-                                          finish:^(id responseObject) {
-            [MBProgressHUD hideHUD];
-            SNLog(@"%@", responseObject);
-            if ([responseObject[@"status"] integerValue] == 0) {
-                // 验证不通过,跳到登录页面,并且删除本地缓存
-                [MBProgressHUD showError:responseObject[@"ret_msg"]];
-                [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
-                [self.navigationController pushViewController:account animated:YES];
+        if ([self.userModel.phoneNumber length] == 11) {
+            [SNHttpTool customerLoginWithPhoneNumber:self.userModel.phoneNumber passWord:self.userModel.passWord finish:^(id responseObject) {
+                [MBProgressHUD hideHUD];
+                SNLog(@"%@", responseObject);
+                if ([responseObject[@"status"] integerValue] == 0) {
+                    // 验证不通过,跳到登录页面,并且删除本地缓存
+                    [MBProgressHUD showError:responseObject[@"ret_msg"]];
+                    [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+                    [self.navigationController pushViewController:account animated:YES];
+                    self.isChecking = YES;
+                    return;
+                }
+                [MBProgressHUD showSuccess:@"验证成功"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:nil];
+                self.userModel.login = YES;
                 self.isChecking = YES;
-                return;
-            }
-            [MBProgressHUD showSuccess:@"验证成功"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:nil];
-            self.userModel.login = YES;
-            self.isChecking = YES;
-                                          }
-                                           error:^(NSError *error) {
-            [MBProgressHUD hideHUD];
-            [MBProgressHUD showError:@"验证超时"];
-            SNLog(@"%@", error);
-                                           }];
+            } error:^(NSError *error) {
+                [MBProgressHUD hideHUD];
+                [MBProgressHUD showError:@"验证超时"];
+                SNLog(@"%@", error);
+            }];
+        } else {
+            [SNHttpTool businessLoginWithLoginNumber:self.userModel.phoneNumber passWord:self.userModel.passWord finish:^(id responseObject) {
+                [MBProgressHUD hideHUD];
+                SNLog(@"%@", responseObject);
+                if ([responseObject[@"status"] integerValue] == 0) {
+                    // 验证不通过,跳到登录页面,并且删除本地缓存
+                    [MBProgressHUD showError:responseObject[@"ret_msg"]];
+                    [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+                    [self.navigationController pushViewController:account animated:YES];
+                    self.isChecking = YES;
+                    return;
+                }
+                [MBProgressHUD showSuccess:@"验证成功"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:nil];
+                self.userModel.login = YES;
+                self.isChecking = YES;
+            } error:^(NSError *error) {
+                [MBProgressHUD hideHUD];
+                [MBProgressHUD showError:@"验证超时"];
+                SNLog(@"%@", error);
+            }];
+        }
     }
 }
 
@@ -107,12 +129,14 @@
         // 顾客身份
         [self createCustomerUI];
         self.isCustomer = YES;
+        self.title = self.userModel.name;
         [self.tableView reloadData];
     }
     else {
         // 商家身份
         [self createShopUI];
         self.isCustomer = NO;
+        self.title = self.userModel.name;
         [self.tableView reloadData];
     }
 }
@@ -137,7 +161,10 @@
     data1.title = @"已出售订单";
     SNMainCellData *data2 = [[SNMainCellData alloc] init];
     data2.title = @"待处理订单";
-    _dataArray = [NSArray arrayWithObjects:data1, data2, nil];
+    SNMainCellData *data3 = [[SNMainCellData alloc] init];
+    data3.icon = @"cangku";
+    data3.title = @"库存";
+    _dataArray = [NSArray arrayWithObjects:data1, data2, data3, nil];
 }
 
 - (void)showRightBarButtonItem
@@ -229,9 +256,28 @@
     else {
         switch (indexPath.row) {
             case 0:
+            {
+                SNBusinessOrderViewController *vc = [[SNBusinessOrderViewController alloc] init];
+                vc.title = @"已出售订单";
+                vc.isFinishedOrder = YES;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
+            }
+            case 1:
+            {
+                SNBusinessOrderViewController *vc = [[SNBusinessOrderViewController alloc] init];
+                vc.title = @"待处理订单";
+                vc.isFinishedOrder = NO;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
             default:
+            {
+                SNBusinessStoreViewController *vc = [[SNBusinessStoreViewController alloc] init];
+                vc.title = @"库存";
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
+            }
         }
     }
     [[SNTabBar tabBar] hiddenTabBar];

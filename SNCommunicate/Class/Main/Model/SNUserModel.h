@@ -16,7 +16,7 @@
 
 @property (nonatomic, assign, getter = isLogin) BOOL login;
 
-+ (SNUserModel *)sharedInstance;
++ (instancetype)sharedInstance;
 
 + (void)clearUserModel;
 

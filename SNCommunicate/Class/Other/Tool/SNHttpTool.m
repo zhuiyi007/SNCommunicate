@@ -12,7 +12,7 @@
 #define HTTP @"http://123.57.206.151/"
 #define SOAPAction @"http://123.57.206.151/"
 
-static SNHttpTool *sharedInstance = nil;
+static SNHttpTool *sharedInstance;
 
 @interface SNHttpTool ()<NSXMLParserDelegate>
 
@@ -26,28 +26,22 @@ static SNHttpTool *sharedInstance = nil;
 
 @implementation SNHttpTool
 
-+ (SNHttpTool *)sharedInstance
-{
-    @synchronized(self){
-        if (sharedInstance == nil) {
-            sharedInstance = [[[self class] alloc] init];
-        }
-        return sharedInstance;
-    }
++ (SNHttpTool *)sharedInstance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        // 使用shared方法只能做一次初始化！
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
 
-+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self){
++ (SNHttpTool *)allocWithZone:(struct _NSZone *)zone {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         if (sharedInstance == nil) {
             sharedInstance = [super allocWithZone:zone];
         }
-        return sharedInstance;
-    }
-}
-
-+ (id)copyWithZone:(NSZone *)zone
-{
+    });
     return sharedInstance;
 }
 
@@ -319,6 +313,114 @@ static SNHttpTool *sharedInstance = nil;
                                                     error:(void (^)(NSError *error))failure];
 }
 
+/**
+ *  获取商家订单
+ *
+ *  @param loginNum 商家登录码
+ *  @param passWord 密码
+ *  @param big      最大值
+ *  @param small    最小值
+ *  @param success  成功回调
+ *  @param failure  失败回调
+ */
++ (void)selectDingDanByLoginNum:(NSString *)loginNum
+                       passWord:(NSString *)passWord
+                            big:(NSInteger)big
+                          small:(NSInteger)small
+                         finish:(void (^)(id responseObject))success
+                          error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<selectDingDanByLoginNum xmlns=\"http://123.57.206.151/\">"
+     "<loginNum>%@</loginNum>"
+     "<PWD>%@</PWD>"
+     "<big>%zd</big>"
+     "<small>%zd</small>"
+     "</selectDingDanByLoginNum>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , loginNum, passWord, big, small];
+
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSGetDingDan.asmx"
+                                            andSoapAction:@"selectDingDanByLoginNum"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
+/**
+ *  获取商家所有商品
+ *
+ *  @param loginNum 商家登录码
+ *  @param success  成功回调
+ *  @param failure  失败回调
+ */
++ (void)getShangPinByLoginNum:(NSString *)loginNum
+                       finish:(void (^)(id responseObject))success
+                        error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<GetShangPinByLoginNum xmlns=\"http://123.57.206.151/\">"
+     "<loginNum>%@</loginNum>"
+     "</GetShangPinByLoginNum>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , loginNum];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSGetShangPinByLoginNum.asmx"
+                                            andSoapAction:@"GetShangPinByLoginNum"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
+/**
+ *  商家修改库存
+ *
+ *  @param loginNum  登录码
+ *  @param password  密码
+ *  @param store     库存数
+ *  @param productID 产品ID
+ *  @param success   成功回调
+ *  @param failure   失败回调
+ */
++ (void)changeStoreWithLoginNum:(NSString *)loginNum
+                       passWord:(NSString *)password
+                          store:(NSInteger)store
+                      productID:(NSInteger)productID
+                         finish:(void (^)(id responseObject))success
+                          error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<ChangeStore xmlns=\"http://123.57.206.151/\">"
+     "<loginNum>%@</loginNum>"
+     "<PWD>%@</PWD>"
+     "<Store>%zd</Store>"
+     "<proID>%zd</proID>"
+     "</ChangeStore>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , loginNum, password, store, productID];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSChangeStore.asmx"
+                                            andSoapAction:@"ChangeStore"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
 
 
 /**
@@ -539,6 +641,40 @@ static SNHttpTool *sharedInstance = nil;
                                                     error:(void (^)(NSError *error))failure];
 }
 
+/**
+ *  商家登录
+ *
+ *  @param loginNumber 登录码
+ *  @param passWord    密码
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)businessLoginWithLoginNumber:(NSString *)loginNumber
+                            passWord:(NSString *)passWord
+                              finish:(void (^)(id responseObject))success
+                               error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<BusinessLogin xmlns=\"http://123.57.206.151/\">"
+     "<loginNum>%@</loginNum>"
+     "<PWD>%@</PWD>"
+     "<loginIP>%@</loginIP>"
+     "</BusinessLogin>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , loginNumber, passWord, [self sharedInstance].IPAddress];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSBusinessLogin.asmx"
+                                            andSoapAction:@"BusinessLogin"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
 
 - (void)sendPOSTRequestWithSoapMessage:(NSString *)soapMessage
                                 andURL:(NSString *)urlSuffix
@@ -546,7 +682,7 @@ static SNHttpTool *sharedInstance = nil;
                                 finish:(void (^)(id responseObject))success
                                  error:(void (^)(NSError *error))failure
 {
-    if (![[SNNetManger instance] isNetworkRunning]) {
+    if (![[SNNetManger sharedInstance] isNetworkRunning]) {
         [MBProgressHUD hideHUD];
         [MBProgressHUD showError:@"网络未连接"];
         return;

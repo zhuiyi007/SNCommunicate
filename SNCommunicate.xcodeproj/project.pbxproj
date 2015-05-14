@@ -108,12 +108,18 @@
 		3C962BB81AFCA33A002341E4 /* SNBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BB71AFCA33A002341E4 /* SNBaseViewController.m */; };
 		3C962BBB1AFCC4B5002341E4 /* SNBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BBA1AFCC4B5002341E4 /* SNBase64.m */; };
 		3CB68AFB1AE78DBC0092E9F6 /* SNNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */; };
+		3CBEC55D1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEC55C1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m */; };
+		3CBEC5601AFE00C000EC27CC /* SNBusinessOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEC55F1AFE00C000EC27CC /* SNBusinessOrderModel.m */; };
+		3CBEC5631AFE00E900EC27CC /* SNBusinessOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEC5621AFE00E900EC27CC /* SNBusinessOrder.m */; };
+		3CBEC5661AFE06C100EC27CC /* SNBusinessOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEC5651AFE06C100EC27CC /* SNBusinessOrderCell.m */; };
 		3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */; };
 		3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */; };
 		3CC62CA61AE1084D004D7C8D /* SNMainTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */; };
 		3CE0C3DF1ADE586E00EF3358 /* SNEatAndBed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DC1ADE586E00EF3358 /* SNEatAndBed.plist */; };
 		3CE0C3E01ADE586E00EF3358 /* SNHealthAndBeauty.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DD1ADE586E00EF3358 /* SNHealthAndBeauty.plist */; };
 		3CE0C3E11ADE586E00EF3358 /* SNMarket.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DE1ADE586E00EF3358 /* SNMarket.plist */; };
+		3CED6E3B1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CED6E3A1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m */; };
+		3CED6E3E1AFF1B8B004D37E5 /* SNBusinessStroeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CED6E3D1AFF1B8B004D37E5 /* SNBusinessStroeCell.m */; };
 		3CEFF7A01ADB728C0055F2DB /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFF79F1ADB728C0055F2DB /* UIView+Frame.m */; };
 		3CEFF7A31ADB95880055F2DB /* SNMainCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFF7A21ADB95880055F2DB /* SNMainCellData.m */; };
 		3CEFF7A61ADB960F0055F2DB /* SNMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFF7A51ADB960F0055F2DB /* SNMainCell.m */; };
@@ -331,6 +337,14 @@
 		3C962BBA1AFCC4B5002341E4 /* SNBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBase64.m; sourceTree = "<group>"; };
 		3CB68AF91AE78DBC0092E9F6 /* SNNullCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNNullCell.h; path = ../../SNMain/View/SNNullCell.h; sourceTree = "<group>"; };
 		3CB68AFA1AE78DBC0092E9F6 /* SNNullCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNNullCell.m; path = ../../SNMain/View/SNNullCell.m; sourceTree = "<group>"; };
+		3CBEC55B1AFDCCCF00EC27CC /* SNBusinessOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessOrderViewController.h; sourceTree = "<group>"; };
+		3CBEC55C1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessOrderViewController.m; sourceTree = "<group>"; };
+		3CBEC55E1AFE00C000EC27CC /* SNBusinessOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessOrderModel.h; sourceTree = "<group>"; };
+		3CBEC55F1AFE00C000EC27CC /* SNBusinessOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessOrderModel.m; sourceTree = "<group>"; };
+		3CBEC5611AFE00E900EC27CC /* SNBusinessOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessOrder.h; sourceTree = "<group>"; };
+		3CBEC5621AFE00E900EC27CC /* SNBusinessOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessOrder.m; sourceTree = "<group>"; };
+		3CBEC5641AFE06C100EC27CC /* SNBusinessOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessOrderCell.h; sourceTree = "<group>"; };
+		3CBEC5651AFE06C100EC27CC /* SNBusinessOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessOrderCell.m; sourceTree = "<group>"; };
 		3CC62C9A1AE0ECC0004D7C8D /* UIViewController+SNCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SNCommon.h"; sourceTree = "<group>"; };
 		3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNCommon.m"; sourceTree = "<group>"; };
 		3CC62CA11AE0EE22004D7C8D /* SNProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNProgressHUD.h; sourceTree = "<group>"; };
@@ -340,6 +354,10 @@
 		3CE0C3DC1ADE586E00EF3358 /* SNEatAndBed.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNEatAndBed.plist; sourceTree = "<group>"; };
 		3CE0C3DD1ADE586E00EF3358 /* SNHealthAndBeauty.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNHealthAndBeauty.plist; sourceTree = "<group>"; };
 		3CE0C3DE1ADE586E00EF3358 /* SNMarket.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNMarket.plist; sourceTree = "<group>"; };
+		3CED6E391AFF0AB7004D37E5 /* SNBusinessStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessStoreViewController.h; sourceTree = "<group>"; };
+		3CED6E3A1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessStoreViewController.m; sourceTree = "<group>"; };
+		3CED6E3C1AFF1B8B004D37E5 /* SNBusinessStroeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBusinessStroeCell.h; sourceTree = "<group>"; };
+		3CED6E3D1AFF1B8B004D37E5 /* SNBusinessStroeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBusinessStroeCell.m; sourceTree = "<group>"; };
 		3CEFF79E1ADB728C0055F2DB /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		3CEFF79F1ADB728C0055F2DB /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		3CEFF7A11ADB95880055F2DB /* SNMainCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainCellData.h; sourceTree = "<group>"; };
@@ -416,6 +434,8 @@
 		3C3474A21AE3ADDD009FBB68 /* MY */ = {
 			isa = PBXGroup;
 			children = (
+				3CED6E351AFF0AA6004D37E5 /* BusinessStore */,
+				3CBEC5571AFDCCA000EC27CC /* BusinessOrder */,
 				3C85F3C71AED0A8100481F0C /* CustomerOrder */,
 				3C85F3851AECCA5E00481F0C /* CustomerCollection */,
 				3C85F3831AECCA2700481F0C /* Model */,
@@ -995,6 +1015,45 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3CBEC5571AFDCCA000EC27CC /* BusinessOrder */ = {
+			isa = PBXGroup;
+			children = (
+				3CBEC5581AFDCCA000EC27CC /* Controller */,
+				3CBEC5591AFDCCA000EC27CC /* Model */,
+				3CBEC55A1AFDCCA000EC27CC /* View */,
+			);
+			path = BusinessOrder;
+			sourceTree = "<group>";
+		};
+		3CBEC5581AFDCCA000EC27CC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3CBEC55B1AFDCCCF00EC27CC /* SNBusinessOrderViewController.h */,
+				3CBEC55C1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3CBEC5591AFDCCA000EC27CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3CBEC55E1AFE00C000EC27CC /* SNBusinessOrderModel.h */,
+				3CBEC55F1AFE00C000EC27CC /* SNBusinessOrderModel.m */,
+				3CBEC5611AFE00E900EC27CC /* SNBusinessOrder.h */,
+				3CBEC5621AFE00E900EC27CC /* SNBusinessOrder.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3CBEC55A1AFDCCA000EC27CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3CBEC5641AFE06C100EC27CC /* SNBusinessOrderCell.h */,
+				3CBEC5651AFE06C100EC27CC /* SNBusinessOrderCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3CC62CA01AE0EE22004D7C8D /* SNProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -1002,6 +1061,41 @@
 				3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */,
 			);
 			path = SNProgressHUD;
+			sourceTree = "<group>";
+		};
+		3CED6E351AFF0AA6004D37E5 /* BusinessStore */ = {
+			isa = PBXGroup;
+			children = (
+				3CED6E361AFF0AA6004D37E5 /* Controller */,
+				3CED6E371AFF0AA6004D37E5 /* Model */,
+				3CED6E381AFF0AA6004D37E5 /* View */,
+			);
+			path = BusinessStore;
+			sourceTree = "<group>";
+		};
+		3CED6E361AFF0AA6004D37E5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3CED6E391AFF0AB7004D37E5 /* SNBusinessStoreViewController.h */,
+				3CED6E3A1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3CED6E371AFF0AA6004D37E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3CED6E381AFF0AA6004D37E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3CED6E3C1AFF1B8B004D37E5 /* SNBusinessStroeCell.h */,
+				3CED6E3D1AFF1B8B004D37E5 /* SNBusinessStroeCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1054,6 +1148,7 @@
 				TargetAttributes = {
 					3C49E6891ADB51490008085F = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = BSBY52WEJ6;
 					};
 					3C49E6A21ADB51490008085F = {
 						CreatedOnToolsVersion = 6.1;
@@ -1141,6 +1236,7 @@
 				3C49E7431ADB597E0008085F /* SNTabBar.m in Sources */,
 				3C49E7171ADB55710008085F /* AFNetworkReachabilityManager.m in Sources */,
 				3C49E7371ADB55710008085F /* UIImageView+WebCache.m in Sources */,
+				3CBEC5601AFE00C000EC27CC /* SNBusinessOrderModel.m in Sources */,
 				3C49E71B1ADB55710008085F /* AFURLResponseSerialization.m in Sources */,
 				3C782AC91ADD380E00DD0FEC /* NSObject+MJKeyValue.m in Sources */,
 				3C85F3D61AED168500481F0C /* SNCustomerOrderCell.m in Sources */,
@@ -1161,7 +1257,9 @@
 				3C214BFC1AE247C10064644A /* SNDetailsScrollView.m in Sources */,
 				3C962BB51AFC8562002341E4 /* SNRoundPlayScrollView.m in Sources */,
 				3C782ACA1ADD380E00DD0FEC /* NSObject+MJMember.m in Sources */,
+				3CED6E3E1AFF1B8B004D37E5 /* SNBusinessStroeCell.m in Sources */,
 				3C49E71E1ADB55710008085F /* MJRefreshComponent.m in Sources */,
+				3CBEC55D1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m in Sources */,
 				3C214C081AE2A4E40064644A /* SNOtherGoodsView.m in Sources */,
 				3C214BFF1AE266550064644A /* SNGoodsDetailsView.m in Sources */,
 				3C49E7331ADB55710008085F /* UIImage+GIF.m in Sources */,
@@ -1195,10 +1293,12 @@
 				3C49E7631ADB67C40008085F /* MBProgressHUD+MJ.m in Sources */,
 				3C49E7241ADB55710008085F /* MJRefreshLegendFooter.m in Sources */,
 				3C782AC81ADD380E00DD0FEC /* NSObject+MJCoding.m in Sources */,
+				3CBEC5631AFE00E900EC27CC /* SNBusinessOrder.m in Sources */,
 				3C49E72A1ADB55710008085F /* NSData+ImageContentType.m in Sources */,
 				3C962BBB1AFCC4B5002341E4 /* SNBase64.m in Sources */,
 				3C49E7251ADB55710008085F /* MJRefreshLegendHeader.m in Sources */,
 				3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */,
+				3CBEC5661AFE06C100EC27CC /* SNBusinessOrderCell.m in Sources */,
 				3C34749E1AE3922D009FBB68 /* SNUserModel.m in Sources */,
 				3C49E7131ADB55710008085F /* main.m in Sources */,
 				3C49E72B1ADB55710008085F /* SDImageCache.m in Sources */,
@@ -1207,6 +1307,7 @@
 				3C49E7101ADB55710008085F /* SNMainViewController.m in Sources */,
 				3C49E7201ADB55710008085F /* MJRefreshFooter.m in Sources */,
 				3C782A831ADD0D4900DD0FEC /* SNMainTableView.m in Sources */,
+				3CED6E3B1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m in Sources */,
 				3C782A971ADD147600DD0FEC /* SNThirdClassViewController.m in Sources */,
 				3C85F3911AECD5DF00481F0C /* SNCustomerCollectModel.m in Sources */,
 				3C71E8941AE3785900056A7C /* Reachability.m in Sources */,
@@ -1250,8 +1351,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1271,7 +1372,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1294,8 +1395,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1308,7 +1409,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1320,11 +1421,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SNCommunicate/Class/Other/Global.pch";
 				INFOPLIST_FILE = SNCommunicate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d9e0d7cc-efbb-46dc-ac8d-050e3da2c4db";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 			};
 			name = Debug;
 		};
@@ -1333,11 +1437,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SNCommunicate/Class/Other/Global.pch";
 				INFOPLIST_FILE = SNCommunicate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d9e0d7cc-efbb-46dc-ac8d-050e3da2c4db";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 			};
 			name = Release;
 		};
@@ -1356,7 +1463,7 @@
 				INFOPLIST_FILE = SNCommunicateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNCommunicate.app/SNCommunicate";
 			};
 			name = Debug;
@@ -1372,7 +1479,7 @@
 				INFOPLIST_FILE = SNCommunicateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNCommunicate.app/SNCommunicate";
 			};
 			name = Release;

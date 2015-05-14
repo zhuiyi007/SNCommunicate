@@ -9,19 +9,30 @@
 #import "SNNetManger.h"
 #import "Reachability.h"
 
-static SNNetManger *netWorkManger = nil;
+static SNNetManger *sharedInstance;
 
 @implementation SNNetManger
 
-+ (SNNetManger *)instance
-{
-    @synchronized(self){
-        if (netWorkManger == nil) {
-            netWorkManger = [[[self class] alloc] init];
-        }
-        return netWorkManger;
-    }
++ (SNNetManger *)sharedInstance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        // 使用shared方法只能做一次初始化！
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
+
++ (SNNetManger *)allocWithZone:(struct _NSZone *)zone {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (sharedInstance == nil) {
+            sharedInstance = [super allocWithZone:zone];
+        }
+    });
+    return sharedInstance;
+}
+
+
 +(NETWORK_TYPE)networkTypeFromStatusBar {
     UIApplication *app = [UIApplication sharedApplication];
     NSArray *subviews = [[[app valueForKey:@"statusBar"] valueForKey:@"foregroundView"] subviews];
@@ -36,21 +47,6 @@ static SNNetManger *netWorkManger = nil;
     NSNumber * num = [dataNetworkItemView valueForKey:@"dataNetworkType"];
     nettype = [num intValue];
     return nettype;
-}
-
-+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self){
-        if (netWorkManger == nil) {
-            netWorkManger = [super allocWithZone:zone];
-        }
-        return netWorkManger;
-    }
-}
-
-+ (id)copyWithZone:(NSZone *)zone
-{
-    return netWorkManger;
 }
 
 

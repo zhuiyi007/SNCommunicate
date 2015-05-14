@@ -19,7 +19,7 @@
     [self.view setBackgroundColor:SNMainBackgroundColor];
     // 设置CGRectZero从导航栏下开始计算
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.edgesForExtendedLayout = UIRectEdgeBottom;
     }
 }
 

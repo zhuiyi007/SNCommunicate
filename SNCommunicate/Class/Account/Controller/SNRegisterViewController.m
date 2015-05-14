@@ -151,13 +151,14 @@
 {
     if (self.count >= 0) {
         [self.getSecurityButton setEnabled:NO];
+        self.getSecurityButton.titleLabel.text = [NSString stringWithFormat:@"%zd(s)后重试", self.count];
         [self.getSecurityButton setTitle:[NSString stringWithFormat:@"%zd(s)后重试", self.count] forState:UIControlStateDisabled];
         self.count --;
     }
     if (self.count == -1) {
         [self.getSecurityButton setEnabled:YES];
         [self removeTimer];
-        self.count = 10;
+        self.count = 60;
     }
 }
 

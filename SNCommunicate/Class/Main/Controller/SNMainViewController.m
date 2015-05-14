@@ -45,6 +45,10 @@
 - (void)setupChildViewControll:(UIViewController *)vc title:(NSString *)title tabBarTitle:(NSString *)tabBarTitle normalImage:(UIImage *)norImage selectImage:(UIImage *)selImage
 {
     SNMainNavigationController *nav = [[SNMainNavigationController alloc] initWithRootViewController:vc];
+//    SNMainNavigationController *nav = [[SNMainNavigationController alloc] init];
+//    nav.interactivePopGestureRecognizer.delaysTouchesBegan = NO;
+//    nav.hidesBottomBarWhenPushed = YES;
+    nav.tabBarController.tabBar.translucent = NO;
     vc.title = title;
     vc.tabBarItem.title = tabBarTitle;
     vc.tabBarItem.image = [norImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -83,21 +87,33 @@
     else { // 本地有缓存信息,直接给服务器验证
         [SNArchiverManger unarchiveUserModel];
         SNUserModel *userModel = [SNUserModel sharedInstance];
-        [SNHttpTool customerLoginWithPhoneNumber:userModel.phoneNumber
-                                        passWord:userModel.passWord
-                                          finish:^(id responseObject) {
-                                              [MBProgressHUD hideHUD];
-                                              SNLog(@"%@", responseObject);
-                                              if ([responseObject[@"status"] integerValue] == 0) {
-                                                  // 验证不通过,删除本地缓存
-                                                  [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
-                                                  return;
-                                              }
-                                              userModel.login = YES;
-                                          }
-                                           error:^(NSError *error) {
-                                               SNLog(@"%@", error);
-                                           }];
+        if ([userModel.phoneNumber length] == 11) {
+            [SNHttpTool customerLoginWithPhoneNumber:userModel.phoneNumber passWord:userModel.passWord finish:^(id responseObject) {
+                [MBProgressHUD hideHUD];
+                SNLog(@"%@", responseObject);
+                if ([responseObject[@"status"] integerValue] == 0) {
+                    // 验证不通过,删除本地缓存
+                    [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+                    return;
+                }
+                userModel.login = YES;
+            } error:^(NSError *error) {
+                SNLog(@"%@", error);
+            }];
+        } else {
+            [SNHttpTool businessLoginWithLoginNumber:userModel.phoneNumber passWord:userModel.passWord finish:^(id responseObject) {
+                [MBProgressHUD hideHUD];
+                SNLog(@"%@", responseObject);
+                if ([responseObject[@"status"] integerValue] == 0) {
+                    // 验证不通过,删除本地缓存
+                    [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+                    return;
+                }
+                userModel.login = YES;
+            } error:^(NSError *error) {
+                SNLog(@"%@", error);
+            }];
+        }
     }
     
 }

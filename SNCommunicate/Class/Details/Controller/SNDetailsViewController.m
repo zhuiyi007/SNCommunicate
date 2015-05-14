@@ -27,9 +27,9 @@
     [super viewDidLoad];
 //    [self.view setBackgroundColor:SNMainBackgroundColor];
     [self setData];
-    
     // Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -66,11 +66,14 @@
 - (void)reserveView
 {
     CGFloat height = 49;
-    UIView *reserveView = [[UIView alloc] initWithFrame:CGRectMake(0, SNScreenBounds.height - 49 - 64, SNScreenBounds.width, height)];
+    CGFloat width = SNScreenBounds.width * 0.5;
+    CGFloat y = SNScreenBounds.height - 49 - 64;
+    UIView *reserveView = [[UIView alloc] initWithFrame:CGRectMake(0, y, width, height)];
+    [reserveView setUserInteractionEnabled:YES];
     [self.view addSubview:reserveView];
     
-    UIButton *reserveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [reserveButton setFrame:CGRectMake(0, 0, reserveView.width * 0.5, height)];
+    UIButton *reserveButton = [[UIButton alloc] init];
+    [reserveButton setFrame:CGRectMake(0, 0, width, height)];
     [reserveButton setBackgroundColor:SNMainGreenColor];
     
     self.detailsData = self.detailsModel.result[0];
@@ -86,12 +89,12 @@
     [reserveButton setTitle:self.detailsData.yuDing forState:UIControlStateDisabled];
     [reserveButton setTitle:self.detailsData.yuDing forState:UIControlStateNormal];
     [reserveButton addTarget:self action:@selector(addReserve) forControlEvents:UIControlEventTouchUpInside];
+    
     [reserveView addSubview:reserveButton];
     
     
-    
     UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [collectionButton setFrame:CGRectMake(reserveView.width * 0.5, 0, reserveView.width * 0.5, height)];
+    [collectionButton setFrame:CGRectMake(width, 0, width, height)];
     [collectionButton setBackgroundColor:SNMainGreenColor];
     [collectionButton setTitle:@"收藏" forState:UIControlStateNormal];
     [collectionButton setTitleColor:SNMainBackgroundColor forState:UIControlStateNormal];

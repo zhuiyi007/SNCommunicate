@@ -24,25 +24,37 @@
 		<key>icon</key>
 		<string>geting</string>
 		<key>title</key>
-		<string>歌厅</string>
+		<string>歌舞厅</string>
 	</dict>
 	<dict>
 		<key>icon</key>
 		<string>dianwan</string>
 		<key>title</key>
-		<string>电玩</string>
+		<string>电玩城</string>
 	</dict>
 	<dict>
 		<key>icon</key>
 		<string>jianshen</string>
 		<key>title</key>
-		<string>健身</string>
+		<string>健身房</string>
 	</dict>
 	<dict>
 		<key>icon</key>
 		<string>gongyuan</string>
 		<key>title</key>
 		<string>公园</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>lvyoushe</string>
+		<key>title</key>
+		<string>旅游社</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>xiyu</string>
+		<key>title</key>
+		<string>洗浴</string>
 	</dict>
 </array>
 </plist>

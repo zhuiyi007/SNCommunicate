@@ -47,33 +47,54 @@
     }
     NSString *passWord = [SNBase64 base64StringFromText:self.passWordLabel.text];
     [MBProgressHUD showMessage:@"登录中"];
-    [SNHttpTool customerLoginWithPhoneNumber:self.accountLabel.text
-                                    passWord:passWord
-                                      finish:^(id responseObject) {
-        [MBProgressHUD hideHUD];
-        SNLog(@"%@", responseObject);
-        if ([responseObject[@"status"] integerValue] == 0) {
-            [MBProgressHUD showError:responseObject[@"ret_msg"]];
-            return;
-        }
-        [MBProgressHUD showSuccess:@"登录成功"];
-        self.userModel = [SNUserModel sharedInstance];
-        self.userModel.phoneNumber = self.accountLabel.text;
-        self.userModel.passWord = passWord;
-        self.userModel.name = responseObject[@"ret_msg"];
-        [SNArchiverManger archiveWithUserModel:[SNUserModel sharedInstance]];
-        self.userModel.login = YES;
-        [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:nil];
-        [self.navigationController popViewControllerAnimated:YES];
+    if ([self.accountLabel.text length] == 11) { // 顾客登录
+        [SNHttpTool customerLoginWithPhoneNumber:self.accountLabel.text passWord:passWord finish:^(id responseObject) {
+            [MBProgressHUD hideHUD];
+            SNLog(@"%@", responseObject);
+            if ([responseObject[@"status"] integerValue] == 0) {
+                [MBProgressHUD showError:responseObject[@"ret_msg"]];
+                return;
+            }
+            [MBProgressHUD showSuccess:@"登录成功"];
+            self.userModel = [SNUserModel sharedInstance];
+            self.userModel.phoneNumber = self.accountLabel.text;
+            self.userModel.passWord = passWord;
+            self.userModel.name = responseObject[@"ret_msg"];
+            [SNArchiverManger archiveWithUserModel:[SNUserModel sharedInstance]];
+            self.userModel.login = YES;
+            [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+        } error:^(NSError *error) {
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:@"登录超时"];
+            SNLog(@"%@", error);
+        }];
+    } else {
+        [SNHttpTool businessLoginWithLoginNumber:self.accountLabel.text passWord:passWord finish:^(id responseObject) {
+            [MBProgressHUD hideHUD];
+            SNLog(@"%@", responseObject);
+            if ([responseObject[@"status"] integerValue] == 0) {
+                [MBProgressHUD showError:responseObject[@"ret_msg"]];
+                return;
+            }
+            [MBProgressHUD showSuccess:@"登录成功"];
+            self.userModel = [SNUserModel sharedInstance];
+            self.userModel.phoneNumber = self.accountLabel.text;
+            self.userModel.passWord = passWord;
+            self.userModel.name = responseObject[@"Name"];
+            [SNArchiverManger archiveWithUserModel:[SNUserModel sharedInstance]];
+            self.userModel.login = YES;
+            [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+        } error:^(NSError *error) {
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:@"登录超时"];
+            SNLog(@"%@", error);
+        }];
     }
-                                       error:^(NSError *error) {
-        [MBProgressHUD hideHUD];
-        [MBProgressHUD showError:@"登录超时"];
-        SNLog(@"%@", error);
-    }];
     
 }
-- (IBAction)forgotPassWordButtonClick:(id)sender {   
+- (IBAction)forgotPassWordButtonClick:(id)sender {
 }
 
 - (BOOL)isDataLegal

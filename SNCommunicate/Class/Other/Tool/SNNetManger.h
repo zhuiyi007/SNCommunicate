@@ -24,7 +24,7 @@ typedef enum {
 }NETWORK_TYPE;
 @interface SNNetManger : NSObject
 
-+ (SNNetManger *)instance;
++ (SNNetManger *)sharedInstance;
 /**
  *  检测网络类型
  *

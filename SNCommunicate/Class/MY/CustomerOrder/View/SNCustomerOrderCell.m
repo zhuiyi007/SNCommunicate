@@ -8,11 +8,25 @@
 
 #import "SNCustomerOrderCell.h"
 @interface SNCustomerOrderCell()
-
+/**
+ *  订单号
+ */
 @property (nonatomic, strong) UILabel *orderNum;
+/**
+ *  顾客电话
+ */
 @property (nonatomic, strong) UILabel *customerTEL;
+/**
+ *  总价
+ */
 @property (nonatomic, strong) UILabel *totalPrice;
+/**
+ *  数量
+ */
 @property (nonatomic, strong) UILabel *Count;
+/**
+ *  完成订单按钮
+ */
 @property (nonatomic, strong) UIButton *finishOrder;
 
 @property (nonatomic, strong) SNUserModel *userModel;
