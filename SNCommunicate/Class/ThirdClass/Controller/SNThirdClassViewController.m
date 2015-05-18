@@ -93,6 +93,7 @@
                                  [self.tableView reloadData];
                                  [self.tableView.footer endRefreshing];
                              } error:^(NSError *error) {
+                                 [MBProgressHUD hideHUD];
                                  [MBProgressHUD showError:@"加载失败"];
                                  self.ret_msg = @"加载失败";
                                  [self.tableView reloadData];

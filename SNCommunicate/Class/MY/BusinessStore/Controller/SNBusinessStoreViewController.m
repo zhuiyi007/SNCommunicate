@@ -59,8 +59,10 @@
 
 - (void)setData
 {
+    [MBProgressHUD showMessage:@"正在加载"];
     [SNHttpTool getShangPinByLoginNum:self.userModel.phoneNumber finish:^(id responseObject) {
         SNLog(@"%@", responseObject);
+        [MBProgressHUD hideHUD];
         self.detailsModel = [SNDetailsModel objectWithKeyValues:responseObject];
         if ([self.detailsModel.status integerValue] == 0) {
             [MBProgressHUD showError:self.detailsModel.ret_msg];

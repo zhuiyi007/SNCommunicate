@@ -9,8 +9,11 @@
 #import "SNHttpTool.h"
 #import "AFNetworking.h"
 
-#define HTTP @"http://123.57.206.151/"
-#define SOAPAction @"http://123.57.206.151/"
+#define HTTP @"http://123.57.206.151:12121/"
+#define SOAPAction @"http://123.57.206.151:12121/"
+//#define HTTP @"http://www.yanbokj.com/"
+//#define SOAPAction @"http://www.yanbokj.com/"
+
 
 static SNHttpTool *sharedInstance;
 

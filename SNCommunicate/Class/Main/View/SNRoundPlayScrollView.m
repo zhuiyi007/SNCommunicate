@@ -18,6 +18,9 @@
 + (SNRoundPlayScrollView *)createRoundPlayScrollViewWithFrame:(CGRect)frame placeholderImage:(NSString *)placeholderImage
 {
     SNRoundPlayScrollView *scrollView = [[self alloc] initWithFrame:frame];
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"default_ad_1"]];
+    [image setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    [scrollView addSubview:image];
     return scrollView;
 }
 
