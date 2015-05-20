@@ -9,21 +9,21 @@
 #import "SNCustomerOrderCell.h"
 @interface SNCustomerOrderCell()
 /**
+ *  商品名
+ */
+@property (nonatomic, strong) UILabel *Name;
+/**
  *  订单号
  */
 @property (nonatomic, strong) UILabel *orderNum;
 /**
- *  顾客电话
+ *  商家电话
  */
-@property (nonatomic, strong) UILabel *customerTEL;
+@property (nonatomic, strong) UILabel *TEL;
 /**
  *  总价
  */
 @property (nonatomic, strong) UILabel *totalPrice;
-/**
- *  数量
- */
-@property (nonatomic, strong) UILabel *Count;
 /**
  *  完成订单按钮
  */
@@ -45,17 +45,17 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.Name = [[UILabel alloc] init];
+        [self addSubview:self.Name];
+        
         self.orderNum = [[UILabel alloc] init];
         [self addSubview:self.orderNum];
         
-        self.customerTEL = [[UILabel alloc] init];
-        [self addSubview:self.customerTEL];
+        self.TEL = [[UILabel alloc] init];
+        [self addSubview:self.TEL];
         
         self.totalPrice = [[UILabel alloc] init];
         [self addSubview:self.totalPrice];
-        
-        self.Count = [[UILabel alloc] init];
-        [self addSubview:self.Count];
         
         self.finishOrder = [[UIButton alloc] init];
         [self.finishOrder setTitleColor:SNMainBackgroundColor forState:UIControlStateNormal];
@@ -105,10 +105,15 @@
 - (void)setCustomerOrderModel:(SNCustomerOrderModel *)customerOrderModel
 {
     _customerOrderModel = customerOrderModel;
+    self.Name.text = [NSString stringWithFormat:@"商品名:%@", customerOrderModel.Name];
     self.orderNum.text = [NSString stringWithFormat:@"订单号:%@", customerOrderModel.orderNum];
-    self.customerTEL.text = [NSString stringWithFormat:@"顾客电话:%@", customerOrderModel.customerTEL];
-    self.totalPrice.text = [NSString stringWithFormat:@"价格:￥%@", customerOrderModel.totalPrice];
-    self.Count.text = [NSString stringWithFormat:@"数量:%@", customerOrderModel.Count];
+    if (self.userModel.phoneNumber.length == 11) {
+        self.TEL.text = [NSString stringWithFormat:@"商家电话:%@", customerOrderModel.TEL];
+    }
+    else {
+        self.TEL.text = [NSString stringWithFormat:@"顾客电话:%@", customerOrderModel.customerTEL];
+    }
+    self.totalPrice.text = [NSString stringWithFormat:@"总价:￥%@", customerOrderModel.totalPrice];
     [self.finishOrder setTitle:customerOrderModel.orderState forState:UIControlStateNormal & UIControlStateDisabled];
     if ([customerOrderModel.orderState isEqualToString:@"已完成"]) {
         [self.finishOrder setEnabled:NO];
@@ -121,20 +126,20 @@
     [super layoutSubviews];
     CGFloat margin = 10;
     CGFloat lineMargin = 5;
-    [self.orderNum setFrame:CGRectMake(margin, margin, 0, 0)];
+    [self.Name setFrame:CGRectMake(margin, margin, 0, 0)];
+    [self.Name sizeToFit];
+    
+    [self.orderNum setFrame:CGRectMake(margin, CGRectGetMaxY(self.Name.frame) + lineMargin, 0, 0)];
     [self.orderNum sizeToFit];
     
-    [self.customerTEL setFrame:CGRectMake(margin, CGRectGetMaxY(self.orderNum.frame) + lineMargin, 0, 0)];
-    [self.customerTEL sizeToFit];
+    [self.TEL setFrame:CGRectMake(margin, CGRectGetMaxY(self.orderNum.frame) + lineMargin, 0, 0)];
+    [self.TEL sizeToFit];
     
-    [self.totalPrice setFrame:CGRectMake(margin, CGRectGetMaxY(self.customerTEL.frame) + lineMargin, 0, 0)];
     [self.totalPrice sizeToFit];
-    
-    [self.Count sizeToFit];
-    [self.Count setFrame:CGRectMake(SNScreenBounds.width - margin - self.Count.width, margin, self.Count.width, self.Count.height)];
+    [self.totalPrice setFrame:CGRectMake(SNScreenBounds.width - margin - self.totalPrice.width, margin, self.totalPrice.width, self.totalPrice.height)];
     
     [self.finishOrder sizeToFit];
-    [self.finishOrder setFrame:CGRectMake(SNScreenBounds.width - self.finishOrder.width - margin - 20, CGRectGetMaxY(self.totalPrice.frame) - self.finishOrder.height, self.finishOrder.width + 20, self.finishOrder.height)];
+    [self.finishOrder setFrame:CGRectMake(SNScreenBounds.width - self.finishOrder.width - margin - 20, CGRectGetMaxY(self.TEL.frame) - self.finishOrder.height, self.finishOrder.width + 20, self.finishOrder.height)];
     
 }
 

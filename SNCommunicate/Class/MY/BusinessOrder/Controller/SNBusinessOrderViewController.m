@@ -7,15 +7,24 @@
 //
 
 #import "SNBusinessOrderViewController.h"
-#import "SNBusinessOrder.h"
-#import "SNBusinessOrderModel.h"
-#import "SNBusinessOrderCell.h"
+//#import "SNBusinessOrder.h"
+//#import "SNBusinessOrderModel.h"
+//#import "SNBusinessOrderCell.h"
 #import "SNNullCell.h"
+
+
+
+#import "SNCustomerOrder.h"
+#import "SNCustomerOrderModel.h"
+#import "SNCustomerOrderCell.h"
 
 @interface SNBusinessOrderViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) SNUserModel *userModel;
-@property (nonatomic, strong) SNBusinessOrder *businessOrder;
+
+@property (nonatomic, strong) SNCustomerOrder *customerOrder;
+
+
 @property (nonatomic, strong) NSArray *finishedOrder;
 @property (nonatomic, strong) NSArray *unFinishedOrder;
 @property (nonatomic, strong) UITableView *tableView;
@@ -65,9 +74,9 @@
     [SNHttpTool selectDingDanByLoginNum:self.userModel.phoneNumber passWord:self.userModel.passWord big:0 small:0 finish:^(id responseObject) {
         SNLog(@"%@", responseObject);
         [MBProgressHUD hideHUD];
-        self.businessOrder = [SNBusinessOrder objectWithKeyValues:responseObject];
-        if ([self.businessOrder.status integerValue] == 0) {
-            [MBProgressHUD showError:self.businessOrder.ret_msg];
+        self.customerOrder = [SNCustomerOrder objectWithKeyValues:responseObject];
+        if ([self.customerOrder.status integerValue] == 0) {
+            [MBProgressHUD showError:self.customerOrder.ret_msg];
         }
         [self.tableView reloadData];
     } error:^(NSError *error) {
@@ -77,12 +86,13 @@
     }];
 }
 
-- (void)setBusinessOrder:(SNBusinessOrder *)businessOrder
+- (void)setCustomerOrder:(SNCustomerOrder *)customerOrder
 {
-    _businessOrder = businessOrder;
+    _customerOrder = customerOrder;
     NSMutableArray *finishedOrder = [NSMutableArray array];
     NSMutableArray *unFinishedOrder = [NSMutableArray array];
-    for (SNBusinessOrderModel *model in businessOrder.result) {
+    for (SNCustomerOrderModel *model in customerOrder.result) {
+        SNLog(@"%@", model.orderState);
         if ([model.orderState isEqualToString:@"已完成"]) {
             [finishedOrder addObject:model];
         }
@@ -119,9 +129,9 @@
 {
     // 有内容时显示的cell
     NSString *Cell = @"businessOrderCell";
-    SNBusinessOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:Cell];
+    SNCustomerOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:Cell];
     if (!cell) {
-        cell = [SNBusinessOrderCell createCellWithIdentifier:Cell];
+        cell = [SNCustomerOrderCell createCellWithIdentifier:Cell];
     }
     // 没有内容的cell
     SNNullCell *nullCell = [SNNullCell createCellWithIdentifier:nil];
@@ -131,7 +141,7 @@
             return nullCell;
         }
         else {
-            cell.businessOrderModel = self.finishedOrder[indexPath.row];
+            cell.customerOrderModel = self.finishedOrder[indexPath.row];
             return cell;
         }
     }
@@ -141,7 +151,7 @@
             return nullCell;
         }
         else {
-            cell.businessOrderModel = self.unFinishedOrder[indexPath.row];
+            cell.customerOrderModel = self.unFinishedOrder[indexPath.row];
             return cell;
         }
     }
@@ -161,6 +171,30 @@
         }
     }
     return 92;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.isFinishedOrder) { // 进入的是已完成订单
+        if ([self.finishedOrder count] > 0) { // 有已完成订单
+            [self makePhoneCallWithPhoneNumber:[self.finishedOrder[indexPath.row] customerTEL]];
+        }
+    }
+    else { // 进入的是未完成订单
+        if ([self.unFinishedOrder count] > 0) { // 有未完成订单
+            [self makePhoneCallWithPhoneNumber:[self.unFinishedOrder[indexPath.row] customerTEL]];
+        }
+    }
+}
+
+- (void)makePhoneCallWithPhoneNumber:(NSString *)phoneNumber
+{
+    SNLog(@"点击了电话按钮%@", phoneNumber);
+    UIWebView*callWebview =[[UIWebView alloc] init];
+    NSURL *telURL =[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", phoneNumber]];// 貌似tel:// 或者 tel: 都行
+    [callWebview loadRequest:[NSURLRequest requestWithURL:telURL]];
+    [self.view addSubview:callWebview];
 }
 
 /*

@@ -7,6 +7,10 @@
 //
 
 #import "SNRoundPlayScrollView.h"
+#import "SNDetailsViewController.h"
+#import "SNCommunicateMainViewController.h"
+#import "SNTabBar.h"
+
 @interface SNRoundPlayScrollView()<UIScrollViewDelegate>
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) UIPageControl *pageControl;
@@ -22,6 +26,26 @@
     [image setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     [scrollView addSubview:image];
     return scrollView;
+}
+
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (self.shopDataArray) {
+        NSInteger index = self.contentOffset.x / SNScreenBounds.width;
+        SNLog(@"点击了第%zd张照片", index);
+        SNDetailsViewController *vc = [[SNDetailsViewController alloc] init];
+        vc.title = [self.shopDataArray[index] Name];
+        vc.shopData = self.shopDataArray[index];
+        for (UIView *view = [self superview]; view; view = [view superview]) {
+            UIResponder *nextResponder = [view nextResponder];
+            if ([nextResponder isKindOfClass:[SNCommunicateMainViewController class]]) {
+                SNCommunicateMainViewController *tempController = (SNCommunicateMainViewController *)nextResponder;
+                [tempController.navigationController pushViewController:vc animated:YES];
+                [[SNTabBar tabBar] hiddenTabBar];
+            }
+        }
+    }
 }
 
 

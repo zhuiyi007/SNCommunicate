@@ -10,6 +10,8 @@
 
 @interface SNRoundPlayScrollView : UIScrollView
 
+@property (nonatomic, strong) NSArray *shopDataArray;
+
 + (instancetype)createRoundPlayScrollViewWithFrame:(CGRect)frame placeholderImage:(NSString *)placeholderImage;
 
 

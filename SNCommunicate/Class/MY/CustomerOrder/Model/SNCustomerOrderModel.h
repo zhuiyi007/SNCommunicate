@@ -10,14 +10,11 @@
 
 @interface SNCustomerOrderModel : NSObject
 
-@property (nonatomic, strong) NSString *Count;
-@property (nonatomic, strong) NSString *Type;
+@property (nonatomic, strong) NSString *Name;
+@property (nonatomic, strong) NSString *TEL;
 @property (nonatomic, strong) NSString *customerTEL;
-@property (nonatomic, strong) NSString *orderDate;
 @property (nonatomic, strong) NSString *orderNum;
 @property (nonatomic, strong) NSString *orderState;
-@property (nonatomic, strong) NSString *serviceID;
-@property (nonatomic, strong) NSString *shangID;
 @property (nonatomic, strong) NSString *totalPrice;
 
 @end

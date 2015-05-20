@@ -12,6 +12,7 @@
 
 @interface SNOtherGoodsLabelView ()
 
+@property (nonatomic, strong) UIImageView *image;
 @property (nonatomic, strong) UILabel *name;
 @property (nonatomic, strong) UILabel *price;
 
@@ -30,6 +31,10 @@
 
 - (void)createUI
 {
+    self.image = [[UIImageView alloc] init];
+    [self.image setContentMode:UIViewContentModeScaleToFill];
+    [self addSubview:self.image];
+    
     self.name = [[UILabel alloc] init];
     [self addSubview:self.name];
     
@@ -40,6 +45,8 @@
 - (void)setData:(SNDetailsData *)data
 {
     _data = data;
+    NSURL *url = [NSURL URLWithString:data.Pic];
+    [self.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"img_default"]];
     self.name.text = data.Name;
     self.price.text = data.unitPrice;
     [self setNeedsLayout];
@@ -63,13 +70,15 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.name setFrame:CGRectZero];
+    [self.image setFrame:CGRectMake(0, 0, 100, 60)];
+    
     [self.name sizeToFit];
+    self.name.x = CGRectGetMaxX(self.image.frame) + 10;
+    self.name.y = (self.height - self.name.height) * 0.5;
     
     [self.price sizeToFit];
-    CGFloat width = self.price.width;
-    CGFloat height = self.price.height;
-    [self.price setFrame:CGRectMake(self.width - width, 0, width, height)];
+    self.price.x = self.width - self.price.width;
+    self.price.y = (self.height - self.price.height) * 0.5;
 }
 
 /*

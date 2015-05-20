@@ -11,6 +11,7 @@
 
 #import "SNMainCell.h"
 #import "SNMainCellData.h"
+#import "SNShopData.h"
 
 #import "SNTabBar.h"
 
@@ -22,6 +23,8 @@
 @property (nonatomic, strong) NSArray *dataArray;
 
 @property (nonatomic, strong) NSMutableArray *imageArray;
+
+@property (nonatomic, strong) NSArray *shopData;
 
 @end
 
@@ -63,7 +66,10 @@
 - (void)initData
 {
     [SNHttpTool getLevelOfBusinessWithLevel:@"钻石" finish:^(id responseObject) {
+        SNLog(@"%@", responseObject);
         NSArray *tempArray = (NSArray *)responseObject[@"result"];
+        self.shopData = [SNShopData objectArrayWithKeyValuesArray:tempArray];
+        self.scrollView.shopDataArray = self.shopData;
         for (NSDictionary *dict in tempArray) {
             [self.imageArray addObject:dict[@"picURL"]];
         }

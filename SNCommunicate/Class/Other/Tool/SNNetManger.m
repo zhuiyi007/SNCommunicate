@@ -22,6 +22,9 @@ static SNNetManger *sharedInstance;
     return sharedInstance;
 }
 
+
+
+
 + (SNNetManger *)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

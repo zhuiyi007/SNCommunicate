@@ -16,8 +16,11 @@
 
 @property (nonatomic, strong) SNUserModel *userModel;
 @property (nonatomic, strong) SNDetailsModel *detailsModel;
+@property (nonatomic, strong) SNDetailsData *detailsData;
+@property (nonatomic, strong) NSString *totalOrderNumber;
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UILabel *totalOrderLabel;
 
 @end
 
@@ -43,18 +46,46 @@
     return _userModel;
 }
 
+- (void)setTotalOrderNumber:(NSString *)totalOrderNumber
+{
+    _totalOrderNumber = totalOrderNumber;
+    NSString *str = [NSString stringWithFormat:@"历史订单已达%@单", totalOrderNumber];
+    NSMutableAttributedString *attributerString = [[NSMutableAttributedString alloc]
+                                                   initWithString:str];
+    self.totalOrderLabel.textAlignment = NSTextAlignmentCenter;
+    [attributerString addAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                     [UIFont systemFontOfSize:24],
+                                     NSFontAttributeName,
+                                     SNColor(236, 73, 73),
+                                     NSForegroundColorAttributeName,
+                                     nil]
+                              range:[str rangeOfString:totalOrderNumber]];
+    
+    // 设置富文本的段落样式
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 13.0f;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    [attributerString addAttribute:NSParagraphStyleAttributeName
+                             value:paragraphStyle
+                             range:NSMakeRange(0, str.length)];
+    self.totalOrderLabel.attributedText = attributerString;
+}
+
 - (void)createUI
 {
-    SNMainTableView *tableView = [[SNMainTableView alloc] initWithFrame:SNTableViewFrame
-                                                                  style:UITableViewStylePlain];
+    // 设置金额的文本样式
+    self.totalOrderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SNScreenBounds.width, 50)];
+    self.totalOrderNumber = @"...";
     
-    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    tableView.contentInset = UIEdgeInsetsZero;
     
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    self.tableView = tableView;
-    [self.view addSubview:tableView];
+    self.tableView = [[SNMainTableView alloc] init];
+    self.tableView.frame = SNTableViewFrame;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    self.tableView.tableFooterView = self.totalOrderLabel;
+    
+    [self.view addSubview:self.tableView];
 }
 
 - (void)setData
@@ -64,6 +95,10 @@
         SNLog(@"%@", responseObject);
         [MBProgressHUD hideHUD];
         self.detailsModel = [SNDetailsModel objectWithKeyValues:responseObject];
+        if ([self.detailsModel.result count]) {
+            self.detailsData = self.detailsModel.result[0];
+            [self getTotalOrderNumber];
+        }
         if ([self.detailsModel.status integerValue] == 0) {
             [MBProgressHUD showError:self.detailsModel.ret_msg];
         }
@@ -72,6 +107,20 @@
         SNLog(@"%@", error);
         [MBProgressHUD hideHUD];
         [MBProgressHUD showError:@"加载失败"];
+    }];
+}
+
+- (void)getTotalOrderNumber
+{
+    [SNHttpTool getTotalDingDanWithShangID:self.detailsData.shangID finish:^(id responseObject) {
+        SNLog(@"%@", responseObject);
+        if ([responseObject[@"status"] integerValue] == 0) {
+            self.totalOrderLabel.text = @"历史订单数获取失败";
+            return;
+        }
+        self.totalOrderNumber = responseObject[@"ret_msg"];
+    } error:^(NSError *error) {
+        SNLog(@"%@", error);
     }];
 }
 
@@ -112,6 +161,7 @@
     }
     return 92;
 }
+
 
 /*
 #pragma mark - Navigation

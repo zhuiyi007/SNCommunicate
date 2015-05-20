@@ -49,6 +49,7 @@
         [self.contentView addSubview:self.Pic];
         
         self.Name = [[UILabel alloc] init];
+        self.Name.numberOfLines = 0;
         [self.contentView addSubview:self.Name];
         
         self.store = [[UILabel alloc] init];
@@ -119,6 +120,7 @@
     CGFloat margin = 10;
     [self.Pic setFrame:CGRectMake(margin, (self.height - 80) * 0.5, 120, 80)];
     
+    self.Name.width = self.width - CGRectGetMaxX(self.Pic.frame) - 2 * margin;
     [self.Name sizeToFit];
     [self.store sizeToFit];
     CGFloat labelY = (self.height - self.Name.height - self.store.height - margin) * 0.5;

@@ -172,6 +172,17 @@
                           error:(void (^)(NSError *error))failure;
 
 /**
+ *  获取商家总订单数
+ *
+ *  @param shangID 商家ID
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
++ (void)getTotalDingDanWithShangID:(NSString *)shangID
+                            finish:(void (^)(id responseObject))success
+                             error:(void (^)(NSError *error))failure;
+
+/**
  *  添加收藏
  *
  *  @param shangID     商品ID

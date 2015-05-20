@@ -42,11 +42,11 @@
         label.textAlignment = NSTextAlignmentCenter;
         return;
     }
-        
+    CGFloat height = 80;
     for (NSInteger index = 0; index < [otherGoodsArray count]; index ++) {
-        CGFloat y = (CGRectGetMaxY(label.frame) + lineMargin) * (index + 1);
+        CGFloat y = CGRectGetMaxY(label.frame) + lineMargin + (lineMargin + height) * index;
         SNOtherGoodsLabelView *view = [[SNOtherGoodsLabelView alloc] init];
-        [view setFrame:CGRectMake(margin, y, SNScreenBounds.width - 2 * margin, 20)];
+        [view setFrame:CGRectMake(margin, y, SNScreenBounds.width - 2 * margin, height)];
         view.data = otherGoodsArray[index];
         [self addSubview:view];
     }

@@ -163,5 +163,29 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.isFinishedOrder) { // 进入的是已完成订单
+        if ([self.finishedOrder count] > 0) { // 有已完成订单
+            [self makePhoneCallWithPhoneNumber:[self.finishedOrder[indexPath.row] customerTEL]];
+        }
+    }
+    else { // 进入的是未完成订单
+        if ([self.unFinishedOrder count] > 0) { // 有未完成订单
+            [self makePhoneCallWithPhoneNumber:[self.unFinishedOrder[indexPath.row] customerTEL]];
+        }
+    }
+}
+
+- (void)makePhoneCallWithPhoneNumber:(NSString *)phoneNumber
+{
+    SNLog(@"点击了电话按钮%@", phoneNumber);
+    UIWebView*callWebview =[[UIWebView alloc] init];
+    NSURL *telURL =[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", phoneNumber]];// 貌似tel:// 或者 tel: 都行
+    [callWebview loadRequest:[NSURLRequest requestWithURL:telURL]];
+    [self.view addSubview:callWebview];
+}
+
+
 
 @end

@@ -68,7 +68,7 @@
     CGFloat height = 49;
     CGFloat width = SNScreenBounds.width * 0.5;
     CGFloat y = SNScreenBounds.height - 49 - 64;
-    UIView *reserveView = [[UIView alloc] initWithFrame:CGRectMake(0, y, width, height)];
+    UIView *reserveView = [[UIView alloc] initWithFrame:CGRectMake(0, y, SNScreenBounds.width, height)];
     [reserveView setUserInteractionEnabled:YES];
     [self.view addSubview:reserveView];
     

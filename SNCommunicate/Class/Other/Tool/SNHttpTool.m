@@ -9,8 +9,8 @@
 #import "SNHttpTool.h"
 #import "AFNetworking.h"
 
-#define HTTP @"http://123.57.206.151:12121/"
-#define SOAPAction @"http://123.57.206.151:12121/"
+#define HTTP @"http://123.57.206.151/"
+#define SOAPAction @"http://123.57.206.151/"
 //#define HTTP @"http://www.yanbokj.com/"
 //#define SOAPAction @"http://www.yanbokj.com/"
 
@@ -424,6 +424,36 @@ static SNHttpTool *sharedInstance;
                                                     error:(void (^)(NSError *error))failure];
 }
 
+/**
+ *  获取商家总订单数
+ *
+ *  @param shangID 商家ID
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
++ (void)getTotalDingDanWithShangID:(NSString *)shangID
+                            finish:(void (^)(id responseObject))success
+                             error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<GetTotalDingDan xmlns=\"http://123.57.206.151/\">"
+     "<shangID>%@</shangID>"
+     "</GetTotalDingDan>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , shangID];
+
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSGetTotalDingDan.asmx"
+                                            andSoapAction:@"GetTotalDingDan"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
 
 
 /**
