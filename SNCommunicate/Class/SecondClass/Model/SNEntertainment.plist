@@ -22,7 +22,7 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string></string>
+		<string>shengri</string>
 		<key>title</key>
 		<string>生日庆祝</string>
 	</dict>
@@ -34,13 +34,13 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string></string>
+		<string>aiche</string>
 		<key>title</key>
 		<string>爱车</string>
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string></string>
+		<string>qita</string>
 		<key>title</key>
 		<string>其他</string>
 	</dict>

@@ -36,6 +36,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self createUI];
+    [self login];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self initData];
 }
 
@@ -76,9 +81,47 @@
         }
         [self.scrollView insertImageWithImagesURLArray:self.imageArray placeholderImage:@"default_ad_1"];
     } error:^(NSError *error) {
-        
+        SNLog(@"%@", error);
     }];
-    
+}
+
+- (void)login
+{
+    if (![[NSFileManager defaultManager] fileExistsAtPath:SNUserInfoPath]) {
+        // 本地没有缓存信息
+        return;
+    }
+    else { // 本地有缓存信息,直接给服务器验证
+        [SNArchiverManger unarchiveUserModel];
+        SNUserModel *userModel = [SNUserModel sharedInstance];
+        if ([userModel.phoneNumber length] == 11) {
+            [SNHttpTool customerLoginWithPhoneNumber:userModel.phoneNumber passWord:userModel.passWord finish:^(id responseObject) {
+                [MBProgressHUD hideHUD];
+                SNLog(@"%@", responseObject);
+                if ([responseObject[@"status"] integerValue] == 0) {
+                    // 验证不通过,删除本地缓存
+                    [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+                    return;
+                }
+                userModel.login = YES;
+            } error:^(NSError *error) {
+                SNLog(@"%@", error);
+            }];
+        } else {
+            [SNHttpTool businessLoginWithLoginNumber:userModel.phoneNumber passWord:userModel.passWord finish:^(id responseObject) {
+                [MBProgressHUD hideHUD];
+                SNLog(@"%@", responseObject);
+                if ([responseObject[@"status"] integerValue] == 0) {
+                    // 验证不通过,删除本地缓存
+                    [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+                    return;
+                }
+                userModel.login = YES;
+            } error:^(NSError *error) {
+                SNLog(@"%@", error);
+            }];
+        }
+    }
 }
 
 - (NSArray *)dataArray

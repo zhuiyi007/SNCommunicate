@@ -107,7 +107,6 @@
 		3C85F3D01AED148C00481F0C /* SNCustomerOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3CF1AED148C00481F0C /* SNCustomerOrder.m */; };
 		3C85F3D31AED14D600481F0C /* SNCustomerOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3D21AED14D600481F0C /* SNCustomerOrderModel.m */; };
 		3C85F3D61AED168500481F0C /* SNCustomerOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F3D51AED168500481F0C /* SNCustomerOrderCell.m */; };
-		3C899D6C1B0C62AB00C79FE0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C899D6B1B0C62AB00C79FE0 /* LaunchScreen.xib */; };
 		3C962BB51AFC8562002341E4 /* SNRoundPlayScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BB41AFC8562002341E4 /* SNRoundPlayScrollView.m */; };
 		3C962BB81AFCA33A002341E4 /* SNBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BB71AFCA33A002341E4 /* SNBaseViewController.m */; };
 		3C962BBB1AFCC4B5002341E4 /* SNBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C962BBA1AFCC4B5002341E4 /* SNBase64.m */; };
@@ -336,7 +335,6 @@
 		3C85F3D21AED14D600481F0C /* SNCustomerOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCustomerOrderModel.m; sourceTree = "<group>"; };
 		3C85F3D41AED168500481F0C /* SNCustomerOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCustomerOrderCell.h; sourceTree = "<group>"; };
 		3C85F3D51AED168500481F0C /* SNCustomerOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCustomerOrderCell.m; sourceTree = "<group>"; };
-		3C899D6B1B0C62AB00C79FE0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		3C962BB31AFC8562002341E4 /* SNRoundPlayScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRoundPlayScrollView.h; sourceTree = "<group>"; };
 		3C962BB41AFC8562002341E4 /* SNRoundPlayScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRoundPlayScrollView.m; sourceTree = "<group>"; };
 		3C962BB61AFCA33A002341E4 /* SNBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBaseViewController.h; sourceTree = "<group>"; };
@@ -566,7 +564,6 @@
 				3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */,
 				3C962BB31AFC8562002341E4 /* SNRoundPlayScrollView.h */,
 				3C962BB41AFC8562002341E4 /* SNRoundPlayScrollView.m */,
-				3C899D6B1B0C62AB00C79FE0 /* LaunchScreen.xib */,
 				3C7F3CA71B11A2FE00F23F8D /* SNGuideCell.h */,
 				3C7F3CA81B11A2FE00F23F8D /* SNGuideCell.m */,
 			);
@@ -1192,7 +1189,6 @@
 				3CE0C3DF1ADE586E00EF3358 /* SNEatAndBed.plist in Resources */,
 				3CE0C3E11ADE586E00EF3358 /* SNMarket.plist in Resources */,
 				3CE0C3E01ADE586E00EF3358 /* SNHealthAndBeauty.plist in Resources */,
-				3C899D6C1B0C62AB00C79FE0 /* LaunchScreen.xib in Resources */,
 				3C49E71D1ADB55710008085F /* MJRefresh.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1424,6 +1420,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SNCommunicate/Class/Other/Global.pch";
@@ -1439,6 +1436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SNCommunicate/Class/Other/Global.pch";

@@ -64,7 +64,10 @@
 
 - (void)clickMyTabBar:(NSNotification *)notification
 {
-    if (self.isChecking) {
+    if (self.userModel.isLogin) {
+        [self loginSuccess:nil];
+    }
+    if (self.isChecking || self.userModel.isLogin) {
         return;
     }
     UIStoryboard *accountStoryBoard = [UIStoryboard storyboardWithName:@"SNAccountViewController" bundle:nil];
@@ -161,14 +164,16 @@
 - (void)createShopUI
 {
     SNMainCellData *data1 = [[SNMainCellData alloc] init];
+    data1.icon = @"yichushou";
     data1.title = @"已出售订单";
     SNMainCellData *data2 = [[SNMainCellData alloc] init];
     data2.icon = @"weifukuan";
     data2.title = @"未付款订单";
     SNMainCellData *data3 = [[SNMainCellData alloc] init];
+    data3.icon = @"daichuli";
     data3.title = @"待处理订单";
     SNMainCellData *data4 = [[SNMainCellData alloc] init];
-    data4.icon = @"cangku";
+    data4.icon = @"kucun";
     data4.title = @"库存";
     _dataArray = [NSArray arrayWithObjects:data1, data2, data3, data4, nil];
 }
