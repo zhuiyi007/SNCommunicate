@@ -27,6 +27,7 @@
 
 @property (nonatomic, strong) NSArray *finishedOrder;
 @property (nonatomic, strong) NSArray *unFinishedOrder;
+@property (nonatomic, strong) NSArray *acceptOrder;
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
@@ -91,10 +92,13 @@
     _customerOrder = customerOrder;
     NSMutableArray *finishedOrder = [NSMutableArray array];
     NSMutableArray *unFinishedOrder = [NSMutableArray array];
+    NSMutableArray *acceptOrder = [NSMutableArray array];
     for (SNCustomerOrderModel *model in customerOrder.result) {
         SNLog(@"%@", model.orderState);
         if ([model.orderState isEqualToString:@"已完成"]) {
             [finishedOrder addObject:model];
+        } else if ([model.orderState isEqualToString:@"受理"]) {
+            [acceptOrder addObject:model];
         }
         else {
             [unFinishedOrder addObject:model];
@@ -102,17 +106,25 @@
     }
     self.finishedOrder = finishedOrder;
     self.unFinishedOrder = unFinishedOrder;
+    self.acceptOrder = acceptOrder;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.isFinishedOrder) { // 进入的是已出售订单
+    if (self.orderStatus == SNOrderStatusFinished) { // 进入的是已出售订单
         if ([self.finishedOrder count] == 0) { // 没有已完成订单
             return 1;
         }
         else {
             return [self.finishedOrder count];
+        }
+    } else if (self.orderStatus == SNOrderStatusAccept) { // 进入的是未付款订单
+        if ([self.acceptOrder count] == 0) { // 没有未付款订单
+            return 1;
+        }
+        else {
+            return [self.acceptOrder count];
         }
     }
     else { // 进入的是待处理订单
@@ -135,7 +147,7 @@
     }
     // 没有内容的cell
     SNNullCell *nullCell = [SNNullCell createCellWithIdentifier:nil];
-    if (self.isFinishedOrder) { // 进入的是已出售订单
+    if (self.orderStatus == SNOrderStatusFinished) { // 进入的是已出售订单
         if ([self.finishedOrder count] == 0) { // 没有已出售订单
             nullCell.textLabel.text = @"没有已出售订单";
             return nullCell;
@@ -144,9 +156,18 @@
             cell.customerOrderModel = self.finishedOrder[indexPath.row];
             return cell;
         }
-    }
-    else { // 进入的是未完成订单
-        if ([self.unFinishedOrder count] == 0) { // 没有待完成订单
+    } else if (self.orderStatus == SNOrderStatusAccept) { // 进入的是待付款订单
+        if ([self.acceptOrder count] == 0) { // 没有待付款订单
+            nullCell.textLabel.text = @"没有待付款订单";
+            return nullCell;
+        }
+        else {
+            cell.customerOrderModel = self.acceptOrder[indexPath.row];
+            return cell;
+        }
+        return nil;
+    } else { // 进入的是待处理订单
+        if ([self.unFinishedOrder count] == 0) { // 没有待处理订单
             nullCell.textLabel.text = @"没有待处理订单";
             return nullCell;
         }
@@ -160,8 +181,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.isFinishedOrder) { // 进入的是已出售订单
+    if (self.orderStatus == SNOrderStatusFinished) { // 进入的是已出售订单
         if ([self.finishedOrder count] == 0) { // 没有已出售订单
+            return 44;
+        }
+    } else if (self.orderStatus == SNOrderStatusAccept) { // 进入的是待付款订单
+        if ([self.acceptOrder count] == 0) { // 没有待付款订单
             return 44;
         }
     }
@@ -176,9 +201,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.isFinishedOrder) { // 进入的是已完成订单
+    if (self.orderStatus == SNOrderStatusFinished) { // 进入的是已完成订单
         if ([self.finishedOrder count] > 0) { // 有已完成订单
             [self makePhoneCallWithPhoneNumber:[self.finishedOrder[indexPath.row] customerTEL]];
+        }
+    } else if (self.orderStatus == SNOrderStatusAccept) { // 进入的是代付款订单
+        if ([self.acceptOrder count] > 0) { // 有已完成订单
+            [self makePhoneCallWithPhoneNumber:[self.acceptOrder[indexPath.row] customerTEL]];
         }
     }
     else { // 进入的是未完成订单

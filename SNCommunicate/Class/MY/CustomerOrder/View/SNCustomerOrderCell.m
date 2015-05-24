@@ -28,6 +28,10 @@
  *  完成订单按钮
  */
 @property (nonatomic, strong) UIButton *finishOrder;
+/**
+ *  商家拒绝按钮
+ */
+@property (nonatomic, strong) UIButton *refuseButton;
 
 @property (nonatomic, strong) SNUserModel *userModel;
 
@@ -63,6 +67,14 @@
         [self.finishOrder setBackgroundColor:SNMainGreenColor];
         [self.finishOrder addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.finishOrder];
+        
+        self.refuseButton = [[UIButton alloc] init];
+        [self.refuseButton setTitleColor:SNMainBackgroundColor forState:UIControlStateNormal];
+        [self.refuseButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+        [self.refuseButton setBackgroundColor:SNMainGreenColor];
+        [self.refuseButton addTarget:self action:@selector(refuseButtonClick) forControlEvents:UIControlEventTouchUpInside];
+        self.refuseButton.hidden = YES;
+        [self addSubview:self.refuseButton];
     }
     return self;
 }
@@ -85,7 +97,49 @@
 - (void)buttonClick
 {
     [MBProgressHUD showMessage:@"请稍后"];
-    [SNHttpTool completeDingDanWithPhoneNumber:self.userModel.phoneNumber passWord:self.userModel.passWord orderNumber:self.customerOrderModel.orderNum finish:^(id responseObject) {
+    if (self.userModel.phoneNumber.length == 11) { // 顾客点击确认收货
+        [SNHttpTool completeDingDanWithPhoneNumber:self.userModel.phoneNumber passWord:self.userModel.passWord orderNumber:self.customerOrderModel.orderNum finish:^(id responseObject) {
+            SNLog(@"%@", responseObject);
+            [MBProgressHUD hideHUD];
+            if ([responseObject[@"status"] integerValue] == 0) {
+                [MBProgressHUD showError:responseObject[@"ret_msg"]];
+                return;
+            }
+            [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
+            [self.finishOrder setEnabled:NO];
+            [self.finishOrder setTitle:@"已完成" forState:UIControlStateDisabled];
+            [self setNeedsLayout];
+        } error:^(NSError *error) {
+            SNLog(@"%@", error);
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:@"操作失败"];
+        }];
+    } else { // 商家点击受理
+        [SNHttpTool shouliDingDannWithLoginNumber:self.userModel.phoneNumber passWord:self.userModel.passWord orderNumber:self.customerOrderModel.orderNum finish:^(id responseObject) {
+            SNLog(@"%@", responseObject);
+            [MBProgressHUD hideHUD];
+            if ([responseObject[@"status"] integerValue] == 0) {
+                [MBProgressHUD showError:responseObject[@"ret_msg"]];
+                return;
+            }
+            [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
+            [self.finishOrder setEnabled:NO];
+            [self.finishOrder setTitle:@"待付款" forState:UIControlStateDisabled];
+            [self setNeedsLayout];
+        } error:^(NSError *error) {
+            SNLog(@"%@", error);
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:@"操作失败"];
+        }];
+    }
+    
+}
+
+- (void)refuseButtonClick
+{
+    SNLog(@"123");
+    [MBProgressHUD showMessage:@"请稍后"];
+    [SNHttpTool delDingDanWithLoginNumber:self.userModel.phoneNumber passWord:self.userModel.passWord orderNumber:self.customerOrderModel.orderNum finish:^(id responseObject) {
         SNLog(@"%@", responseObject);
         [MBProgressHUD hideHUD];
         if ([responseObject[@"status"] integerValue] == 0) {
@@ -93,8 +147,8 @@
             return;
         }
         [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
+        [self.refuseButton setEnabled:NO];
         [self.finishOrder setEnabled:NO];
-        [self.finishOrder setTitle:@"已完成" forState:UIControlStateDisabled];
     } error:^(NSError *error) {
         SNLog(@"%@", error);
         [MBProgressHUD hideHUD];
@@ -114,11 +168,36 @@
         self.TEL.text = [NSString stringWithFormat:@"顾客电话:%@", customerOrderModel.customerTEL];
     }
     self.totalPrice.text = [NSString stringWithFormat:@"总价:￥%@", customerOrderModel.totalPrice];
-    [self.finishOrder setTitle:customerOrderModel.orderState forState:UIControlStateNormal & UIControlStateDisabled];
-    if ([customerOrderModel.orderState isEqualToString:@"已完成"]) {
-        [self.finishOrder setEnabled:NO];
-    }
     
+    if ([self.userModel.phoneNumber length] == 11) {// 顾客身份
+        if ([customerOrderModel.orderState isEqualToString:@"已完成"]) {
+            [self.finishOrder setTitle:@"已完成" forState:UIControlStateNormal & UIControlStateDisabled];
+            [self.finishOrder setEnabled:NO];
+        } else if ([customerOrderModel.orderState isEqualToString:@"受理"]) {
+            [self.finishOrder setTitle:@"付款并收货" forState:UIControlStateNormal & UIControlStateDisabled];
+            [self.finishOrder setEnabled:YES];
+        } else {
+            [self.finishOrder setTitle:@"等待受理" forState:UIControlStateNormal & UIControlStateDisabled];
+            [self.finishOrder setEnabled:NO];
+        }
+    } else {// 商家身份
+        if ([customerOrderModel.orderState isEqualToString:@"已完成"]) {
+            [self.finishOrder setTitle:@"已完成" forState:UIControlStateNormal & UIControlStateDisabled];
+            [self.finishOrder setEnabled:NO];
+        } else if ([customerOrderModel.orderState isEqualToString:@"受理"]) {
+            [self.finishOrder setTitle:@"待付款" forState:UIControlStateNormal & UIControlStateDisabled];
+            [self.finishOrder setEnabled:NO];
+            [self.refuseButton setTitle:@"删除" forState:UIControlStateNormal & UIControlStateDisabled];
+            self.refuseButton.hidden = NO;
+            [self.refuseButton setEnabled:YES];
+        } else {
+            [self.finishOrder setTitle:@"受理" forState:UIControlStateNormal & UIControlStateDisabled];
+            [self.finishOrder setEnabled:YES];
+            [self.refuseButton setTitle:@"拒绝" forState:UIControlStateNormal & UIControlStateDisabled];
+            self.refuseButton.hidden = NO;
+            [self.refuseButton setEnabled:YES];
+        }
+    }
 }
 
 - (void)layoutSubviews
@@ -140,6 +219,9 @@
     
     [self.finishOrder sizeToFit];
     [self.finishOrder setFrame:CGRectMake(SNScreenBounds.width - self.finishOrder.width - margin - 20, CGRectGetMaxY(self.TEL.frame) - self.finishOrder.height, self.finishOrder.width + 20, self.finishOrder.height)];
+    
+    [self.refuseButton sizeToFit];
+    [self.refuseButton setFrame:CGRectMake(self.finishOrder.x - self.refuseButton.width - margin - 20, self.finishOrder.y, self.refuseButton.width + 20, self.refuseButton.height)];
     
 }
 

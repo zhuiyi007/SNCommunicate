@@ -46,3 +46,10 @@
 
 
 #endif
+
+// 订单状态枚举
+typedef NS_ENUM(NSInteger, SNOrderStatus) {
+    SNOrderStatusUnfinished,
+    SNOrderStatusAccept,
+    SNOrderStatusFinished
+};

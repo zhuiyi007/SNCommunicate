@@ -10,6 +10,6 @@
 
 @interface SNBusinessOrderViewController : UIViewController
 
-@property (nonatomic, assign) BOOL isFinishedOrder;
+@property (nonatomic, assign) SNOrderStatus orderStatus;
 
 @end

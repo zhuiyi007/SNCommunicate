@@ -150,9 +150,12 @@
     data2.icon = @"my2";
     data2.title = @"未完成订单";
     SNMainCellData *data3 = [[SNMainCellData alloc] init];
-    data3.icon = @"my3";
-    data3.title = @"已完成订单";
-    _dataArray = [NSArray arrayWithObjects:data1, data2, data3, nil];
+    data3.icon = @"weifukuan";
+    data3.title = @"未付款订单";
+    SNMainCellData *data4 = [[SNMainCellData alloc] init];
+    data4.icon = @"my3";
+    data4.title = @"已完成订单";
+    _dataArray = [NSArray arrayWithObjects:data1, data2, data3, data4, nil];
 }
 
 - (void)createShopUI
@@ -160,11 +163,14 @@
     SNMainCellData *data1 = [[SNMainCellData alloc] init];
     data1.title = @"已出售订单";
     SNMainCellData *data2 = [[SNMainCellData alloc] init];
-    data2.title = @"待处理订单";
+    data2.icon = @"weifukuan";
+    data2.title = @"未付款订单";
     SNMainCellData *data3 = [[SNMainCellData alloc] init];
-    data3.icon = @"cangku";
-    data3.title = @"库存";
-    _dataArray = [NSArray arrayWithObjects:data1, data2, data3, nil];
+    data3.title = @"待处理订单";
+    SNMainCellData *data4 = [[SNMainCellData alloc] init];
+    data4.icon = @"cangku";
+    data4.title = @"库存";
+    _dataArray = [NSArray arrayWithObjects:data1, data2, data3, data4, nil];
 }
 
 - (void)showRightBarButtonItem
@@ -239,7 +245,15 @@
             {
                 SNCustomerOrderViewController *vc = [[SNCustomerOrderViewController alloc] init];
                 vc.title = @"未完成订单";
-                vc.isFinishedOrder = NO;
+                vc.orderStatus = SNOrderStatusUnfinished;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case 2:
+            {
+                SNCustomerOrderViewController *vc = [[SNCustomerOrderViewController alloc] init];
+                vc.title = @"未付款订单";
+                vc.orderStatus = SNOrderStatusAccept;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -247,7 +261,7 @@
             {
                 SNCustomerOrderViewController *vc = [[SNCustomerOrderViewController alloc] init];
                 vc.title = @"已完成订单";
-                vc.isFinishedOrder = YES;
+                vc.orderStatus = SNOrderStatusFinished;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -259,15 +273,23 @@
             {
                 SNBusinessOrderViewController *vc = [[SNBusinessOrderViewController alloc] init];
                 vc.title = @"已出售订单";
-                vc.isFinishedOrder = YES;
+                vc.orderStatus = SNOrderStatusFinished;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
             case 1:
             {
                 SNBusinessOrderViewController *vc = [[SNBusinessOrderViewController alloc] init];
+                vc.title = @"未付款订单";
+                vc.orderStatus = SNOrderStatusAccept;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case 2:
+            {
+                SNBusinessOrderViewController *vc = [[SNBusinessOrderViewController alloc] init];
                 vc.title = @"待处理订单";
-                vc.isFinishedOrder = NO;
+                vc.orderStatus = SNOrderStatusUnfinished;
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }

@@ -127,6 +127,36 @@
                                  error:(void (^)(NSError *error))failure;
 
 /**
+ *  商家受理订单
+ *
+ *  @param loginNumber 商家登录码
+ *  @param passWord    密码
+ *  @param orderNumber 订单号
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)shouliDingDannWithLoginNumber:(NSString *)loginNumber
+                             passWord:(NSString *)passWord
+                          orderNumber:(NSString *)orderNumber
+                               finish:(void (^)(id responseObject))success
+                                error:(void (^)(NSError *error))failure;
+
+/**
+ *  商家拒绝/删除订单
+ *
+ *  @param loginNumber 商家登录码
+ *  @param passWord    密码
+ *  @param orderNumber 订单号
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)delDingDanWithLoginNumber:(NSString *)loginNumber
+                         passWord:(NSString *)passWord
+                      orderNumber:(NSString *)orderNumber
+                           finish:(void (^)(id responseObject))success
+                            error:(void (^)(NSError *error))failure;
+
+/**
  *  获取商家订单
  *
  *  @param loginNum 商家登录码

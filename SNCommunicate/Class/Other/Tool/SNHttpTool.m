@@ -317,6 +317,79 @@ static SNHttpTool *sharedInstance;
 }
 
 /**
+ *  商家受理订单
+ *
+ *  @param loginNumber 商家登录码
+ *  @param passWord    密码
+ *  @param orderNumber 订单号
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)shouliDingDannWithLoginNumber:(NSString *)loginNumber
+                             passWord:(NSString *)passWord
+                          orderNumber:(NSString *)orderNumber
+                               finish:(void (^)(id responseObject))success
+                                error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<ShouliDingDan xmlns=\"http://123.57.206.151/\">"
+     "<loginNum>%@</loginNum>"
+     "<PWD>%@</PWD>"
+     "<orderNum>%@</orderNum>"
+     "</ShouliDingDan>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , loginNumber, passWord, orderNumber];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSShouLiDingDan.asmx"
+                                            andSoapAction:@"ShouliDingDan"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
+/**
+ *  商家拒绝/删除订单
+ *
+ *  @param loginNumber 商家登录码
+ *  @param passWord    密码
+ *  @param orderNumber 订单号
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)delDingDanWithLoginNumber:(NSString *)loginNumber
+                         passWord:(NSString *)passWord
+                      orderNumber:(NSString *)orderNumber
+                           finish:(void (^)(id responseObject))success
+                            error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<DelDingDan xmlns=\"http://123.57.206.151/\">"
+     "<LoginNum>%@</LoginNum>"
+     "<PWD>%@</PWD>"
+     "<orderNum>%@</orderNum>"
+     "</DelDingDan>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , loginNumber, passWord, orderNumber];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSDelDingDan.asmx"
+                                            andSoapAction:@"DelDingDan"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
+
+/**
  *  获取商家订单
  *
  *  @param loginNum 商家登录码

@@ -10,6 +10,6 @@
 
 @interface SNCustomerOrderViewController : SNBaseViewController
 
-@property (nonatomic, assign) BOOL isFinishedOrder;
+@property (nonatomic, assign) SNOrderStatus orderStatus;
 
 @end
