@@ -181,6 +181,20 @@
 + (void)getTotalDingDanWithShangID:(NSString *)shangID
                             finish:(void (^)(id responseObject))success
                              error:(void (^)(NSError *error))failure;
+/**
+ *  顾客点赞
+ *
+ *  @param shangID     商家ID
+ *  @param phoneNumber 电话号码
+ *  @param passWord    密码
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)insertPointWithShangID:(NSString *)shangID
+                   phoneNumber:(NSString *)phoneNumber
+                      passWord:(NSString *)passWord
+                        finish:(void (^)(id responseObject))success
+                         error:(void (^)(NSError *error))failure;
 
 /**
  *  添加收藏
@@ -237,6 +251,38 @@
 + (void)getSMSSendWithPhoneNumber:(NSString *)PhoneNumber
                            finish:(void (^)(id responseObject))success
                             error:(void (^)(NSError *error))failure;
+
+/**
+ *  顾客通过验证码修改密码
+ *
+ *  @param phoneNumber  电话号码
+ *  @param newPassWord  新密码
+ *  @param securityCode 验证码
+ *  @param success      成功回调
+ *  @param failure      失败回调
+ */
++ (void)changePWDByVCWithPhoneNumber:(NSString *)phoneNumber
+                         newPassWord:(NSString *)newPassWord
+                        securityCode:(NSString *)securityCode
+                              finish:(void (^)(id responseObject))success
+                               error:(void (^)(NSError *error))failure;
+
+/**
+ *  商家通过手机验证码修改密码
+ *
+ *  @param loginNumber  商家登录码
+ *  @param securityCode 验证码
+ *  @param newPassWord  新密码
+ *  @param phoneNumber  电话号码
+ *  @param success      成功回调
+ *  @param failure      失败回调
+ */
++ (void)businessChangePWDByVCWithLoginNumber:(NSString *)loginNumber
+                                securityCode:(NSString *)securityCode
+                                 newPassWord:(NSString *)newPassWord
+                                 phoneNumber:(NSString *)phoneNumber
+                                      finish:(void (^)(id responseObject))success
+                                       error:(void (^)(NSError *error))failure;
 
 /**
  *  顾客注册

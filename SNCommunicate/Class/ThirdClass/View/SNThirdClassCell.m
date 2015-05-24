@@ -7,6 +7,7 @@
 //
 
 #import "SNThirdClassCell.h"
+#import "SNUserModel.h"
 @interface SNThirdClassCell ()
 
 @property (nonatomic, strong) UIImageView *image;
@@ -29,7 +30,7 @@
 @property (nonatomic, strong) UILabel *visitLable;
 @property (nonatomic, strong) UILabel *visitCount;
 
-
+@property (nonatomic, strong) SNUserModel *userModel;
 
 
 @end
@@ -83,6 +84,8 @@
         // 点赞数量
         self.commendView = [[UIView alloc] init];
         [self.contentView addSubview:self.commendView];
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commendClick)];
+        [self.commendView addGestureRecognizer:gesture];
         
         self.commendCount = [[UILabel alloc] init];
         self.commendCount.textAlignment = NSTextAlignmentLeft;
@@ -140,6 +143,33 @@
     
     self.visitCount.text = data.Visit;
     
+}
+
+- (SNUserModel *)userModel
+{
+    if (!_userModel) {
+        _userModel = [SNUserModel sharedInstance];
+    }
+    return _userModel;
+}
+
+- (void)commendClick
+{
+    [MBProgressHUD showMessage:@"正在点赞"];
+    [SNHttpTool insertPointWithShangID:self.data.ID phoneNumber:self.userModel.phoneNumber passWord:self.userModel.passWord finish:^(id responseObject) {
+        SNLog(@"%@",responseObject);
+        [MBProgressHUD hideHUD];
+        if ([responseObject[@"status"] integerValue] == 0) {
+            [MBProgressHUD showError:responseObject[@"ret_msg"]];
+            return;
+        }
+        [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
+        self.commendCount.text = [NSString stringWithFormat:@"%ld", [self.data.Point integerValue] + 1];
+    } error:^(NSError *error) {
+        SNLog(@"%@",error);
+        [MBProgressHUD hideHUD];
+        [MBProgressHUD showError:@"加载失败"];
+    }];
 }
 
 - (void)layoutSubviews

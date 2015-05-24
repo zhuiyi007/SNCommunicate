@@ -65,7 +65,7 @@
 
 - (void)goodsDetailsView
 {
-    self.topScrollView = [SNRoundPlayScrollView createRoundPlayScrollViewWithFrame:CGRectMake(0, 0, SNScreenBounds.width, 220) placeholderImage:@"default_ad_1"];
+    self.topScrollView = [SNRoundPlayScrollView createRoundPlayScrollViewWithFrame:CGRectMake(0, 0, SNScreenBounds.width, 170) placeholderImage:@"default_ad_1"];
     [self addSubview:self.topScrollView];
     
     self.lineView = [[UIView alloc] init];

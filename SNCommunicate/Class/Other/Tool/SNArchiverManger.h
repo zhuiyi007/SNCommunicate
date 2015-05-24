@@ -26,5 +26,20 @@
  *  @return 结果
  */
 + (BOOL)unarchiveUserModel;
+/**
+ *  从偏好设置里读取数据
+ *
+ *  @param defaultName key
+ *
+ *  @return 读取的信息
+ */
++ (id)objectForKey:(NSString *)defaultName;
+/**
+ *  往偏好设置中写入数据
+ *
+ *  @param value       value
+ *  @param defaultName key
+ */
++ (void)setObject:(id)value forKey:(NSString *)defaultName;
 
 @end

@@ -96,6 +96,9 @@
 		3C782AC91ADD380E00DD0FEC /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782ABD1ADD380E00DD0FEC /* NSObject+MJKeyValue.m */; };
 		3C782ACA1ADD380E00DD0FEC /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782ABF1ADD380E00DD0FEC /* NSObject+MJMember.m */; };
 		3C782ACD1ADD398900DD0FEC /* SNThirdCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C782ACC1ADD398900DD0FEC /* SNThirdCellData.m */; };
+		3C7F3CA01B1178B900F23F8D /* SNForgetPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F3C9F1B1178B900F23F8D /* SNForgetPassWordViewController.m */; };
+		3C7F3CA61B11A09000F23F8D /* SNGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F3CA51B11A09000F23F8D /* SNGuideViewController.m */; };
+		3C7F3CA91B11A2FE00F23F8D /* SNGuideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F3CA81B11A2FE00F23F8D /* SNGuideCell.m */; };
 		3C80A4A61ADFE0E900E9AE0B /* SNRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A4A51ADFE0E900E9AE0B /* SNRegisterViewController.m */; };
 		3C85F38B1AECCA8400481F0C /* SNCustomerCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F38A1AECCA8400481F0C /* SNCustomerCollectionViewController.m */; };
 		3C85F38E1AECD5D100481F0C /* SNCustomerCollect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C85F38D1AECD5D100481F0C /* SNCustomerCollect.m */; };
@@ -311,6 +314,12 @@
 		3C782ABF1ADD380E00DD0FEC /* NSObject+MJMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJMember.m"; sourceTree = "<group>"; };
 		3C782ACB1ADD398900DD0FEC /* SNThirdCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNThirdCellData.h; sourceTree = "<group>"; };
 		3C782ACC1ADD398900DD0FEC /* SNThirdCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNThirdCellData.m; sourceTree = "<group>"; };
+		3C7F3C9E1B1178B900F23F8D /* SNForgetPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNForgetPassWordViewController.h; sourceTree = "<group>"; };
+		3C7F3C9F1B1178B900F23F8D /* SNForgetPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNForgetPassWordViewController.m; sourceTree = "<group>"; };
+		3C7F3CA41B11A09000F23F8D /* SNGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGuideViewController.h; sourceTree = "<group>"; };
+		3C7F3CA51B11A09000F23F8D /* SNGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGuideViewController.m; sourceTree = "<group>"; };
+		3C7F3CA71B11A2FE00F23F8D /* SNGuideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGuideCell.h; sourceTree = "<group>"; };
+		3C7F3CA81B11A2FE00F23F8D /* SNGuideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGuideCell.m; sourceTree = "<group>"; };
 		3C80A4A41ADFE0E900E9AE0B /* SNRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRegisterViewController.h; sourceTree = "<group>"; };
 		3C80A4A51ADFE0E900E9AE0B /* SNRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRegisterViewController.m; sourceTree = "<group>"; };
 		3C85F3891AECCA8400481F0C /* SNCustomerCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCustomerCollectionViewController.h; sourceTree = "<group>"; };
@@ -527,6 +536,8 @@
 				3C49E7481ADB59E20008085F /* SNMainNavigationController.m */,
 				3C962BB61AFCA33A002341E4 /* SNBaseViewController.h */,
 				3C962BB71AFCA33A002341E4 /* SNBaseViewController.m */,
+				3C7F3CA41B11A09000F23F8D /* SNGuideViewController.h */,
+				3C7F3CA51B11A09000F23F8D /* SNGuideViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -556,6 +567,8 @@
 				3C962BB31AFC8562002341E4 /* SNRoundPlayScrollView.h */,
 				3C962BB41AFC8562002341E4 /* SNRoundPlayScrollView.m */,
 				3C899D6B1B0C62AB00C79FE0 /* LaunchScreen.xib */,
+				3C7F3CA71B11A2FE00F23F8D /* SNGuideCell.h */,
+				3C7F3CA81B11A2FE00F23F8D /* SNGuideCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -703,6 +716,8 @@
 				3C5698DD1ADE942500743E35 /* SNAccountViewController.storyboard */,
 				3C80A4A41ADFE0E900E9AE0B /* SNRegisterViewController.h */,
 				3C80A4A51ADFE0E900E9AE0B /* SNRegisterViewController.m */,
+				3C7F3C9E1B1178B900F23F8D /* SNForgetPassWordViewController.h */,
+				3C7F3C9F1B1178B900F23F8D /* SNForgetPassWordViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1210,6 +1225,7 @@
 				3C782AC31ADD380E00DD0FEC /* MJIvar.m in Sources */,
 				3C49E7221ADB55710008085F /* MJRefreshGifHeader.m in Sources */,
 				3C214C051AE2A1850064644A /* SNDetailsModel.m in Sources */,
+				3C7F3CA91B11A2FE00F23F8D /* SNGuideCell.m in Sources */,
 				3C49E7301ADB55710008085F /* SDWebImageManager.m in Sources */,
 				3C49E7141ADB55710008085F /* AFHTTPRequestOperation.m in Sources */,
 				3C49E7111ADB55710008085F /* AppDelegate.m in Sources */,
@@ -1284,6 +1300,7 @@
 				3C49E72A1ADB55710008085F /* NSData+ImageContentType.m in Sources */,
 				3C962BBB1AFCC4B5002341E4 /* SNBase64.m in Sources */,
 				3C49E7251ADB55710008085F /* MJRefreshLegendHeader.m in Sources */,
+				3C7F3CA61B11A09000F23F8D /* SNGuideViewController.m in Sources */,
 				3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */,
 				3C34749E1AE3922D009FBB68 /* SNUserModel.m in Sources */,
 				3C49E7131ADB55710008085F /* main.m in Sources */,
@@ -1294,6 +1311,7 @@
 				3C49E7201ADB55710008085F /* MJRefreshFooter.m in Sources */,
 				3C782A831ADD0D4900DD0FEC /* SNMainTableView.m in Sources */,
 				3CED6E3B1AFF0AB7004D37E5 /* SNBusinessStoreViewController.m in Sources */,
+				3C7F3CA01B1178B900F23F8D /* SNForgetPassWordViewController.m in Sources */,
 				3C782A971ADD147600DD0FEC /* SNThirdClassViewController.m in Sources */,
 				3C85F3911AECD5DF00481F0C /* SNCustomerCollectModel.m in Sources */,
 				3C71E8941AE3785900056A7C /* Reachability.m in Sources */,
@@ -1406,7 +1424,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SNCommunicate/Class/Other/Global.pch";
@@ -1422,7 +1439,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SNCommunicate/Class/Other/Global.pch";

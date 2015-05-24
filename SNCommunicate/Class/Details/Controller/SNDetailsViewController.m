@@ -46,9 +46,8 @@
 
 - (void)createUI
 {
-    SNDetailsScrollView *scrollView = [[SNDetailsScrollView alloc] init];
-    self.scrollView = scrollView;
-    [self.view addSubview:scrollView];
+    self.scrollView = [[SNDetailsScrollView alloc] init];
+    [self.view addSubview:self.scrollView];
     
     // 预定收藏
     [self reserveView];

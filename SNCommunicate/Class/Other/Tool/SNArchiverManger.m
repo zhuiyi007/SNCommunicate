@@ -44,5 +44,19 @@ static SNArchiverManger *sharedInstance;
     return model;
 }
 
++ (id)objectForKey:(NSString *)defaultName
+{
+    return  [SNUserDefaults objectForKey:defaultName];
+}
++ (void)setObject:(id)value forKey:(NSString *)defaultName
+{
+    
+    // 保存最新的版本
+    [SNUserDefaults setObject:value forKey:defaultName];
+    
+    // 同步
+    [SNUserDefaults synchronize];
+}
+
 
 @end

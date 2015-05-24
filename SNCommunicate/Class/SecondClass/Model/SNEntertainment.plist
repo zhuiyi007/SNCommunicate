@@ -16,33 +16,15 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>wangba</string>
+		<string>xiyu</string>
 		<key>title</key>
-		<string>网吧</string>
+		<string>洗浴</string>
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>geting</string>
+		<string></string>
 		<key>title</key>
-		<string>歌舞厅</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>dianwan</string>
-		<key>title</key>
-		<string>电玩城</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>jianshen</string>
-		<key>title</key>
-		<string>健身房</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>gongyuan</string>
-		<key>title</key>
-		<string>公园</string>
+		<string>生日庆祝</string>
 	</dict>
 	<dict>
 		<key>icon</key>
@@ -52,9 +34,15 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>xiyu</string>
+		<string></string>
 		<key>title</key>
-		<string>洗浴</string>
+		<string>爱车</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string></string>
+		<key>title</key>
+		<string>其他</string>
 	</dict>
 </array>
 </plist>

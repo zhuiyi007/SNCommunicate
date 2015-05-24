@@ -4,21 +4,15 @@
 <array>
 	<dict>
 		<key>icon</key>
-		<string>jiudian</string>
+		<string></string>
 		<key>title</key>
-		<string>酒店</string>
+		<string>宾馆</string>
 	</dict>
 	<dict>
 		<key>icon</key>
 		<string>fandian</string>
 		<key>title</key>
 		<string>饭店</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>tesexiaochi</string>
-		<key>title</key>
-		<string>特色小吃</string>
 	</dict>
 	<dict>
 		<key>icon</key>
@@ -31,12 +25,6 @@
 		<string>kuaican</string>
 		<key>title</key>
 		<string>快餐厅</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>jiudian</string>
-		<key>title</key>
-		<string>旅店宾馆</string>
 	</dict>
 </array>
 </plist>

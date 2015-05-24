@@ -20,5 +20,29 @@
 		<key>title</key>
 		<string>鞋店</string>
 	</dict>
+	<dict>
+		<key>icon</key>
+		<string>jiadian</string>
+		<key>title</key>
+		<string>家电</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string></string>
+		<key>title</key>
+		<string>影楼</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string></string>
+		<key>title</key>
+		<string>眼镜店</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>jiajuzhuanghuang</string>
+		<key>title</key>
+		<string>家具装潢</string>
+	</dict>
 </array>
 </plist>

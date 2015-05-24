@@ -37,9 +37,12 @@
 // 用户信息路径
 #define SNUserInfoPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"userModel"]
 
+#define SNUserDefaults [NSUserDefaults standardUserDefaults]
+
 #pragma 通知
 #define SNClickMyTabBar     @"SNClickMyTabBar"      // 点击个人中心的通知
 #define SNLoginSuccess      @"SNLoginSuccess"       // 登录成功
+#define SNPointSuccess      @"SNPointSuccess"       // 点赞成功
 
 
 #endif

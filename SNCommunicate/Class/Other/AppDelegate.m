@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SNMainViewController.h"
+#import "SNGuideViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,13 +18,31 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//    [NSThread sleepForTimeInterval:5.0];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    SNMainViewController *mainViewController = [[SNMainViewController alloc] init];
-    [self.window setRootViewController:mainViewController];
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    
+    [self chooseRootViewController];
     return YES;
+}
+
+- (void)chooseRootViewController
+{
+    NSDictionary *dict = [NSBundle mainBundle].infoDictionary;
+    NSString *versionKey = (__bridge NSString *)kCFBundleVersionKey;
+    NSString *curVersion = dict[versionKey];
+    NSString *lastVersion = [SNArchiverManger objectForKey:@"version"];
+    
+    if ([curVersion isEqualToString:lastVersion]) { // 没有新版本
+        SNMainViewController *mainViewController = [[SNMainViewController alloc] init];
+        [self.window setRootViewController:mainViewController];
+        
+    }else{ // 有新版本
+        [SNArchiverManger setObject:curVersion forKey:@"version"];
+        // 进入引导界面
+        SNGuideViewController *guideVc = [[SNGuideViewController alloc] init];
+        [self.window setRootViewController:guideVc];
+    }
+    self.window.backgroundColor = SNMainBackgroundColor;
+    [self.window makeKeyAndVisible];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

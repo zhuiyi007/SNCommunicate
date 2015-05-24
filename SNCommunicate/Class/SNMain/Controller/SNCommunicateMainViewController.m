@@ -8,6 +8,7 @@
 
 #import "SNCommunicateMainViewController.h"
 #import "SNSecondClassViewController.h"
+#import "SNThirdClassViewController.h"
 
 #import "SNMainCell.h"
 #import "SNMainCellData.h"
@@ -47,7 +48,7 @@
 - (void)createUI
 {
     
-    self.scrollView = [SNRoundPlayScrollView createRoundPlayScrollViewWithFrame:CGRectMake(0, 0, SNScreenBounds.width, 220) placeholderImage:@"default_ad_1"];
+    self.scrollView = [SNRoundPlayScrollView createRoundPlayScrollViewWithFrame:CGRectMake(0, 0, SNScreenBounds.width, 170) placeholderImage:@"default_ad_1"];
     [self.view addSubview:self.scrollView];
     
     // TableView
@@ -135,7 +136,7 @@
     switch (indexPath.row) {
         case 0:
         {
-            vc.title = @"生活娱乐";
+            vc.title = @"休闲娱乐";
             vc.plist = @"SNEntertainment";
             [self.navigationController pushViewController:vc animated:YES];
             break;
@@ -156,8 +157,9 @@
         }
         case 3:
         {
+            SNThirdClassViewController *vc = [[SNThirdClassViewController alloc] init];
             vc.title = @"寻宝商城";
-            vc.plist = @"";
+            vc.type = vc.title;
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
