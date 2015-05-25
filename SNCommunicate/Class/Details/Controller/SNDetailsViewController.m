@@ -121,6 +121,7 @@
         if ([responseObject[@"status"] integerValue] == 0) {
            [MBProgressHUD hideHUD];
            [MBProgressHUD showError:responseObject[@"ret_msg"]];
+            return;
         }
         [MBProgressHUD hideHUD];
         [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
@@ -144,6 +145,7 @@
         [MBProgressHUD hideHUD];
         if ([responseObject[@"status"] integerValue] == 0) {
             [MBProgressHUD showError:responseObject[@"ret_msg"]];
+            return;
         }
         [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
     } error:^(NSError *error) {
