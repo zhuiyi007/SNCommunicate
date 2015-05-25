@@ -85,7 +85,7 @@
     [reserveButton.layer setMasksToBounds:YES];
     [reserveButton.layer setBorderWidth:2.0]; //边框宽度
     [reserveButton.layer setBorderColor:SNCGColor(119, 119, 119)]; //边框颜色
-    [reserveButton setTitle:self.detailsData.yuDing forState:UIControlStateDisabled];
+    [reserveButton setTitle:@"不可预订" forState:UIControlStateDisabled];
     [reserveButton setTitle:self.detailsData.yuDing forState:UIControlStateNormal];
     [reserveButton addTarget:self action:@selector(addReserve) forControlEvents:UIControlEventTouchUpInside];
     
@@ -96,12 +96,19 @@
     [collectionButton setFrame:CGRectMake(width, 0, width, height)];
     [collectionButton setBackgroundColor:SNMainGreenColor];
     [collectionButton setTitle:@"收藏" forState:UIControlStateNormal];
+    [collectionButton setTitle:@"不可收藏" forState:UIControlStateDisabled];
     [collectionButton setTitleColor:SNMainBackgroundColor forState:UIControlStateNormal];
+    [collectionButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     [collectionButton.layer setMasksToBounds:YES];
     [collectionButton.layer setBorderWidth:2.0]; //边框宽度
     [collectionButton.layer setBorderColor:SNCGColor(119, 119, 119)];//边框颜色
     [collectionButton addTarget:self action:@selector(addCollection) forControlEvents:UIControlEventTouchUpInside];
     [reserveView addSubview:collectionButton];
+    
+    if (self.userModel.phoneNumber.length == 8) {
+        [reserveButton setEnabled:NO];
+        [collectionButton setEnabled:NO];
+    }
 }
 
 - (void)addReserve
@@ -157,14 +164,25 @@
 - (void)setData
 {
     [MBProgressHUD showMessage:@"正在加载"];
-    if (self.userModel.login) {
-        [SNHttpTool getShangInfoByIdentityWithShangID:self.shopData.ID
-                                              andType:self.shopData.Type
-                                          phoneNumber:self.userModel.phoneNumber
-                                             passWord:self.userModel.passWord
-                                                  Big:0
-                                                Small:0
-                                               finish:^(id responseObject) {
+    if (!self.userModel.login || self.userModel.phoneNumber.length == 8) {
+        [SNHttpTool getShangInfoNoIdentityWithShangID:self.shopData.ID andType:self.shopData.Type Big:0 Small:0 finish:^(id responseObject) {
+            [MBProgressHUD hideHUD];
+            SNLog(@"%@",responseObject);
+            self.detailsModel = [SNDetailsModel objectWithKeyValues:responseObject];
+            if (self.detailsModel.ret_msg) {
+                [self createNilUI];
+                return;
+            }
+            [self createUI];
+            self.scrollView.dataArray = self.detailsModel.result;
+            self.scrollView.shopData = self.shopData;
+        } error:^(NSError *error) {
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:@"加载失败"];
+        }];
+    }
+    else {
+        [SNHttpTool getShangInfoByIdentityWithShangID:self.shopData.ID andType:self.shopData.Type phoneNumber:self.userModel.phoneNumber passWord:self.userModel.passWord Big:0 Small:0 finish:^(id responseObject) {
             [MBProgressHUD hideHUD];
             SNLog(@"%@",responseObject);
             self.detailsModel = [SNDetailsModel objectWithKeyValues:responseObject];
@@ -175,32 +193,10 @@
             [self createUI];
             self.scrollView.dataArray = self.detailsModel.result;
             self.scrollView.shopData = self.shopData;
-        }
-                                                error:^(NSError *error) {
+        } error:^(NSError *error) {
             [MBProgressHUD hideHUD];
             [MBProgressHUD showError:@"加载失败"];
         }];
-    }
-    else {
-        [SNHttpTool getShangInfoNoIdentityWithShangID:self.shopData.ID
-                                              andType:self.shopData.Type
-                                                  Big:0
-                                                Small:0
-                                               finish:^(id responseObject) {
-                                                   [MBProgressHUD hideHUD];
-                                                   SNLog(@"%@",responseObject);
-                                                   self.detailsModel = [SNDetailsModel objectWithKeyValues:responseObject];
-                                                   if (self.detailsModel.ret_msg) {
-                                                       [self createNilUI];
-                                                       return;
-                                                   }
-                                                   [self createUI];
-                                                   self.scrollView.dataArray = self.detailsModel.result;
-                                                   self.scrollView.shopData = self.shopData;
-                                               } error:^(NSError *error) {
-                                                   [MBProgressHUD hideHUD];
-                                                   [MBProgressHUD showError:@"加载失败"];
-                                               }];
     }
 }
 
