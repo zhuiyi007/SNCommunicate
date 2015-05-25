@@ -24,11 +24,15 @@
  */
 @property (nonatomic, strong) UILabel *goodsName;
 /**
+ *  库存
+ */
+@property (nonatomic, strong) UILabel *store;
+/**
  *  商品价格
  */
 @property (nonatomic, strong) UILabel *goodsPrice;
 /**
- *  商品折扣
+ *  商品原价
  */
 @property (nonatomic, strong) UILabel *goodsDisCount;
 /**
@@ -75,6 +79,9 @@
     self.goodsName = [[UILabel alloc] init];
     [self addSubview:self.goodsName];
     
+    self.store = [[UILabel alloc] init];
+    [self addSubview:self.store];
+    
     self.goodsPrice = [[UILabel alloc] init];
     [self.goodsPrice setFont:[UIFont systemFontOfSize:24]];
     [self.goodsPrice setTextColor:SNPriceColor];
@@ -105,8 +112,14 @@
     [self.topScrollView insertImageWithImagesURLArray:@[detailsData.Pic, detailsData.Pic2, detailsData.Pic3] placeholderImage:@"default_ad_1"];
     
     self.goodsName.text = detailsData.Name;
+    self.store.text = [NSString stringWithFormat:@"库存:%@件", detailsData.Store];
     self.goodsPrice.text = [NSString stringWithFormat:@"%@ 元", detailsData.unitPrice];
-    self.goodsDisCount.text = [NSString stringWithFormat:@"%@折", detailsData.disCount];
+    
+    NSString *disCountString = [NSString stringWithFormat:@"原价%@元", detailsData.disCount];
+    NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:disCountString];
+    [attri addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, [disCountString length])];
+    [self.goodsDisCount setAttributedText:attri];
+    
     self.goodsDetails.text = [NSString stringWithFormat:@"商品详情\n%@", detailsData.Description];
     self.superView = (SNDetailsScrollView *)self.superview;
     [self setNeedsLayout];
@@ -125,6 +138,9 @@
     
     [self.goodsName setFrame:CGRectMake(margin, CGRectGetMaxY(self.lineView.frame) + margin, 0, 0)];
     [self.goodsName sizeToFit];
+    
+    [self.store setFrame:CGRectMake(margin, CGRectGetMaxY(self.goodsName.frame) + margin, 0, 0)];
+    [self.store sizeToFit];
     
     [self.goodsPrice sizeToFit];
     width = self.goodsPrice.width;

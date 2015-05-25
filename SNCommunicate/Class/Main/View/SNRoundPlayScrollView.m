@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, assign) NSInteger count;
+@property (nonatomic, assign) BOOL canTouch;
 @end
 
 @implementation SNRoundPlayScrollView
@@ -31,9 +32,13 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (!self.canTouch) {
+        return;
+    }
     if (self.shopDataArray) {
         NSInteger index = self.contentOffset.x / SNScreenBounds.width;
         SNLog(@"点击了第%zd张照片", index);
+        [self endTimer];
         SNDetailsViewController *vc = [[SNDetailsViewController alloc] init];
         vc.title = [self.shopDataArray[index] Name];
         vc.shopData = self.shopDataArray[index];
@@ -83,6 +88,7 @@
 
 - (void)startTimer
 {
+    self.canTouch = YES;
     self.timer = [NSTimer timerWithTimeInterval:5
                                                target:self
                                              selector:@selector(nextImage)
@@ -94,6 +100,7 @@
 
 - (void)endTimer
 {
+    self.canTouch = NO;
     [self.timer invalidate];
     self.timer = nil;
 }

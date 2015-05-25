@@ -114,6 +114,36 @@ static SNHttpTool *sharedInstance;
 }
 
 /**
+ *  通过shangID获取单个商家详情
+ *
+ *  @param shangID shangID
+ *  @param success 成功回掉
+ *  @param failure 失败回调
+ */
++ (void)getOneShangJiaWithShangID:(NSString *)shangID
+                           finish:(void (^)(id responseObject))success
+                            error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<GetOneShangJia xmlns=\"http://123.57.206.151/\">"
+     "<shangID>%@</shangID>"
+     "</GetOneShangJia>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , shangID];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSGetOneShangJia.asmx"
+                                            andSoapAction:@"GetOneShangJia"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
+/**
  *  未登录状态下获得商家的详细信息
  *
  *  @param shangID 商家ID

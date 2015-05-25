@@ -38,6 +38,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (SNUserModel *)userModel
+{
+    if (!_userModel) {
+        _userModel = [SNUserModel sharedInstance];
+    }
+    return _userModel;
+}
 - (IBAction)getSecurityCodeButtonClick {
     [MBProgressHUD showMessage:@"请稍后"];
     [self.phoneNumber resignFirstResponder];
@@ -47,6 +55,7 @@
             [MBProgressHUD showError:responseObject[@"ret_msg"]];
             return;
         }
+        [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
         [self addTimer];
         SNLog(@"%@", responseObject);
         SNLog(@"%@", responseObject[@"ret_msg"]);
@@ -71,8 +80,11 @@
                 return;
             }
             [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
+            self.userModel.phoneNumber = self.phoneNumber.text;
+            self.userModel.passWord = passWord;
+            self.userModel.login = YES;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                [self login];
             });
         } error:^(NSError *error) {
             SNLog(@"%@", error);
@@ -88,13 +100,60 @@
                 return;
             }
             [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
+            self.userModel.phoneNumber = self.phoneNumber.text;
+            self.userModel.passWord = passWord;
+            self.userModel.login = YES;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                [self login];
             });
         } error:^(NSError *error) {
             SNLog(@"%@", error);
             [MBProgressHUD hideHUD];
             [MBProgressHUD showError:@"修改失败"];
+        }];
+    }
+}
+
+- (void)login
+{
+    [MBProgressHUD showMessage:@"请稍后"];
+    if ([self.userModel.phoneNumber length] == 11) {
+        [SNHttpTool customerLoginWithPhoneNumber:self.userModel.phoneNumber passWord:self.userModel.passWord finish:^(id responseObject) {
+            [MBProgressHUD hideHUD];
+            SNLog(@"%@", responseObject);
+            if ([responseObject[@"status"] integerValue] == 0) {
+                // 验证不通过,删除本地缓存
+                [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+                [MBProgressHUD showError:@"登录失败"];
+                return;
+            }
+            self.userModel.login = YES;
+            self.userModel.name = responseObject[@"ret_msg"];
+            [SNArchiverManger archiveWithUserModel:self.userModel];
+            [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:self];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        } error:^(NSError *error) {
+            SNLog(@"%@", error);
+            [MBProgressHUD showError:@"登录失败"];
+        }];
+    } else {
+        [SNHttpTool businessLoginWithLoginNumber:self.userModel.phoneNumber passWord:self.userModel.passWord finish:^(id responseObject) {
+            [MBProgressHUD hideHUD];
+            SNLog(@"%@", responseObject);
+            if ([responseObject[@"status"] integerValue] == 0) {
+                // 验证不通过,删除本地缓存
+                [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+                [MBProgressHUD showError:@"登录失败"];
+                return;
+            }
+            self.userModel.login = YES;
+            self.userModel.name = responseObject[@"Name"];
+            [SNArchiverManger archiveWithUserModel:self.userModel];
+            [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:self];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        } error:^(NSError *error) {
+            SNLog(@"%@", error);
+            [MBProgressHUD showError:@"登录失败"];
         }];
     }
 }

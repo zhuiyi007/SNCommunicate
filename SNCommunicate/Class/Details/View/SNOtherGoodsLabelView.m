@@ -70,15 +70,17 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.image setFrame:CGRectMake(0, 0, 100, 60)];
-    
-    [self.name sizeToFit];
-    self.name.x = CGRectGetMaxX(self.image.frame) + 10;
-    self.name.y = (self.height - self.name.height) * 0.5;
+    [self.image setFrame:CGRectMake(0, (self.height - 60) * 0.5, 100, 60)];
     
     [self.price sizeToFit];
     self.price.x = self.width - self.price.width;
     self.price.y = (self.height - self.price.height) * 0.5;
+    
+    [self.name sizeToFit];
+    self.name.x = CGRectGetMaxX(self.image.frame) + 10;
+    self.name.y = (self.height - self.name.height) * 0.5;
+    self.name.width = self.width - CGRectGetMaxX(self.image.frame)  - self.price.width - 30;
+    
 }
 
 /*

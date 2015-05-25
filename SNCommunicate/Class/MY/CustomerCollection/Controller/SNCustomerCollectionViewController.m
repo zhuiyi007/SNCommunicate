@@ -10,11 +10,16 @@
 #import "SNNullCell.h"
 #import "SNCustomerCollect.h"
 #import "SNCustomerCollectModel.h"
+#import "SNShopData.h"
+#import "SNThirdCellData.h"
+#import "SNDetailsViewController.h"
+
 
 @interface SNCustomerCollectionViewController ()<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SNCustomerCollect *customerCollect;
+@property (nonatomic, strong) SNCustomerCollectModel *customerCollectionModel;
 @property (nonatomic, strong) SNUserModel *userModel;
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) UIAlertView *alert;
@@ -123,6 +128,27 @@
         self.index = indexPath.row;
         [alert show];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.customerCollectionModel = self.customerCollect.result[indexPath.row];
+    [MBProgressHUD showMessage:@"请稍后"];
+    [SNHttpTool getOneShangJiaWithShangID:self.customerCollectionModel.shangID finish:^(id responseObject) {
+        SNLog(@"%@", responseObject);
+        [MBProgressHUD hideHUD];
+        SNThirdCellData *data = [SNThirdCellData objectWithKeyValues:responseObject];
+        if ([data.status integerValue] == 0) {
+            [MBProgressHUD showError:data.ret_msg];
+            return;
+        }
+        SNDetailsViewController *vc = [[SNDetailsViewController alloc] init];
+        vc.shopData = data.result[0];
+        [self.navigationController pushViewController:vc animated:YES];
+    } error:^(NSError *error) {
+        SNLog(@"%@", error);
+        [MBProgressHUD hideHUD];
+    }];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

@@ -65,6 +65,7 @@
         [self.finishOrder setTitleColor:SNMainBackgroundColor forState:UIControlStateNormal];
         [self.finishOrder setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
         [self.finishOrder setBackgroundColor:SNMainGreenColor];
+        self.finishOrder.titleLabel.font = [UIFont systemFontOfSize:12.0];
         [self.finishOrder addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.finishOrder];
         
@@ -72,6 +73,7 @@
         [self.refuseButton setTitleColor:SNMainBackgroundColor forState:UIControlStateNormal];
         [self.refuseButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
         [self.refuseButton setBackgroundColor:SNMainGreenColor];
+        self.refuseButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
         [self.refuseButton addTarget:self action:@selector(refuseButtonClick) forControlEvents:UIControlEventTouchUpInside];
         self.refuseButton.hidden = YES;
         [self addSubview:self.refuseButton];
@@ -124,6 +126,7 @@
             }
             [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
             [self.finishOrder setEnabled:NO];
+            [self.refuseButton setEnabled:NO];
             [self.finishOrder setTitle:@"待付款" forState:UIControlStateDisabled];
             [self setNeedsLayout];
         } error:^(NSError *error) {
@@ -137,7 +140,6 @@
 
 - (void)refuseButtonClick
 {
-    SNLog(@"123");
     [MBProgressHUD showMessage:@"请稍后"];
     [SNHttpTool delDingDanWithLoginNumber:self.userModel.phoneNumber passWord:self.userModel.passWord orderNumber:self.customerOrderModel.orderNum finish:^(id responseObject) {
         SNLog(@"%@", responseObject);
@@ -208,17 +210,17 @@
     [self.Name setFrame:CGRectMake(margin, margin, 0, 0)];
     [self.Name sizeToFit];
     
-    [self.orderNum setFrame:CGRectMake(margin, CGRectGetMaxY(self.Name.frame) + lineMargin, 0, 0)];
-    [self.orderNum sizeToFit];
-    
-    [self.TEL setFrame:CGRectMake(margin, CGRectGetMaxY(self.orderNum.frame) + lineMargin, 0, 0)];
+    [self.TEL setFrame:CGRectMake(margin, CGRectGetMaxY(self.Name.frame) + lineMargin, 0, 0)];
     [self.TEL sizeToFit];
+    
+    [self.orderNum setFrame:CGRectMake(margin, CGRectGetMaxY(self.TEL.frame) + lineMargin, 0, 0)];
+    [self.orderNum sizeToFit];
     
     [self.totalPrice sizeToFit];
     [self.totalPrice setFrame:CGRectMake(SNScreenBounds.width - margin - self.totalPrice.width, margin, self.totalPrice.width, self.totalPrice.height)];
     
     [self.finishOrder sizeToFit];
-    [self.finishOrder setFrame:CGRectMake(SNScreenBounds.width - self.finishOrder.width - margin - 20, CGRectGetMaxY(self.TEL.frame) - self.finishOrder.height, self.finishOrder.width + 20, self.finishOrder.height)];
+    [self.finishOrder setFrame:CGRectMake(SNScreenBounds.width - self.finishOrder.width - margin - 20, CGRectGetMaxY(self.orderNum.frame) - self.finishOrder.height, self.finishOrder.width + 20, self.finishOrder.height)];
     
     [self.refuseButton sizeToFit];
     [self.refuseButton setFrame:CGRectMake(self.finishOrder.x - self.refuseButton.width - margin - 20, self.finishOrder.y, self.refuseButton.width + 20, self.refuseButton.height)];

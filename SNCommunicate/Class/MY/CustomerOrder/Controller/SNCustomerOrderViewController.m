@@ -192,16 +192,16 @@
 {
     if (self.orderStatus == SNOrderStatusFinished) { // 进入的是已完成订单
         if ([self.finishedOrder count] > 0) { // 有已完成订单
-            [self makePhoneCallWithPhoneNumber:[self.finishedOrder[indexPath.row] customerTEL]];
+            [self makePhoneCallWithPhoneNumber:[self.finishedOrder[indexPath.row] TEL]];
         }
     } else if (self.orderStatus == SNOrderStatusAccept) { // 进入的是未付款订单
         if ([self.acceptOrder count] > 0) { // 有已完成订单
-            [self makePhoneCallWithPhoneNumber:[self.acceptOrder[indexPath.row] customerTEL]];
+            [self makePhoneCallWithPhoneNumber:[self.acceptOrder[indexPath.row] TEL]];
         }
     }
     else { // 进入的是未完成订单
         if ([self.unFinishedOrder count] > 0) { // 有未完成订单
-            [self makePhoneCallWithPhoneNumber:[self.unFinishedOrder[indexPath.row] customerTEL]];
+            [self makePhoneCallWithPhoneNumber:[self.unFinishedOrder[indexPath.row] TEL]];
         }
     }
 }
