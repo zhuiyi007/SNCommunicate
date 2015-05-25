@@ -88,14 +88,16 @@
 
 - (void)startTimer
 {
-    self.canTouch = YES;
-    self.timer = [NSTimer timerWithTimeInterval:5
-                                               target:self
-                                             selector:@selector(nextImage)
-                                             userInfo:nil
-                                              repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:self.timer
-                              forMode:NSRunLoopCommonModes];
+    if (!self.timer) {
+        self.canTouch = YES;
+        self.timer = [NSTimer timerWithTimeInterval:5
+                                             target:self
+                                           selector:@selector(nextImage)
+                                           userInfo:nil
+                                            repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:self.timer
+                                  forMode:NSRunLoopCommonModes];
+    }
 }
 
 - (void)endTimer
