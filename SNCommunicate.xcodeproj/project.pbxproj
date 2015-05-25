@@ -1148,7 +1148,7 @@
 				TargetAttributes = {
 					3C49E6891ADB51490008085F = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = BSBY52WEJ6;
+						DevelopmentTeam = 4XNXN38KSW;
 					};
 					3C49E6A21ADB51490008085F = {
 						CreatedOnToolsVersion = 6.1;
@@ -1372,7 +1372,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "c05cd4a3-1094-4d43-985e-9ef239e87bb1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1409,7 +1409,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "c05cd4a3-1094-4d43-985e-9ef239e87bb1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1428,7 +1428,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "c05cd4a3-1094-4d43-985e-9ef239e87bb1";
 			};
 			name = Debug;
 		};
@@ -1444,7 +1444,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c064f5c7-9688-4dc1-b756-a326826cc0f8";
+				PROVISIONING_PROFILE = "c05cd4a3-1094-4d43-985e-9ef239e87bb1";
 			};
 			name = Release;
 		};
@@ -1463,7 +1463,7 @@
 				INFOPLIST_FILE = SNCommunicateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
+				PROVISIONING_PROFILE = "c05cd4a3-1094-4d43-985e-9ef239e87bb1";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNCommunicate.app/SNCommunicate";
 			};
 			name = Debug;
@@ -1479,7 +1479,7 @@
 				INFOPLIST_FILE = SNCommunicateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a687bf4f-b4d5-4eae-92d2-0e77bf23f92c";
+				PROVISIONING_PROFILE = "c05cd4a3-1094-4d43-985e-9ef239e87bb1";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNCommunicate.app/SNCommunicate";
 			};
 			name = Release;
