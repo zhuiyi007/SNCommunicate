@@ -162,6 +162,15 @@
     }
 }
 
+- (void)dealloc
+{
+    SNLog(@"%s" , __func__);
+    [[NSNotificationCenter defaultCenter] removeObserver:self.phoneNumberLabel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self.nameLabel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self.passWordLabel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self.securityCodeLabel];
+}
+
 /*
 #pragma mark - Navigation
 

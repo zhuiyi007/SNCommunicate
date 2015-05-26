@@ -32,6 +32,7 @@
 - (void)dealloc
 {
     SNLog(@"%s", __func__);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /*

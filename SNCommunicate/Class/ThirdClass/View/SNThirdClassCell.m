@@ -105,12 +105,12 @@
         self.visitLable.text = @"访问量";
         self.visitLable.textAlignment = NSTextAlignmentLeft;
         [self.visitLable setFont:[UIFont systemFontOfSize:12.0]];
-        [self.visitLable setFrame:CGRectMake(0, 0, 50, 20)];
+        [self.visitLable setFrame:CGRectMake(0, 0, 40, 20)];
         [self.visitView addSubview:self.visitLable];
         
         self.visitCount = [[UILabel alloc] init];
         self.visitCount.textAlignment = NSTextAlignmentLeft;
-        [self.visitCount setFrame:CGRectMake(50, 0, 10, 20)];
+        [self.visitCount setFrame:CGRectMake(40, 0, 20, 20)];
         [self.visitView addSubview:self.visitCount];
         
         
