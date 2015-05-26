@@ -294,6 +294,36 @@
                             error:(void (^)(NSError *error))failure;
 
 /**
+ *  顾客通过旧密码修改密码
+ *
+ *  @param phoneNumber 电话号码
+ *  @param oldPassWord 旧密码
+ *  @param newPassWord 新密码
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)changePWDByPWDWithPhoneNumber:(NSString *)phoneNumber
+                          oldPassWord:(NSString *)oldPassWord
+                          newPassWord:(NSString *)newPassWord
+                               finish:(void (^)(id responseObject))success
+                                error:(void (^)(NSError *error))failure;
+
+/**
+ *  商家通过旧密码修改密码
+ *
+ *  @param loginNumber 商家登录码
+ *  @param oldPassWord 旧密码
+ *  @param newPassWord 新密码
+ *  @param success     成功回掉
+ *  @param failure     失败回调
+ */
++ (void)businessChangePWDByPWDWithLoginNumber:(NSString *)loginNumber
+                                  oldPassWord:(NSString *)oldPassWord
+                                  newPassWord:(NSString *)newPassWord
+                                       finish:(void (^)(id responseObject))success
+                                        error:(void (^)(NSError *error))failure;
+
+/**
  *  顾客通过验证码修改密码
  *
  *  @param phoneNumber  电话号码

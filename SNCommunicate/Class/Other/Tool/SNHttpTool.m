@@ -739,6 +739,79 @@ static SNHttpTool *sharedInstance;
 }
 
 /**
+ *  顾客通过旧密码修改密码
+ *
+ *  @param phoneNumber 电话号码
+ *  @param oldPassWord 旧密码
+ *  @param newPassWord 新密码
+ *  @param success     成功回调
+ *  @param failure     失败回调
+ */
++ (void)changePWDByPWDWithPhoneNumber:(NSString *)phoneNumber
+                          oldPassWord:(NSString *)oldPassWord
+                          newPassWord:(NSString *)newPassWord
+                               finish:(void (^)(id responseObject))success
+                                error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<changePWDByPWD xmlns=\"http://123.57.206.151/\">"
+     "<TEL>%@</TEL>"
+     "<oldPWD>%@</oldPWD>"
+     "<newPWD>%@</newPWD>"
+     "</changePWDByPWD>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , phoneNumber, oldPassWord, newPassWord];
+
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"wschangepwd.asmx"
+                                            andSoapAction:@"changePWDByPWD"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
+/**
+ *  商家通过旧密码修改密码
+ *
+ *  @param loginNumber 商家登录码
+ *  @param oldPassWord 旧密码
+ *  @param newPassWord 新密码
+ *  @param success     成功回掉
+ *  @param failure     失败回调
+ */
++ (void)businessChangePWDByPWDWithLoginNumber:(NSString *)loginNumber
+                                  oldPassWord:(NSString *)oldPassWord
+                                  newPassWord:(NSString *)newPassWord
+                                       finish:(void (^)(id responseObject))success
+                                        error:(void (^)(NSError *error))failure
+{
+    NSString *soapMessage =
+    [NSString stringWithFormat:
+     @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+     "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+     "<soap:Body>"
+     "<BusinessChangePWDByPWD xmlns=\"http://123.57.206.151/\">"
+     "<loginNum>%@</loginNum>"
+     "<oldPWD>%@</oldPWD>"
+     "<newPWD>%@</newPWD>"
+     "</BusinessChangePWDByPWD>"
+     "</soap:Body>"
+     "</soap:Envelope>"
+     , loginNumber, oldPassWord, newPassWord];
+    
+    [[self sharedInstance] sendPOSTRequestWithSoapMessage:soapMessage
+                                                   andURL:@"WSBusinessChangePWD.asmx"
+                                            andSoapAction:@"BusinessChangePWDByPWD"
+                                                   finish:(void (^)(id responseObject))success
+                                                    error:(void (^)(NSError *error))failure];
+}
+
+/**
  *  顾客通过验证码修改密码
  *
  *  @param phoneNumber  电话号码

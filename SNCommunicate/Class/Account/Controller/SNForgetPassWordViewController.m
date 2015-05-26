@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet SNMainTextField *changePassWord;
 @property (weak, nonatomic) IBOutlet SNMainTextField *currentPassWord;
 @property (weak, nonatomic) IBOutlet SNMainTextField *securityCode;
-@property (weak, nonatomic) IBOutlet SNMainTextField *loginNumber;
+//@property (weak, nonatomic) IBOutlet SNMainTextField *loginNumber;
 @property (weak, nonatomic) IBOutlet UIButton *getSecurityCodeButton;
 @property (nonatomic, strong) SNUserModel *userModel;
 
@@ -71,7 +71,7 @@
     }
     [MBProgressHUD showMessage:@"请稍后"];
     NSString *passWord = [SNBase64 base64StringFromText:self.changePassWord.text];
-    if ([self.loginNumber.text isEqualToString:@""]) { // 顾客修改密码
+//    if ([self.loginNumber.text isEqualToString:@""]) { // 顾客修改密码
         [SNHttpTool changePWDByVCWithPhoneNumber:self.phoneNumber.text newPassWord:passWord securityCode:self.securityCode.text finish:^(id responseObject) {
             SNLog(@"%@", responseObject);
             [MBProgressHUD hideHUD];
@@ -82,7 +82,6 @@
             [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
             self.userModel.phoneNumber = self.phoneNumber.text;
             self.userModel.passWord = passWord;
-            self.userModel.login = YES;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self login];
             });
@@ -91,33 +90,32 @@
             [MBProgressHUD hideHUD];
             [MBProgressHUD showError:@"修改失败"];
         }];
-    } else { //商家修改密码
-        [SNHttpTool businessChangePWDByVCWithLoginNumber:self.loginNumber.text securityCode:self.securityCode.text newPassWord:passWord phoneNumber:self.phoneNumber.text finish:^(id responseObject) {
-            SNLog(@"%@", responseObject);
-            [MBProgressHUD hideHUD];
-            if ([responseObject[@"status"] integerValue] == 0) {
-                [MBProgressHUD showError:responseObject[@"ret_msg"]];
-                return;
-            }
-            [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
-            self.userModel.phoneNumber = self.phoneNumber.text;
-            self.userModel.passWord = passWord;
-            self.userModel.login = YES;
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self login];
-            });
-        } error:^(NSError *error) {
-            SNLog(@"%@", error);
-            [MBProgressHUD hideHUD];
-            [MBProgressHUD showError:@"修改失败"];
-        }];
-    }
+//    } else { //商家修改密码
+//        [SNHttpTool businessChangePWDByVCWithLoginNumber:self.loginNumber.text securityCode:self.securityCode.text newPassWord:passWord phoneNumber:self.phoneNumber.text finish:^(id responseObject) {
+//            SNLog(@"%@", responseObject);
+//            [MBProgressHUD hideHUD];
+//            if ([responseObject[@"status"] integerValue] == 0) {
+//                [MBProgressHUD showError:responseObject[@"ret_msg"]];
+//                return;
+//            }
+//            [MBProgressHUD showSuccess:responseObject[@"ret_msg"]];
+//            self.userModel.phoneNumber = self.phoneNumber.text;
+//            self.userModel.passWord = passWord;
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [self login];
+//            });
+//        } error:^(NSError *error) {
+//            SNLog(@"%@", error);
+//            [MBProgressHUD hideHUD];
+//            [MBProgressHUD showError:@"修改失败"];
+//        }];
+//    }
 }
 
 - (void)login
 {
     [MBProgressHUD showMessage:@"请稍后"];
-    if ([self.userModel.phoneNumber length] == 11) {
+//    if ([self.userModel.phoneNumber length] == 11) {
         [SNHttpTool customerLoginWithPhoneNumber:self.userModel.phoneNumber passWord:self.userModel.passWord finish:^(id responseObject) {
             [MBProgressHUD hideHUD];
             SNLog(@"%@", responseObject);
@@ -136,26 +134,26 @@
             SNLog(@"%@", error);
             [MBProgressHUD showError:@"登录失败"];
         }];
-    } else {
-        [SNHttpTool businessLoginWithLoginNumber:self.userModel.phoneNumber passWord:self.userModel.passWord finish:^(id responseObject) {
-            [MBProgressHUD hideHUD];
-            SNLog(@"%@", responseObject);
-            if ([responseObject[@"status"] integerValue] == 0) {
-                // 验证不通过,删除本地缓存
-                [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
-                [MBProgressHUD showError:@"登录失败"];
-                return;
-            }
-            self.userModel.login = YES;
-            self.userModel.name = responseObject[@"Name"];
-            [SNArchiverManger archiveWithUserModel:self.userModel];
-            [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:self];
-            [self.navigationController popToRootViewControllerAnimated:YES];
-        } error:^(NSError *error) {
-            SNLog(@"%@", error);
-            [MBProgressHUD showError:@"登录失败"];
-        }];
-    }
+//    } else {
+//        [SNHttpTool businessLoginWithLoginNumber:self.userModel.phoneNumber passWord:self.userModel.passWord finish:^(id responseObject) {
+//            [MBProgressHUD hideHUD];
+//            SNLog(@"%@", responseObject);
+//            if ([responseObject[@"status"] integerValue] == 0) {
+//                // 验证不通过,删除本地缓存
+//                [[NSFileManager defaultManager] removeItemAtPath:SNUserInfoPath error:nil];
+//                [MBProgressHUD showError:@"登录失败"];
+//                return;
+//            }
+//            self.userModel.login = YES;
+//            self.userModel.name = responseObject[@"Name"];
+//            [SNArchiverManger archiveWithUserModel:self.userModel];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:SNLoginSuccess object:self];
+//            [self.navigationController popToRootViewControllerAnimated:YES];
+//        } error:^(NSError *error) {
+//            SNLog(@"%@", error);
+//            [MBProgressHUD showError:@"登录失败"];
+//        }];
+//    }
 }
 
 - (BOOL)isDataLegal
@@ -234,7 +232,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self.changePassWord];
     [[NSNotificationCenter defaultCenter] removeObserver:self.currentPassWord];
     [[NSNotificationCenter defaultCenter] removeObserver:self.securityCode];
-    [[NSNotificationCenter defaultCenter] removeObserver:self.loginNumber];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self.loginNumber];
 }
 
 /*
