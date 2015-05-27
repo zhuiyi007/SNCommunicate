@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNMainTextField : UITextField
+@interface ZSTextField : UITextField
 
 @end

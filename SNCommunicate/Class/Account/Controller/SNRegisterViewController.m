@@ -7,14 +7,14 @@
 //
 
 #import "SNRegisterViewController.h"
-#import "SNMainTextField.h"
+#import "ZSTextField.h"
 #import "SNBase64.h"
 
 @interface SNRegisterViewController ()
-@property (weak, nonatomic) IBOutlet SNMainTextField *phoneNumberLabel;
-@property (weak, nonatomic) IBOutlet SNMainTextField *nameLabel;
-@property (weak, nonatomic) IBOutlet SNMainTextField *passWordLabel;
-@property (weak, nonatomic) IBOutlet SNMainTextField *securityCodeLabel;
+@property (weak, nonatomic) IBOutlet ZSTextField *phoneNumberLabel;
+@property (weak, nonatomic) IBOutlet ZSTextField *nameLabel;
+@property (weak, nonatomic) IBOutlet ZSTextField *passWordLabel;
+@property (weak, nonatomic) IBOutlet ZSTextField *securityCodeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *getSecurityButton;
 
 @property (nonatomic, strong) SNUserModel *userModel;
@@ -160,15 +160,6 @@
         [self removeTimer];
         self.count = 60;
     }
-}
-
-- (void)dealloc
-{
-    SNLog(@"%s" , __func__);
-    [[NSNotificationCenter defaultCenter] removeObserver:self.phoneNumberLabel];
-    [[NSNotificationCenter defaultCenter] removeObserver:self.nameLabel];
-    [[NSNotificationCenter defaultCenter] removeObserver:self.passWordLabel];
-    [[NSNotificationCenter defaultCenter] removeObserver:self.securityCodeLabel];
 }
 
 /*

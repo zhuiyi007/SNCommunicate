@@ -8,13 +8,13 @@
 
 #import "SNAccountViewController.h"
 #import "SNMainNavigationController.h"
-#import "SNMainTextField.h"
+#import "ZSTextField.h"
 #import "SNTabBar.h"
 #import "SNBase64.h"
 
 @interface SNAccountViewController ()
-@property (weak, nonatomic) IBOutlet SNMainTextField *accountLabel;
-@property (weak, nonatomic) IBOutlet SNMainTextField *passWordLabel;
+@property (weak, nonatomic) IBOutlet ZSTextField *accountLabel;
+@property (weak, nonatomic) IBOutlet ZSTextField *passWordLabel;
 
 @property (nonatomic, strong) SNUserModel *userModel;
 

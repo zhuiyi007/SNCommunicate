@@ -7,14 +7,14 @@
 //
 
 #import "SNForgetPassWordViewController.h"
-#import "SNMainTextField.h"
+#import "ZSTextField.h"
 #import "SNBase64.h"
 
 @interface SNForgetPassWordViewController ()
-@property (weak, nonatomic) IBOutlet SNMainTextField *phoneNumber;
-@property (weak, nonatomic) IBOutlet SNMainTextField *changePassWord;
-@property (weak, nonatomic) IBOutlet SNMainTextField *currentPassWord;
-@property (weak, nonatomic) IBOutlet SNMainTextField *securityCode;
+@property (weak, nonatomic) IBOutlet ZSTextField *phoneNumber;
+@property (weak, nonatomic) IBOutlet ZSTextField *changePassWord;
+@property (weak, nonatomic) IBOutlet ZSTextField *currentPassWord;
+@property (weak, nonatomic) IBOutlet ZSTextField *securityCode;
 //@property (weak, nonatomic) IBOutlet SNMainTextField *loginNumber;
 @property (weak, nonatomic) IBOutlet UIButton *getSecurityCodeButton;
 @property (nonatomic, strong) SNUserModel *userModel;
@@ -225,15 +225,6 @@
     }
 }
 
-- (void)dealloc
-{
-    SNLog(@"%s", __func__);
-    [[NSNotificationCenter defaultCenter] removeObserver:self.phoneNumber];
-    [[NSNotificationCenter defaultCenter] removeObserver:self.changePassWord];
-    [[NSNotificationCenter defaultCenter] removeObserver:self.currentPassWord];
-    [[NSNotificationCenter defaultCenter] removeObserver:self.securityCode];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self.loginNumber];
-}
 
 /*
 #pragma mark - Navigation

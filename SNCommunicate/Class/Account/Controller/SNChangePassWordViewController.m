@@ -7,14 +7,14 @@
 //
 
 #import "SNChangePassWordViewController.h"
-#import "SNMainTextField.h"
+#import "ZSTextField.h"
 #import "SNBase64.h"
 
 @interface SNChangePassWordViewController ()
-@property (weak, nonatomic) IBOutlet SNMainTextField *accountLabel;
-@property (weak, nonatomic) IBOutlet SNMainTextField *oldPassWordLabel;
-@property (weak, nonatomic) IBOutlet SNMainTextField *passWordLabel;
-@property (weak, nonatomic) IBOutlet SNMainTextField *confirmPassWordLabel;
+@property (weak, nonatomic) IBOutlet ZSTextField *accountLabel;
+@property (weak, nonatomic) IBOutlet ZSTextField *oldPassWordLabel;
+@property (weak, nonatomic) IBOutlet ZSTextField *passWordLabel;
+@property (weak, nonatomic) IBOutlet ZSTextField *confirmPassWordLabel;
 
 @property (nonatomic, strong) SNUserModel *userModel;
 
@@ -180,15 +180,6 @@
     }
     
     return YES;
-}
-
-- (void)dealloc
-{
-    SNLog(@"%s", __func__);
-    [[NSNotificationCenter defaultCenter] removeObserver:self.accountLabel];
-    [[NSNotificationCenter defaultCenter] removeObserver:self.oldPassWordLabel];
-    [[NSNotificationCenter defaultCenter] removeObserver:self.passWordLabel];
-    [[NSNotificationCenter defaultCenter] removeObserver:self.confirmPassWordLabel];
 }
 
 /*

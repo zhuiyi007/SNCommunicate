@@ -16,6 +16,7 @@
 		3C214C081AE2A4E40064644A /* SNOtherGoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C214C071AE2A4E40064644A /* SNOtherGoodsView.m */; };
 		3C214C0B1AE2A8070064644A /* SNOtherGoodsLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C214C0A1AE2A8070064644A /* SNOtherGoodsLabelView.m */; };
 		3C24FD311B1452A5008DEA09 /* SNChangePassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C24FD301B1452A5008DEA09 /* SNChangePassWordViewController.m */; };
+		3C24FD6C1B15C517008DEA09 /* ZSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C24FD6B1B15C517008DEA09 /* ZSTextField.m */; };
 		3C34749E1AE3922D009FBB68 /* SNUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C34749D1AE3922D009FBB68 /* SNUserModel.m */; };
 		3C3474A11AE39835009FBB68 /* SNArchiverManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3474A01AE39835009FBB68 /* SNArchiverManger.m */; };
 		3C3474A81AE3ADF4009FBB68 /* SNMYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3474A71AE3ADF4009FBB68 /* SNMYViewController.m */; };
@@ -115,7 +116,6 @@
 		3CBEC55D1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEC55C1AFDCCCF00EC27CC /* SNBusinessOrderViewController.m */; };
 		3CC62C9C1AE0ECC0004D7C8D /* UIViewController+SNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */; };
 		3CC62CA31AE0EE22004D7C8D /* SNProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */; };
-		3CC62CA61AE1084D004D7C8D /* SNMainTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */; };
 		3CE0C3DF1ADE586E00EF3358 /* SNEatAndBed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DC1ADE586E00EF3358 /* SNEatAndBed.plist */; };
 		3CE0C3E01ADE586E00EF3358 /* SNHealthAndBeauty.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DD1ADE586E00EF3358 /* SNHealthAndBeauty.plist */; };
 		3CE0C3E11ADE586E00EF3358 /* SNMarket.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CE0C3DE1ADE586E00EF3358 /* SNMarket.plist */; };
@@ -155,6 +155,8 @@
 		3C214C0A1AE2A8070064644A /* SNOtherGoodsLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNOtherGoodsLabelView.m; sourceTree = "<group>"; };
 		3C24FD2F1B1452A5008DEA09 /* SNChangePassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNChangePassWordViewController.h; sourceTree = "<group>"; };
 		3C24FD301B1452A5008DEA09 /* SNChangePassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNChangePassWordViewController.m; sourceTree = "<group>"; };
+		3C24FD6A1B15C517008DEA09 /* ZSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSTextField.h; sourceTree = "<group>"; };
+		3C24FD6B1B15C517008DEA09 /* ZSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTextField.m; sourceTree = "<group>"; };
 		3C34749C1AE3922D009FBB68 /* SNUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUserModel.h; sourceTree = "<group>"; };
 		3C34749D1AE3922D009FBB68 /* SNUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserModel.m; sourceTree = "<group>"; };
 		3C34749F1AE39835009FBB68 /* SNArchiverManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNArchiverManger.h; sourceTree = "<group>"; };
@@ -352,8 +354,6 @@
 		3CC62C9B1AE0ECC0004D7C8D /* UIViewController+SNCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SNCommon.m"; sourceTree = "<group>"; };
 		3CC62CA11AE0EE22004D7C8D /* SNProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNProgressHUD.h; sourceTree = "<group>"; };
 		3CC62CA21AE0EE22004D7C8D /* SNProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNProgressHUD.m; sourceTree = "<group>"; };
-		3CC62CA41AE1084D004D7C8D /* SNMainTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainTextField.h; sourceTree = "<group>"; };
-		3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMainTextField.m; sourceTree = "<group>"; };
 		3CE0C3DC1ADE586E00EF3358 /* SNEatAndBed.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNEatAndBed.plist; sourceTree = "<group>"; };
 		3CE0C3DD1ADE586E00EF3358 /* SNHealthAndBeauty.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNHealthAndBeauty.plist; sourceTree = "<group>"; };
 		3CE0C3DE1ADE586E00EF3358 /* SNMarket.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SNMarket.plist; sourceTree = "<group>"; };
@@ -563,10 +563,10 @@
 				3C49E7451ADB598F0008085F /* SNTabBarButton.m */,
 				3C782A811ADD0D4900DD0FEC /* SNMainTableView.h */,
 				3C782A821ADD0D4900DD0FEC /* SNMainTableView.m */,
-				3CC62CA41AE1084D004D7C8D /* SNMainTextField.h */,
-				3CC62CA51AE1084D004D7C8D /* SNMainTextField.m */,
 				3C962BB31AFC8562002341E4 /* SNRoundPlayScrollView.h */,
 				3C962BB41AFC8562002341E4 /* SNRoundPlayScrollView.m */,
+				3C24FD6A1B15C517008DEA09 /* ZSTextField.h */,
+				3C24FD6B1B15C517008DEA09 /* ZSTextField.m */,
 				3C7F3CA71B11A2FE00F23F8D /* SNGuideCell.h */,
 				3C7F3CA81B11A2FE00F23F8D /* SNGuideCell.m */,
 			);
@@ -1235,7 +1235,6 @@
 				3C782AC61ADD380E00DD0FEC /* MJType.m in Sources */,
 				3C49E72F1ADB55710008085F /* SDWebImageDownloaderOperation.m in Sources */,
 				3C85F3D01AED148C00481F0C /* SNCustomerOrder.m in Sources */,
-				3CC62CA61AE1084D004D7C8D /* SNMainTextField.m in Sources */,
 				3CB68AFB1AE78DBC0092E9F6 /* SNNullCell.m in Sources */,
 				3C782A8F1ADD113500DD0FEC /* SNSecondClassViewController.m in Sources */,
 				3C49E7151ADB55710008085F /* AFHTTPRequestOperationManager.m in Sources */,
@@ -1269,6 +1268,7 @@
 				3C214BFF1AE266550064644A /* SNGoodsDetailsView.m in Sources */,
 				3C49E7331ADB55710008085F /* UIImage+GIF.m in Sources */,
 				3C214C021AE28B170064644A /* SNShopDetailsView.m in Sources */,
+				3C24FD6C1B15C517008DEA09 /* ZSTextField.m in Sources */,
 				3C85F3D31AED14D600481F0C /* SNCustomerOrderModel.m in Sources */,
 				3C49E7341ADB55710008085F /* UIImage+MultiFormat.m in Sources */,
 				3CEFF7A01ADB728C0055F2DB /* UIView+Frame.m in Sources */,
