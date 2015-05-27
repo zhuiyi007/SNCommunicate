@@ -56,11 +56,10 @@
 
 - (void)insertImageWithImagesURLArray:(NSArray *)imagesURLArray placeholderImage:(NSString *)placeholderImage
 {
+    [self endTimer];
     for (UIView *view in self.subviews) {
         [view removeFromSuperview];
     }
-    [self endTimer];
-    [self startTimer];
     
     CGFloat width = self.width;
     CGFloat height = self.height;
@@ -84,6 +83,7 @@
     [self addSubview:self.pageControl];
     self.pageControl.centerX = self.contentOffset.x + self.width * 0.5;
     self.pageControl.y = self.height - 10;
+    [self startTimer];
 }
 
 - (void)startTimer

@@ -182,6 +182,15 @@
     return YES;
 }
 
+- (void)dealloc
+{
+    SNLog(@"%s", __func__);
+    [[NSNotificationCenter defaultCenter] removeObserver:self.accountLabel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self.oldPassWordLabel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self.passWordLabel];
+    [[NSNotificationCenter defaultCenter] removeObserver:self.confirmPassWordLabel];
+}
+
 /*
 #pragma mark - Navigation
 
