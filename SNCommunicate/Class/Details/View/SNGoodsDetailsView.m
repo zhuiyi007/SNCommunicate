@@ -142,7 +142,7 @@
     [self.goodsPrice setFrame:CGRectMake(screenWidth - width - 10, CGRectGetMaxY(self.lineView.frame) + margin, width, height)];
     
     [self.goodsName sizeToFit];
-    [self.goodsName setFrame:CGRectMake(margin, CGRectGetMaxY(self.lineView.frame) + margin, self.width - self.goodsPrice.width - 3 * margin, self.goodsName.height)];
+    [self.goodsName setFrame:CGRectMake(margin, CGRectGetMaxY(self.lineView.frame) + margin, screenWidth - self.goodsPrice.width - 3 * margin, self.goodsName.height)];
     
     [self.store setFrame:CGRectMake(margin, CGRectGetMaxY(self.goodsName.frame) + margin, 0, 0)];
     [self.store sizeToFit];
